@@ -1,0 +1,14 @@
+{
+  "_output_dir": "/home/twillis/dev/github",
+  "_template": "gh:cjolowicz/cookiecutter-hypermodern-python",
+  "author": "Flexion, Inc.",
+  "copyright_year": "2023",
+  "development_status": "Development Status :: 1 - Planning",
+  "email": "noreply@flexion.us",
+  "friendly_name": "DevOps Deployments Metrics",
+  "github_user": "flexion",
+  "license": "MIT",
+  "package_name": "devops_deployments_metrics",
+  "project_name": "devops-deployments-metrics",
+  "version": "0.0.0"
+}
