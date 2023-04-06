@@ -8,7 +8,6 @@ The latest version of the application is supported for security updates.
 | ------- | ------------------ |
 | 0.0.x   | :white_check_mark: |
 
-
 ## Reporting a Vulnerability
 
 To report a vulnerabiity. please [create a new issue](https://github.com/flexion/devops-deployment-metrics/issues)
