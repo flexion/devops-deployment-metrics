@@ -35,10 +35,10 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
 
       - name: Set up Python ${{ matrix.python }}
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@48e4ac706204bab735867521ba54b3276c883d00 # v3.1.3
         with:
           python-version: ${{ matrix.python }}
 
@@ -84,7 +84,7 @@ jobs:
       #          print("::set-output name=result::{}".format(result))
 
       - name: Restore pre-commit cache
-        uses: actions/cache@v3
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
         if: matrix.session == 'pre-commit'
         with:
           path: ~/.cache/pre-commit
@@ -98,14 +98,14 @@ jobs:
 
       - name: Upload coverage data
         if: always() && matrix.session == 'tests'
-        uses: "actions/upload-artifact@v3"
+        uses: "actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2"
         with:
           name: coverage-data
           path: ".coverage.*"
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
         with:
           name: docs
           path: docs/_build
@@ -115,10 +115,10 @@ jobs:
     needs: tests
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@48e4ac706204bab735867521ba54b3276c883d00 # v3.1.3
         with:
           python-version: "3.10"
 
@@ -139,7 +139,7 @@ jobs:
           nox --version
 
       - name: Download coverage data
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
         with:
           name: coverage-data
 
@@ -152,4 +152,4 @@ jobs:
           nox --session=coverage -- xml
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v3.1.0
+        uses: codecov/codecov-action@81cd2dc8148241f03f5839d295e000b8f761e378 # v3.1.0
