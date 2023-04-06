@@ -40,7 +40,7 @@ jobs:
       - name: Detect and tag new version
         id: check-version
         if: steps.check-parent-commit.outputs.sha
-        uses: salsify/action-detect-and-tag-new-version@e4e25f0bab8e458580a7bdaad885e7d6fcd697d6 # v2.0.1
+        uses: salsify/action-detect-and-tag-new-version@b1778166f13188a9d478e2d1198f993011ba9864 # v2.0.3
         with:
           version-command: |
             bash -o pipefail -c "poetry version | awk '{ print \$2 }'"
