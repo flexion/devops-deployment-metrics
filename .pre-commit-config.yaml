@@ -71,3 +71,9 @@ repos:
     rev: v8.16.1
     hooks:
       - id: gitleaks-docker
+
+  # Lint GitHub Actions
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.6.23
+    hooks:
+      - id: actionlint-docker
