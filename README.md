@@ -67,7 +67,11 @@ pip install devops-deployments-metrics
 
 ## Usage
 
-Please see the [Command-line Reference] for details.
+```shell
+poetry run devops-deployments-metrics -v -c my-config.toml
+```
+
+Please see the [Command-line Reference] for more details.
 
 ## Contributing
 
@@ -76,7 +80,7 @@ To learn more, see the [Contributor Guide].
 
 ## License
 
-Distributed under the terms of the [MIT license][license],
+Distributed under the terms of the [MIT license],
 _DevOps Deployments Metrics_ is free and open source software.
 
 ## Issues

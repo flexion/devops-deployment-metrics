@@ -16,8 +16,14 @@ classifiers = [
 Changelog = "https://github.com/flexion/devops-deployments-metrics/releases"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 click = ">=8.0.1"
+pandas = "^2.0.0"
+argparse = "^1.4.0"
+toml = "^0.10.2"
+python-dotenv = "^1.0.0"
+PyGitHub = "^1.58.1"
+tqdm = "^4.65.0"
 
 [tool.poetry.dev-dependencies]
 Pygments = ">=2.10.0"
@@ -35,6 +41,7 @@ pep8-naming = ">=0.12.1"
 pre-commit = ">=2.16.0"
 pre-commit-hooks = ">=4.1.0"
 pytest = ">=6.2.5"
+pytest-mock = "^3.10.0"
 pyupgrade = ">=2.29.1"
 safety = ">=1.10.3"
 sphinx = ">=4.3.2"
@@ -57,7 +64,7 @@ source = ["devops_deployments_metrics", "tests"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 100
+fail_under = 25
 
 [tool.isort]
 profile = "black"

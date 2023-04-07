@@ -1,11 +1,105 @@
 """Command-line interface."""
+import logging
+import sys
+import traceback
+from datetime import datetime
+
 import click
+import toml
+from devops_deployments_metrics.deployments import all_get_mttrs
+from devops_deployments_metrics.deployments import collate_mttrs
+from devops_deployments_metrics.deployments import (
+    get_deployment_frequencies_and_change_failures,
+)
+from devops_deployments_metrics.deployments import get_deployments
+from devops_deployments_metrics.writer import write_csv
 
 
 @click.command()
 @click.version_option()
-def main() -> None:
+@click.option("--config", "-c", help="TOML configuration file", type=str)
+@click.option(
+    "--debug",
+    "-d",
+    help="Print lots of debugging statements",
+    is_flag=True,
+    default=False,
+)
+@click.option("--verbose", "-v", help="Be verbose", is_flag=True, default=False)
+def main(config: str, verbose, debug) -> None:
     """DevOps Deployments Metrics."""
+    # Parse arguments
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("-c", "--config", help="TOML configuration file")
+    # parser.add_argument(
+    #     "-d",
+    #     "--debug",
+    #     help="Print lots of debugging statements",
+    #     action="store_const",
+    #     dest="loglevel",
+    #     const=logging.DEBUG,
+    #     default=logging.WARNING,
+    # )
+    # parser.add_argument(
+    #     "-v",
+    #     "--verbose",
+    #     help="Be verbose",
+    #     action="store_const",
+    #     dest="loglevel",
+    #     const=logging.INFO,
+    # )
+    # args = vars(parser.parse_args())
+    # args = parser.parse_args()
+    # Read configuration from file
+
+    config = toml.load(config)
+    start_of_time = config["general"]["start-date"]
+    time_slice = config["general"]["time-slice-days"]
+    date_format = config["general"]["date-format"]
+    # Set up logger
+    if debug:
+        loglevel = logging.DEBUG
+    elif verbose:
+        loglevel = logging.INFO
+    else:
+        loglevel = logging.WARNING
+    logging.basicConfig(level=loglevel, filename="gh-deployments.log")
+    logging.info(f"Starting at {datetime.now()}")
+
+    try:
+        all_deployments = []
+        for repository in config["repositories"]:
+            repo = repository["repo"]
+            owner = repository["owner"]
+            id = repository["id"]
+            deployments = get_deployments(owner, repo, id)
+            all_deployments.extend(deployments)
+        (
+            deployment_frequencies,
+            change_failures,
+        ) = get_deployment_frequencies_and_change_failures(
+            all_deployments, start_of_time, time_slice
+        )
+        all_mttrs = all_get_mttrs(all_deployments)
+        mttrs = collate_mttrs(all_mttrs, start_of_time, time_slice)
+        write_csv(deployment_frequencies, "df.csv", date_format)
+        write_csv(change_failures, "cf.csv", date_format)
+        write_csv(mttrs, "mttrs.csv", date_format)
+        result = 1
+        if result > 0:
+            sys.exit(0)
+        else:
+            exit(-1)
+    except AttributeError as err:
+        logging.warning(f"AttributeError: {format(err.message)}")
+        # parser.print_help()
+    except SystemExit:
+        logging.warning("SystemExit")
+        raise
+    except:  # noqa: E722
+        traceback.print_exc()
+        logging.warning(f"Exception: {traceback.print_exc()}")
+        exit(1)
 
 
 if __name__ == "__main__":
