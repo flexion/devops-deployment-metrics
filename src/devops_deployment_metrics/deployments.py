@@ -91,13 +91,17 @@ def get_deployment_frequencies_and_change_failures(
             end = start + timedelta(days=time_slice)
             mask = (df["run_started"] >= start) & (df["run_started"] < end)
             slice = df.loc[mask]
-            # deployment_frequency object: start, count
+            # deployment_frequency object: start, frequency, count
             count = len(slice.index)
-            deployment_frequency = {"date": start, "count": count}
+            deployment_frequency = {
+                "date": start,
+                "frequency": count / time_slice,
+                "count": count,
+            }
             logging.info(f"d {deployment_frequency}")
             deployment_frequencies.append(deployment_frequency)
             failures = len(slice[slice["conclusion"] == "failure"])
-            failure_percent = failures / count if count else 0
+            failure_percent = failures / count * 100.0 if count else 0
             change_failure = {"date": start, "percent": failure_percent}
             change_failures.append(change_failure)
             logging.info(f"c {change_failures}")
