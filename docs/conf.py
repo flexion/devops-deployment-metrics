@@ -10,3 +10,4 @@ extensions = [
 ]
 autodoc_typehints = "description"
 html_theme = "furo"
+exclude_patterns = ["archtectural_decision_records"]
