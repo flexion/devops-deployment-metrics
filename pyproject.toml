@@ -1,19 +1,19 @@
 [tool.poetry]
-name = "devops-deployments-metrics"
+name = "devops-deployment-metrics"
 version = "0.0.0"
-description = "DevOps Deployments Metrics"
+description = "DevOps Deployment Metrics"
 authors = ["Flexion, Inc. <noreply@flexion.us>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/flexion/devops-deployments-metrics"
-repository = "https://github.com/flexion/devops-deployments-metrics"
-documentation = "https://devops-deployments-metrics.readthedocs.io"
+homepage = "https://github.com/flexion/devops-deployment-metrics"
+repository = "https://github.com/flexion/devops-deployment-metrics"
+documentation = "https://devops-deployment-metrics.readthedocs.io"
 classifiers = [
     "Development Status :: 1 - Planning",
 ]
 
 [tool.poetry.urls]
-Changelog = "https://github.com/flexion/devops-deployments-metrics/releases"
+Changelog = "https://github.com/flexion/devops-deployment-metrics/releases"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -52,7 +52,7 @@ xdoctest = {extras = ["colors"], version = ">=0.15.10"}
 myst-parser = {version = ">=0.16.1"}
 
 [tool.poetry.scripts]
-devops-deployments-metrics = "devops_deployments_metrics.__main__:main"
+devops-deployment-metrics = "devops_deployments_metrics.__main__:main"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]

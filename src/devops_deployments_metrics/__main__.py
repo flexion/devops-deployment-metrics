@@ -99,4 +99,4 @@ def main(config: str, verbose, debug, username: str, password: str) -> None:
 
 
 if __name__ == "__main__":
-    main(prog_name="devops-deployments-metrics")  # pragma: no cover
+    main(prog_name="devops-deployment-metrics")  # pragma: no cover

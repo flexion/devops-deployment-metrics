@@ -19,5 +19,5 @@ reference
 contributing
 Code of Conduct <codeofconduct>
 License <license>
-Changelog <https://github.com/flexion/devops-deployments-metrics/releases>
+Changelog <https://github.com/flexion/devops-deployment-metrics/releases>
 ```
