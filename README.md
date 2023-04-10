@@ -40,8 +40,8 @@ frequency would be 2.0.
 ### Change Fail Rate
 
 Change Fail Rate is a simple ratio of the number of failed deployments over the total number of deployments in a given
-reporting period. If all the deployments fail, the change fail rate will be 1.0. If all the deployments succeed,
-the change fail rate will be 0.0.
+reporting period, expressed as a percentage. If all the deployments fail, the change fail rate will be 100.0. If all the
+deployments succeed, the change fail rate will be 0.0.
 
 ### Mean Time to Recover
 
@@ -72,6 +72,35 @@ poetry run devops-deployment-metrics -v -c my-config.toml
 ```
 
 Please see the [Command-line Reference] for more details.
+
+### How to find the workflow id
+
+To find the workflow id value for the configuration file, you can add the correct value for owner and repo and any string
+for the id
+
+```toml
+[[repositories]]
+    owner = "my-owner"
+    repo = "my-repo"
+    id = "dog-cow"
+```
+
+Then run in debug mode:
+
+```shell
+ poetry run devops-deployment-metrics -d -c my-config.toml
+```
+
+It will fail with an error.
+Now you can search the log for the value of the `id` you will need. Search the log for the JSON object for your production
+deployment workflow. Within that object find the value for `workflow_id` and add that to your configuration file.
+
+```toml
+[[repositories]]
+    owner = "my-owner"
+    repo = "my-repo"
+    id = "12345678"
+```
 
 ## Contributing
 
