@@ -1,6 +1,6 @@
 # test_writer
 import pandas
-from devops_deployments_metrics import writer
+from devops_deployment_metrics import writer
 
 
 def test_write_csv(mocker) -> None:

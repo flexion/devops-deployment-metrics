@@ -1,5 +1,5 @@
 """Sphinx configuration."""
-project = "DevOps Deployments Metrics"
+project = "DevOps Deployment Metrics"
 author = "Flexion, Inc."
 copyright = "2023, Flexion, Inc."
 extensions = [
@@ -10,4 +10,4 @@ extensions = [
 ]
 autodoc_typehints = "description"
 html_theme = "furo"
-exclude_patterns = ["archtectural_decision_records"]
+exclude_patterns = ["**/architectural_decision_records/**"]

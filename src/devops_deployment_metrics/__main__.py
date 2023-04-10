@@ -7,17 +7,16 @@ from datetime import datetime
 
 import click
 import toml
-from devops_deployments_metrics.deployments import all_get_mttrs
-from devops_deployments_metrics.deployments import collate_mttrs
-from devops_deployments_metrics.deployments import (
+from devops_deployment_metrics.deployments import all_get_mttrs
+from devops_deployment_metrics.deployments import collate_mttrs
+from devops_deployment_metrics.deployments import (
     get_deployment_frequencies_and_change_failures,
 )
-from devops_deployments_metrics.deployments import get_deployments
-from devops_deployments_metrics.writer import write_csv
+from devops_deployment_metrics.deployments import get_deployments
+from devops_deployment_metrics.writer import write_csv
 
 
 @click.command()
-@click.version_option()
 @click.option("--config", "-c", help="TOML configuration file", type=str)
 @click.option(
     "--debug",
@@ -32,6 +31,7 @@ from devops_deployments_metrics.writer import write_csv
     "-u",
     prompt="GitHub user name",
     default=lambda: os.environ.get("GITHUB_USER", ""),
+    help="GitHub user name",
 )
 @click.option(
     "--password",
@@ -39,6 +39,7 @@ from devops_deployments_metrics.writer import write_csv
     prompt="GitHub token",
     hide_input=True,
     default=lambda: os.environ.get("GITHUB_TOKEN", ""),
+    help="GitHub password",
 )
 def main(config: str, verbose, debug, username: str, password: str) -> None:
     """DevOps Deployments Metrics."""

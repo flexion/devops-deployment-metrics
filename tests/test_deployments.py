@@ -1,9 +1,9 @@
-# from devops_deployments_metrics.deployments import all_get_mttrs
-# from devops_deployments_metrics.deployments import collate_mttrs
-# from devops_deployments_metrics.deployments import (
+# from devops_deployment_metrics.deployments import all_get_mttrs
+# from devops_deployment_metrics.deployments import collate_mttrs
+# from devops_deployment_metrics.deployments import (
 #     get_deployment_frequencies_and_change_failures,
 # )
-# from devops_deployments_metrics.deployments import get_deployments
+# from devops_deployment_metrics.deployments import get_deployments
 
 
 def test_get_deployments():

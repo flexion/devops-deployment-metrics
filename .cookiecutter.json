@@ -8,7 +8,7 @@
   "friendly_name": "DevOps Deployments Metrics",
   "github_user": "flexion",
   "license": "MIT",
-  "package_name": "devops_deployments_metrics",
+  "package_name": "devops_deployment_metrics",
   "project_name": "devops-deployment-metrics",
   "version": "0.0.0"
 }

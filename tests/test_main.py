@@ -1,7 +1,7 @@
 """Test cases for the __main__ module."""
 import pytest
 from click.testing import CliRunner
-from devops_deployments_metrics import __main__
+from devops_deployment_metrics import __main__
 
 
 @pytest.fixture

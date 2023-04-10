@@ -1,5 +1,5 @@
 # Keys
-title = "Sample devops-deployments-metrics configuration"
+title = "Sample devops-deployment-metrics configuration"
 
 [general]
     time-slice-days = 7

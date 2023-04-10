@@ -52,7 +52,7 @@ xdoctest = {extras = ["colors"], version = ">=0.15.10"}
 myst-parser = {version = ">=0.16.1"}
 
 [tool.poetry.scripts]
-devops-deployment-metrics = "devops_deployments_metrics.__main__:main"
+devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -60,7 +60,7 @@ tests = ["tests", "*/tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["devops_deployments_metrics", "tests"]
+source = ["devops_deployment_metrics", "tests"]
 
 [tool.coverage.report]
 show_missing = true
