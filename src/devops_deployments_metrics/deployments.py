@@ -3,16 +3,18 @@
 # logic related to dealing with deployments
 # and deployment metrics
 import logging
-import os
 import traceback
 from datetime import datetime
 from datetime import timedelta
 from math import isnan
 
 import pandas as pd
-from dotenv import load_dotenv
 from github import Github
 from tqdm import tqdm
+
+# import os
+
+# from dotenv import load_dotenv
 
 
 def THE_FUTURE():
@@ -23,15 +25,26 @@ def THE_PAST():
     return datetime(1979, 1, 1)
 
 
-def read_env():
-    load_dotenv()
-    username = os.getenv("GITHUB_USERNAME")
-    password = os.getenv("GITHUB_PASSWORD")
-    return username, password
+# def read_env():
+#     load_dotenv()
+#     username = os.getenv("GITHUB_USERNAME")
+#     password = os.getenv("GITHUB_PASSWORD")
+#     return username, password
 
 
-def get_deployments(owner: str, repo: str, deployment_workflow_id: str) -> list[dict]:
-    g = connect_to_github()
+def connect_to_github(username: str, password: str) -> any:
+    # user, pass_word = read_env()
+    g = Github(login_or_token=username, password=password, verify=True)
+    user = g.get_user()
+    logging.info(user.name)
+    logging.info(user.login)
+    return g
+
+
+def get_deployments(
+    owner: str, repo: str, deployment_workflow_id: str, username: str, password: str
+) -> list[dict]:
+    g = connect_to_github(username, password)
     url = f"{owner}/{repo}"
     logging.info(f"repository: {url}")
     this_repo = g.get_repo(url)
@@ -58,15 +71,6 @@ def get_deployments(owner: str, repo: str, deployment_workflow_id: str) -> list[
     )
     logging.info(f"size of deployments: {len(deployments)}")
     return deployments
-
-
-def connect_to_github():
-    user, pass_word = read_env()
-    g = Github(login_or_token=user, password=pass_word, verify=True)
-    user = g.get_user()
-    logging.info(user.name)
-    logging.info(user.login)
-    return g
 
 
 def get_deployment_frequencies_and_change_failures(

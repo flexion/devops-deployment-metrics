@@ -1,5 +1,6 @@
 """Command-line interface."""
 import logging
+import os
 import sys
 import traceback
 from datetime import datetime
@@ -26,31 +27,21 @@ from devops_deployments_metrics.writer import write_csv
     default=False,
 )
 @click.option("--verbose", "-v", help="Be verbose", is_flag=True, default=False)
-def main(config: str, verbose, debug) -> None:
+@click.option(
+    "--username",
+    "-u",
+    prompt="GitHub user name",
+    default=lambda: os.environ.get("GITHUB_USER", ""),
+)
+@click.option(
+    "--password",
+    "-p",
+    prompt="GitHub token",
+    hide_input=True,
+    default=lambda: os.environ.get("GITHUB_TOKEN", ""),
+)
+def main(config: str, verbose, debug, username: str, password: str) -> None:
     """DevOps Deployments Metrics."""
-    # Parse arguments
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("-c", "--config", help="TOML configuration file")
-    # parser.add_argument(
-    #     "-d",
-    #     "--debug",
-    #     help="Print lots of debugging statements",
-    #     action="store_const",
-    #     dest="loglevel",
-    #     const=logging.DEBUG,
-    #     default=logging.WARNING,
-    # )
-    # parser.add_argument(
-    #     "-v",
-    #     "--verbose",
-    #     help="Be verbose",
-    #     action="store_const",
-    #     dest="loglevel",
-    #     const=logging.INFO,
-    # )
-    # args = vars(parser.parse_args())
-    # args = parser.parse_args()
-    # Read configuration from file
 
     config = toml.load(config)
     start_of_time = config["general"]["start-date"]
@@ -63,8 +54,11 @@ def main(config: str, verbose, debug) -> None:
         loglevel = logging.INFO
     else:
         loglevel = logging.WARNING
-    logging.basicConfig(level=loglevel, filename="gh-deployments.log")
+    logging.basicConfig(
+        level=loglevel, filename="gh-deployments.log"
+    )  # todo config log filename
     logging.info(f"Starting at {datetime.now()}")
+    logging.info(f"GitHub user {username}")
 
     try:
         all_deployments = []
@@ -72,7 +66,7 @@ def main(config: str, verbose, debug) -> None:
             repo = repository["repo"]
             owner = repository["owner"]
             id = repository["id"]
-            deployments = get_deployments(owner, repo, id)
+            deployments = get_deployments(owner, repo, id, username, password)
             all_deployments.extend(deployments)
         (
             deployment_frequencies,
@@ -82,9 +76,11 @@ def main(config: str, verbose, debug) -> None:
         )
         all_mttrs = all_get_mttrs(all_deployments)
         mttrs = collate_mttrs(all_mttrs, start_of_time, time_slice)
-        write_csv(deployment_frequencies, "df.csv", date_format)
-        write_csv(change_failures, "cf.csv", date_format)
-        write_csv(mttrs, "mttrs.csv", date_format)
+        write_csv(
+            deployment_frequencies, "df.csv", date_format
+        )  # todo config output filename
+        write_csv(change_failures, "cf.csv", date_format)  # todo config filename
+        write_csv(mttrs, "mttrs.csv", date_format)  # todo config filename
         result = 1
         if result > 0:
             sys.exit(0)
