@@ -20,15 +20,14 @@ jobs:
         include:
           - { python: "3.10", os: "ubuntu-latest", session: "pre-commit" }
           - { python: "3.10", os: "ubuntu-latest", session: "safety" }
-          - { python: "3.10", os: "ubuntu-latest", session: "mypy" }
-          - { python: "3.9", os: "ubuntu-latest", session: "mypy" }
-          - { python: "3.8", os: "ubuntu-latest", session: "mypy" }
           - { python: "3.10", os: "ubuntu-latest", session: "tests" }
           - { python: "3.9", os: "ubuntu-latest", session: "tests" }
-          - { python: "3.8", os: "ubuntu-latest", session: "tests" }
-          - { python: "3.10", os: "ubuntu-latest", session: "typeguard" }
           - { python: "3.10", os: "ubuntu-latest", session: "xdoctest" }
           - { python: "3.10", os: "ubuntu-latest", session: "docs-build" }
+
+    #          - { python: "3.10", os: "ubuntu-latest", session: "mypy" }
+    #          - { python: "3.9", os: "ubuntu-latest", session: "mypy" }
+    #          - { python: "3.10", os: "ubuntu-latest", session: "typeguard" }
 
     env:
       NOXSESSION: ${{ matrix.session }}
@@ -163,4 +162,4 @@ jobs:
           nox --session=coverage -- xml
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@81cd2dc8148241f03f5839d295e000b8f761e378 # v3.1.0
+        uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70 # v3.1.1

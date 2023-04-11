@@ -1,1 +1,1 @@
-"""Test suite for the devops_deployments_metrics package."""
+"""Test suite for the devops_deployment_metrics package."""

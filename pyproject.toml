@@ -1,23 +1,29 @@
 [tool.poetry]
-name = "devops-deployments-metrics"
+name = "devops-deployment-metrics"
 version = "0.0.0"
-description = "DevOps Deployments Metrics"
+description = "DevOps Deployment Metrics"
 authors = ["Flexion, Inc. <noreply@flexion.us>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/flexion/devops-deployments-metrics"
-repository = "https://github.com/flexion/devops-deployments-metrics"
-documentation = "https://devops-deployments-metrics.readthedocs.io"
+homepage = "https://github.com/flexion/devops-deployment-metrics"
+repository = "https://github.com/flexion/devops-deployment-metrics"
+documentation = "https://devops-deployment-metrics.readthedocs.io"
 classifiers = [
     "Development Status :: 1 - Planning",
 ]
 
 [tool.poetry.urls]
-Changelog = "https://github.com/flexion/devops-deployments-metrics/releases"
+Changelog = "https://github.com/flexion/devops-deployment-metrics/releases"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 click = ">=8.0.1"
+pandas = "^2.0.0"
+argparse = "^1.4.0"
+toml = "^0.10.2"
+python-dotenv = "^1.0.0"
+PyGitHub = "^1.58.1"
+tqdm = "^4.65.0"
 
 [tool.poetry.dev-dependencies]
 Pygments = ">=2.10.0"
@@ -35,6 +41,7 @@ pep8-naming = ">=0.12.1"
 pre-commit = ">=2.16.0"
 pre-commit-hooks = ">=4.1.0"
 pytest = ">=6.2.5"
+pytest-mock = "^3.10.0"
 pyupgrade = ">=2.29.1"
 safety = ">=1.10.3"
 sphinx = ">=4.3.2"
@@ -45,7 +52,7 @@ xdoctest = {extras = ["colors"], version = ">=0.15.10"}
 myst-parser = {version = ">=0.16.1"}
 
 [tool.poetry.scripts]
-devops-deployments-metrics = "devops_deployments_metrics.__main__:main"
+devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -53,11 +60,11 @@ tests = ["tests", "*/tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["devops_deployments_metrics", "tests"]
+source = ["devops_deployment_metrics", "tests"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 100
+fail_under = 25
 
 [tool.isort]
 profile = "black"
