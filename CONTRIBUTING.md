@@ -12,9 +12,9 @@ Here is a list of important resources for contributors:
 - [Code of Conduct]
 
 [mit license]: https://opensource.org/licenses/MIT
-[source code]: https://github.com/flexion/devops-deployments-metrics
-[documentation]: https://devops-deployments-metrics.readthedocs.io/
-[issue tracker]: https://github.com/flexion/devops-deployments-metrics/issues
+[source code]: https://github.com/flexion/devops-deployment-metrics
+[documentation]: https://devops-deployment-metrics.readthedocs.io/
+[issue tracker]: https://github.com/flexion/devops-deployment-metrics/issues
 
 ## How to report a bug
 
@@ -63,7 +63,7 @@ or the command-line interface:
 
 ```console
 poetry run python
-poetry run devops-deployments-metrics
+poetry run devops-deployment-metrics
 ```
 
 [poetry]: https://python-poetry.org/
@@ -136,7 +136,7 @@ nox --session=pre-commit -- install
 It is recommended to open an issue before starting work on anything.
 This will allow a chance to talk it over with the owners and validate your approach.
 
-[pull request]: https://github.com/flexion/devops-deployments-metrics/pulls
+[pull request]: https://github.com/flexion/devops-deployment-metrics/pulls
 
 ## Contributors are required to sign commits
 

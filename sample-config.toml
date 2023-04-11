@@ -1,0 +1,17 @@
+# Keys
+title = "Sample devops-deployment-metrics configuration"
+
+[general]
+    time-slice-days = 7
+    start-date = 2022-06-01T00:01:00
+    date-format = "%Y-%m-%d"
+
+[[repositories]]
+    owner = "my_github_owner"
+    repo = "my_github_repository"
+    id = "12345678"
+
+[[repositories]]
+    owner = "my_github_owner"
+    repo = "my_other_github_repository"
+    id = "23456789"

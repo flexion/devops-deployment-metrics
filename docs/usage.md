@@ -1,7 +1,7 @@
 # Usage
 
 ```{eval-rst}
-.. click:: devops_deployments_metrics.__main__:main
-    :prog: devops-deployments-metrics
+.. click:: devops_deployment_metrics.__main__:main
+    :prog: devops_deployment_metrics
     :nested: full
 ```

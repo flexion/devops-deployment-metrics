@@ -1,3 +1,4 @@
+.env
 .idea
 .mypy_cache/
 /.coverage
@@ -9,3 +10,7 @@
 /docs/_build/
 /src/*.egg-info/
 __pycache__/
+/.pytest_cache/
+*.log
+*.csv
+/htmlcov/
