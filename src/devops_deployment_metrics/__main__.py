@@ -86,6 +86,9 @@ def main(config: str, verbose, debug, username: str, password: str) -> None:
         )  # todo config output filename
         write_csv(change_failures, "cf.csv", date_format)  # todo config filename
         write_csv(mttrs, "mttrs.csv", date_format)  # todo config filename
+        write_csv(
+            all_deployments, "deployments.csv", date_format
+        )  # todo config filename
         result = 1
         if result > 0:
             sys.exit(0)

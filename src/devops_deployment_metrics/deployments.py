@@ -48,8 +48,14 @@ def get_deployments(
                 successful_deployment_count += 1
             deployment = {
                 "id": str(run.id),
+                "status": str(run.status),
                 "conclusion": str(run.conclusion),
                 "run_started": str(run.run_started_at),
+                "run_attempt": str(run.run_attempt),
+                "created_at": str(run.created_at),
+                "updated_at": str(run.updated_at),
+                "head_branch": str(run.head_branch),
+                "url": str(run.url),
             }
             logging.info(deployment)
             deployments.append(deployment)
