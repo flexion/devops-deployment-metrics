@@ -7,6 +7,8 @@ from datetime import datetime
 
 import click
 import toml
+from dotenv import load_dotenv
+
 from devops_deployment_metrics.deployments import all_get_mttrs
 from devops_deployment_metrics.deployments import collate_mttrs
 from devops_deployment_metrics.deployments import (
@@ -15,6 +17,8 @@ from devops_deployment_metrics.deployments import (
 from devops_deployment_metrics.deployments import get_deployments
 from devops_deployment_metrics.writer import write_csv
 
+
+load_dotenv()
 
 @click.command()
 @click.option("--config", "-c", help="TOML configuration file", type=str)
@@ -30,7 +34,7 @@ from devops_deployment_metrics.writer import write_csv
     "--username",
     "-u",
     prompt="GitHub user name",
-    default=lambda: os.environ.get("GITHUB_USER", ""),
+    envvar="GITHUB_USERNAME",
     help="GitHub user name",
 )
 @click.option(
@@ -38,7 +42,7 @@ from devops_deployment_metrics.writer import write_csv
     "-p",
     prompt="GitHub token",
     hide_input=True,
-    default=lambda: os.environ.get("GITHUB_TOKEN", ""),
+    envvar="GITHUB_PASSWORD",
     help="GitHub password",
 )
 def main(config: str, verbose, debug, username: str, password: str) -> None:
