@@ -59,10 +59,8 @@ metric is reported in hours.
 
 ## Installation
 
-~~You can install _DevOps Deployments Metrics_ via [pip] from [PyPI]:~~
-
-```console
-pip install devops-deployment-metrics
+```shell
+poetry install
 ```
 
 ## Usage
