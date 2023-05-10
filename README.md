@@ -52,6 +52,7 @@ metric is reported in hours.
 ## Features
 
 - Generates CSV files with deployment frequency, deployment change-fail percentage and deployment mean time to recover metrics.
+- Generates CSV file with deployment log record
 
 ## Requirements
 
