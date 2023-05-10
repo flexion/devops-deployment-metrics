@@ -13,6 +13,6 @@
 __pycache__/
 /.pytest_cache/
 *.log
-*.csv
+data/
 /htmlcov/
 config.toml
