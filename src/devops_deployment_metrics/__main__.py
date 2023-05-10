@@ -1,14 +1,11 @@
 """Command-line interface."""
 import logging
-import os
 import sys
 import traceback
 from datetime import datetime
 
 import click
 import toml
-from dotenv import load_dotenv
-
 from devops_deployment_metrics.deployments import all_get_mttrs
 from devops_deployment_metrics.deployments import collate_mttrs
 from devops_deployment_metrics.deployments import (
@@ -16,9 +13,11 @@ from devops_deployment_metrics.deployments import (
 )
 from devops_deployment_metrics.deployments import get_deployments
 from devops_deployment_metrics.writer import write_csv
+from dotenv import load_dotenv
 
 
 load_dotenv()
+
 
 @click.command()
 @click.option("--config", "-c", help="TOML configuration file", type=str)
