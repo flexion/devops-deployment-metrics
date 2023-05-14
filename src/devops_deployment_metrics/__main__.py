@@ -1,6 +1,5 @@
 """Command-line interface."""
 import logging
-import os
 import sys
 import traceback
 from datetime import datetime
@@ -14,6 +13,10 @@ from devops_deployment_metrics.deployments import (
 )
 from devops_deployment_metrics.deployments import get_deployments
 from devops_deployment_metrics.writer import write_csv
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 @click.command()
@@ -30,7 +33,7 @@ from devops_deployment_metrics.writer import write_csv
     "--username",
     "-u",
     prompt="GitHub user name",
-    default=lambda: os.environ.get("GITHUB_USER", ""),
+    envvar="GITHUB_USERNAME",
     help="GitHub user name",
 )
 @click.option(
@@ -38,7 +41,7 @@ from devops_deployment_metrics.writer import write_csv
     "-p",
     prompt="GitHub token",
     hide_input=True,
-    default=lambda: os.environ.get("GITHUB_TOKEN", ""),
+    envvar="GITHUB_PASSWORD",
     help="GitHub password",
 )
 def main(config: str, verbose, debug, username: str, password: str) -> None:
@@ -82,6 +85,9 @@ def main(config: str, verbose, debug, username: str, password: str) -> None:
         )  # todo config output filename
         write_csv(change_failures, "cf.csv", date_format)  # todo config filename
         write_csv(mttrs, "mttrs.csv", date_format)  # todo config filename
+        write_csv(
+            all_deployments, "deployments.csv", date_format
+        )  # todo config filename
         result = 1
         if result > 0:
             sys.exit(0)

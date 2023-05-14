@@ -12,10 +12,6 @@ import pandas as pd
 from github import Github
 from tqdm import tqdm
 
-# import os
-
-# from dotenv import load_dotenv
-
 
 def THE_FUTURE():
     return datetime(2100, 1, 1)
@@ -25,15 +21,7 @@ def THE_PAST():
     return datetime(1979, 1, 1)
 
 
-# def read_env():
-#     load_dotenv()
-#     username = os.getenv("GITHUB_USERNAME")
-#     password = os.getenv("GITHUB_PASSWORD")
-#     return username, password
-
-
 def connect_to_github(username: str, password: str) -> any:
-    # user, pass_word = read_env()
     g = Github(login_or_token=username, password=password, verify=True)
     user = g.get_user()
     logging.info(user.name)
@@ -60,8 +48,14 @@ def get_deployments(
                 successful_deployment_count += 1
             deployment = {
                 "id": str(run.id),
+                "status": str(run.status),
                 "conclusion": str(run.conclusion),
                 "run_started": str(run.run_started_at),
+                "run_attempt": str(run.run_attempt),
+                "created_at": str(run.created_at),
+                "updated_at": str(run.updated_at),
+                "head_branch": str(run.head_branch),
+                "url": str(run.url),
             }
             logging.info(deployment)
             deployments.append(deployment)
