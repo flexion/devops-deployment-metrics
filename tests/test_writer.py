@@ -1,4 +1,6 @@
 # test_writer
+from pathlib import Path
+
 import pandas
 from devops_deployment_metrics import writer
 
@@ -15,6 +17,7 @@ def test_write_csv(mocker) -> None:
     writer.write_csv(test_list, outfile, date_format)
     # Then
     assert ext.call_count == 1
+    output_path = Path("data")
     pandas.DataFrame.to_csv.assert_called_once_with(
-        outfile, index=False, date_format=date_format
+        output_path / outfile, index=False, date_format=date_format
     )
