@@ -1,17 +1,19 @@
 """Command-line interface."""
-import logging
 import sys
 import traceback
 from datetime import datetime
 
 import click
-import toml
+from devops_deployment_metrics.config import Config
 from devops_deployment_metrics.deployments import all_get_mttrs
 from devops_deployment_metrics.deployments import collate_mttrs
 from devops_deployment_metrics.deployments import (
     get_deployment_frequencies_and_change_failures,
 )
 from devops_deployment_metrics.deployments import get_deployments
+from devops_deployment_metrics.log import get_logger
+from devops_deployment_metrics.log import setup_logging
+from devops_deployment_metrics.utils import connect_to_github
 from devops_deployment_metrics.writer import write_csv
 from dotenv import load_dotenv
 
@@ -44,27 +46,19 @@ load_dotenv()
     envvar="GITHUB_TOKEN",
     help="GitHub token",
 )
-def main(config: str, verbose, debug, username: str, password: str) -> None:
+def main(config: str, verbose: bool, debug: bool, username: str, password: str) -> None:
     """DevOps Deployments Metrics."""
 
-    config = toml.load(config)
-    start_of_time = config["general"]["start-date"]
-    time_slice = config["general"]["time-slice-days"]
-    date_format = config["general"]["date-format"]
-    # Set up logger
-    if debug:
-        loglevel = logging.DEBUG
-    elif verbose:
-        loglevel = logging.INFO
-    else:
-        loglevel = logging.WARNING
-    logging.basicConfig(
-        level=loglevel, filename="gh-deployments.log"
-    )  # todo config log filename
-    logging.info(f"Starting at {datetime.now()}")
-    logging.info(f"GitHub user {username}")
+    setup_logging(verbose, debug)
+    logger = get_logger("main")
+    config = Config(config)
+
+    logger.info(f"Starting at {datetime.now()}")
 
     try:
+        start_of_time, time_slice, date_format, logging = None
+        gh = connect_to_github(username, password)
+        logger.info(gh.get_user().name)
         all_deployments = []
         for repository in config["repositories"]:
             repo = repository["repo"]
