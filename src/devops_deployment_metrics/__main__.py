@@ -41,8 +41,8 @@ load_dotenv()
     "-p",
     prompt="GitHub token",
     hide_input=True,
-    envvar="GITHUB_PASSWORD",
-    help="GitHub password",
+    envvar="GITHUB_TOKEN",
+    help="GitHub token",
 )
 def main(config: str, verbose, debug, username: str, password: str) -> None:
     """DevOps Deployments Metrics."""
