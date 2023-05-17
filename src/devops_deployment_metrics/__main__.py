@@ -1,6 +1,4 @@
 """Command-line interface."""
-import sys
-import traceback
 from datetime import datetime
 
 import click
@@ -55,48 +53,30 @@ def main(config: str, verbose: bool, debug: bool, username: str, password: str) 
 
     logger.info(f"Starting at {datetime.now()}")
 
-    try:
-        start_of_time, time_slice, date_format, logging = None
-        gh = connect_to_github(username, password)
-        logger.info(gh.get_user().name)
-        all_deployments = []
-        for repository in config["repositories"]:
-            repo = repository["repo"]
-            owner = repository["owner"]
-            id = repository["id"]
-            deployments = get_deployments(owner, repo, id, username, password)
-            all_deployments.extend(deployments)
-        (
-            deployment_frequencies,
-            change_failures,
-        ) = get_deployment_frequencies_and_change_failures(
-            all_deployments, start_of_time, time_slice
-        )
-        all_mttrs = all_get_mttrs(all_deployments)
-        mttrs = collate_mttrs(all_mttrs, start_of_time, time_slice)
-        write_csv(
-            deployment_frequencies, "df.csv", date_format
-        )  # todo config output filename
-        write_csv(change_failures, "cf.csv", date_format)  # todo config filename
-        write_csv(mttrs, "mttrs.csv", date_format)  # todo config filename
-        write_csv(
-            all_deployments, "deployments.csv", date_format
-        )  # todo config filename
-        result = 1
-        if result > 0:
-            sys.exit(0)
-        else:
-            exit(-1)
-    except AttributeError as err:
-        logging.warning(f"AttributeError: {format(err.message)}")
-        # parser.print_help()
-    except SystemExit:
-        logging.warning("SystemExit")
-        raise
-    except:  # noqa: E722
-        traceback.print_exc()
-        logging.warning(f"Exception: {traceback.print_exc()}")
-        exit(1)
+    start_of_time, time_slice, date_format, logging = None
+    gh = connect_to_github(username, password)
+    logger.info(gh.get_user().name)
+    all_deployments = []
+    for repository in config["repositories"]:
+        repo = repository["repo"]
+        owner = repository["owner"]
+        id = repository["id"]
+        deployments = get_deployments(owner, repo, id, username, password)
+        all_deployments.extend(deployments)
+    (
+        deployment_frequencies,
+        change_failures,
+    ) = get_deployment_frequencies_and_change_failures(
+        all_deployments, start_of_time, time_slice
+    )
+    all_mttrs = all_get_mttrs(all_deployments)
+    mttrs = collate_mttrs(all_mttrs, start_of_time, time_slice)
+    write_csv(
+        deployment_frequencies, "df.csv", date_format
+    )  # todo config output filename
+    write_csv(change_failures, "cf.csv", date_format)  # todo config filename
+    write_csv(mttrs, "mttrs.csv", date_format)  # todo config filename
+    write_csv(all_deployments, "deployments.csv", date_format)  # todo config filename
 
 
 if __name__ == "__main__":
