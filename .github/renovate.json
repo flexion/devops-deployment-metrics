@@ -4,15 +4,15 @@
   "pre-commit": {
     "enabled": true
   },
-  "assigneesFromCodeOwners": true,
+  "automerge": true,
   "automergeType": "pr",
   "automergeStrategy": "squash",
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": true,
   "transitiveRemediation": true,
   "schedule": [
-    "after 8pm every weekday",
-    "before 7am every weekday",
+    "after 5pm every weekday",
+    "before 8am every weekday",
     "every weekend"
   ],
   "timezone": "America/Chicago",
@@ -31,7 +31,6 @@
     "groupSlug": "all-patch",
     "stabilityDays": 0
   },
-  "ignoreDeps": ["openjdk"],
   "labels": ["renovate", "dependencies"],
   "packageRules": [
     {
