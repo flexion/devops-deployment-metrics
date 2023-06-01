@@ -58,7 +58,7 @@ class Metric:
         for name, deployments in self.output.items():
             file_name = f"{name}.csv"
             results = self.calculate(deployments)
-            df = pd.DataFrame.from_dict(results)
+            df = pd.DataFrame.from_dict(results)  # type: ignore
             df.to_csv(
                 OUTPUT_PATH / file_name, index=False, date_format=self.date_format
             )
