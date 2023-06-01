@@ -37,20 +37,19 @@ load_dotenv()
     help="GitHub token",
 )
 def main(config: str, verbose: bool, debug: bool, username: str, password: str) -> None:
-    """DevOps Deployments Metrics."""
-
+    """Devops deployments metrics."""
     setup_logging(verbose, debug)
     logger = get_logger("main")
 
     logger.info("Reading configuration file")
-    config = get_config(config)
+    cfg = get_config(config)
 
     logger.info("Connecting to github")
     gh = connect_to_github(username, password)
 
     logger.info("Getting workflows")
-    workflows = config.workflows
-    metrics = get_metrics(config)
+    workflows = cfg.workflows
+    metrics = get_metrics(cfg)
     for wf in workflows:
         logger.info(f"Getting deployments for workflow id {wf.id}")
         wf.load(gh)

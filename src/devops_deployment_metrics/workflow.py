@@ -1,5 +1,6 @@
-import datetime
+"""This module contains classes for working with GitHub Actions workflows."""
 from dataclasses import dataclass
+from datetime import datetime
 
 from devops_deployment_metrics.definitions import MetricName
 from github import Github
@@ -7,7 +8,9 @@ from github import Github
 
 @dataclass
 class WorkflowRun:
-    id: str
+    """Shell for GitHub workflow run."""
+
+    id: int
     status: str
     conclusion: str
     run_started: datetime
@@ -19,6 +22,8 @@ class WorkflowRun:
 
 
 class Workflow:
+    """Shell for a GitHub workflow."""
+
     def __init__(
         self,
         owner: str,
@@ -29,6 +34,7 @@ class Workflow:
         mean_time_to_recover: str,
         deployment_log: str,
     ) -> None:
+        """Initializes a Workflow object."""
         self.owner = owner
         self.repo = repo
         self.id = id
@@ -39,14 +45,16 @@ class Workflow:
             MetricName.DEPLOYMENT_LOG: deployment_log,
         }
 
-        self.name = None
-        self.runs = []
+        self.name = ""
+        self.runs: list[WorkflowRun] = []
 
     @property
-    def repo_name(self):
+    def repo_name(self) -> str:
+        """Returns the name of the repository."""
         return f"{self.owner}/{self.repo}"
 
     def load(self, gh: Github) -> None:
+        """Loads the workflow runs from GitHub."""
         repo = gh.get_repo(self.repo_name)
         workflow = repo.get_workflow(self.id)
         self.name = workflow.name
@@ -55,8 +63,8 @@ class Workflow:
                 run.id,
                 run.status,
                 run.conclusion,
-                run.run_started_at,
-                run.run_attempt,
+                run.run_started_at,  # type: ignore
+                run.run_attempt,  # type: ignore
                 run.created_at,
                 run.updated_at,
                 run.head_branch,
