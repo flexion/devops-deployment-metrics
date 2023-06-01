@@ -112,6 +112,37 @@ class DeploymentChangeFailRateMetric(Metric):
         return results
 
 
+class DeploymentMeanTimeToRecoverMetric(Metric):
+    """A class for calculating the mean time to recover metric."""
+
+    def __init__(self, config: Config) -> None:
+        """Initialize a new DeploymentMeanTimeToRecoverMetric object."""
+        super().__init__(MetricName.MEAN_TIME_TO_RECOVER, config)
+
+    def calculate(self, deployments: list[WorkflowRun]) -> list[dict[str, Any]]:
+        """Calculate the mean time to recover metric."""
+        deployments_in_period = self.get_deployments_in_period(deployments)
+        results = []
+        for start_date, deployments in deployments_in_period:
+            deployments.sort(key=lambda x: x.run_started)
+            recovery_times = []
+            for i in range(len(deployments) - 1):
+                if (
+                    deployments[i].conclusion == "failure"
+                    and deployments[i + 1].conclusion == "success"
+                ):
+                    recovery_time = (
+                        deployments[i + 1].run_started - deployments[i].run_started
+                    ).total_seconds() / 3600
+                    recovery_times.append(recovery_time)
+            if recovery_times:
+                mean_time_to_recover = sum(recovery_times) / len(recovery_times)
+            else:
+                mean_time_to_recover = 0
+            results.append({"date": start_date, "mttr": mean_time_to_recover})
+        return results
+
+
 class DeploymentLogMetric(Metric):
     """A class to get the deployment log metric."""
 
@@ -130,5 +161,6 @@ def get_metrics(config: Config) -> list[Metric]:
     return [
         DeploymentFrequencyMetric(config),
         DeploymentChangeFailRateMetric(config),
+        DeploymentMeanTimeToRecoverMetric(config),
         DeploymentLogMetric(config),
     ]
