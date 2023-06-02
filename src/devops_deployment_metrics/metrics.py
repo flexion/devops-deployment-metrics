@@ -31,12 +31,22 @@ class Metric:
         """Calculate the deployment metric."""
         pass
 
+    def save(self) -> None:
+        """Save the metric output to a CSV file."""
+        for name, deployments in self.output.items():
+            file_name = f"{name}.csv"
+            results = self.calculate(deployments)
+            df = pd.DataFrame.from_dict(results)  # type: ignore
+            df.to_csv(
+                OUTPUT_PATH / file_name, index=False, date_format=self.date_format
+            )
+
+    @staticmethod
     def get_deployments_in_period(
-        self, deployments: list[WorkflowRun]
+        deployments: list[WorkflowRun], start_date: datetime, days_slice: int
     ) -> Iterable[tuple[datetime, list[WorkflowRun]]]:
         """Get the deployments for each period."""
-        start_date = self.start_date
-        end_date = start_date + timedelta(days=self.days_slice)
+        end_date = start_date + timedelta(days=days_slice)
         today = datetime.now()
 
         while end_date <= today:
@@ -51,17 +61,7 @@ class Metric:
 
             # Move on to the next period
             start_date = end_date
-            end_date = start_date + timedelta(days=self.days_slice)
-
-    def save(self) -> None:
-        """Save the metric output to a CSV file."""
-        for name, deployments in self.output.items():
-            file_name = f"{name}.csv"
-            results = self.calculate(deployments)
-            df = pd.DataFrame.from_dict(results)  # type: ignore
-            df.to_csv(
-                OUTPUT_PATH / file_name, index=False, date_format=self.date_format
-            )
+            end_date = start_date + timedelta(days=days_slice)
 
 
 class DeploymentFrequencyMetric(Metric):
@@ -73,7 +73,9 @@ class DeploymentFrequencyMetric(Metric):
 
     def calculate(self, deployments: list[WorkflowRun]) -> list[dict[str, Any]]:
         """Calculate the deployment frequency metric."""
-        deployments_in_period = self.get_deployments_in_period(deployments)
+        deployments_in_period = self.get_deployments_in_period(
+            deployments, self.start_date, self.days_slice
+        )
         results = []
         for start_date, deployments in deployments_in_period:
             count = len(deployments)
@@ -96,7 +98,9 @@ class DeploymentChangeFailRateMetric(Metric):
 
     def calculate(self, deployments: list[WorkflowRun]) -> list[dict[str, Any]]:
         """Calculate the change fail rate metric."""
-        deployments_in_period = self.get_deployments_in_period(deployments)
+        deployments_in_period = self.get_deployments_in_period(
+            deployments, self.start_date, self.days_slice
+        )
         results = []
         for start_date, deployments in deployments_in_period:
             count_total = len(deployments)
@@ -121,7 +125,9 @@ class DeploymentMeanTimeToRecoverMetric(Metric):
 
     def calculate(self, deployments: list[WorkflowRun]) -> list[dict[str, Any]]:
         """Calculate the mean time to recover metric."""
-        deployments_in_period = self.get_deployments_in_period(deployments)
+        deployments_in_period = self.get_deployments_in_period(
+            deployments, self.start_date, self.days_slice
+        )
         results = []
         for start_date, deployments in deployments_in_period:
             deployments.sort(key=lambda x: x.run_started)

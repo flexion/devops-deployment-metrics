@@ -1,4 +1,6 @@
 """Command-line interface."""
+from pathlib import Path
+
 import click
 from devops_deployment_metrics.config import get_config
 from devops_deployment_metrics.log import get_logger
@@ -42,7 +44,8 @@ def main(config: str, verbose: bool, debug: bool, username: str, password: str) 
     logger = get_logger("main")
 
     logger.info("Reading configuration file")
-    cfg = get_config(config)
+    config_path = Path(config)
+    cfg = get_config(config_path)
 
     logger.info("Connecting to github")
     gh = connect_to_github(username, password)

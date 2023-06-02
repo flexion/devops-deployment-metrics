@@ -7,6 +7,8 @@ ROOT_PATH = Path(__file__).parent.parent.parent
 OUTPUT_PATH = ROOT_PATH / "data"
 OUTPUT_PATH.mkdir(exist_ok=True)
 
+SAMPLE_CONFIG_PATH = ROOT_PATH / "sample-config.toml"
+
 
 class MetricName(Enum):
     """An enum for the metric names."""

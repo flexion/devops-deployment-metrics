@@ -1,6 +1,7 @@
 """This module contains classes and functions for working with configuration files."""
 from dataclasses import dataclass
 from datetime import datetime
+from pathlib import Path
 
 import toml
 from devops_deployment_metrics.workflow import Workflow
@@ -16,7 +17,7 @@ class Config:
     workflows: list[Workflow]
 
 
-def get_config(config_path: str) -> Config:
+def get_config(config_path: Path) -> Config:
     """Load a configuration file."""
     cfg = toml.load(config_path)
     wdefs = [
