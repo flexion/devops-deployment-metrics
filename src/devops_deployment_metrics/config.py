@@ -33,8 +33,8 @@ def get_config(config_path: Path) -> Config:
         for wf in cfg["repositories"]
     ]
     return Config(
-        datetime.strptime(cfg["general"]["start-date"], "%Y-%m-%dT%H:%M:%S"),
-        int(cfg["general"]["time-slice-days"]),
+        cfg["general"]["start-date"],
+        cfg["general"]["time-slice-days"],
         cfg["general"]["date-format"],
         wdefs,
     )
