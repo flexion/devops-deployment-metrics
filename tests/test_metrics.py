@@ -34,7 +34,7 @@ def deployments() -> list[WorkflowRun]:
             created_at=datetime(2022, 6, 1, 0, 1),
             updated_at=datetime(2022, 6, 1, 0, 1),
             head_branch="main",
-            url="https://github.com/test/test/actions/runs/123",
+            url="https://github.com/test/test/actions/runs/111",
         ),
         WorkflowRun(
             id=222,
@@ -45,7 +45,7 @@ def deployments() -> list[WorkflowRun]:
             created_at=datetime(2022, 6, 1, 10, 1),
             updated_at=datetime(2022, 6, 1, 10, 1),
             head_branch="main",
-            url="https://github.com/test/test/actions/runs/456",
+            url="https://github.com/test/test/actions/runs/222",
         ),
         WorkflowRun(
             id=333,
@@ -56,7 +56,7 @@ def deployments() -> list[WorkflowRun]:
             created_at=datetime(2022, 6, 3, 0, 1),
             updated_at=datetime(2022, 6, 3, 0, 1),
             head_branch="main",
-            url="https://github.com/test/test/actions/runs/789",
+            url="https://github.com/test/test/actions/runs/333",
         ),
         WorkflowRun(
             id=444,
@@ -67,7 +67,7 @@ def deployments() -> list[WorkflowRun]:
             created_at=datetime(2022, 6, 4, 0, 1),
             updated_at=datetime(2022, 6, 4, 0, 1),
             head_branch="main",
-            url="https://github.com/test/test/actions/runs/101112",
+            url="https://github.com/test/test/actions/runs/444",
         ),
         WorkflowRun(
             id=555,
@@ -78,7 +78,7 @@ def deployments() -> list[WorkflowRun]:
             created_at=datetime(2022, 6, 5, 0, 1),
             updated_at=datetime(2022, 6, 5, 0, 1),
             head_branch="main",
-            url="https://github.com/test/test/actions/runs/131415",
+            url="https://github.com/test/test/actions/runs/555",
         ),
         WorkflowRun(
             id=666,
@@ -89,7 +89,7 @@ def deployments() -> list[WorkflowRun]:
             created_at=datetime(2022, 6, 7, 0, 1),
             updated_at=datetime(2022, 6, 7, 0, 1),
             head_branch="main",
-            url="https://github.com/test/test/actions/runs/161718",
+            url="https://github.com/test/test/actions/runs/666",
         ),
         WorkflowRun(
             id=777,
@@ -111,7 +111,18 @@ def deployments() -> list[WorkflowRun]:
             created_at=datetime(2022, 6, 10, 0, 1),
             updated_at=datetime(2022, 6, 10, 0, 1),
             head_branch="main",
-            url="https://github.com/test/test/actions/runs/222324",
+            url="https://github.com/test/test/actions/runs/888",
+        ),
+        WorkflowRun(
+            id=999,
+            status="completed",
+            conclusion="success",
+            run_started=datetime(2022, 6, 16, 0, 1),
+            run_attempt=1,
+            created_at=datetime(2022, 6, 16, 0, 1),
+            updated_at=datetime(2022, 6, 16, 0, 1),
+            head_branch="main",
+            url="https://github.com/test/test/actions/runs/999",
         ),
     ]
 
@@ -137,7 +148,7 @@ def test_get_deployments_in_period(deployments: list[WorkflowRun]) -> None:
         )
     )
 
-    assert len(runs) == 2
+    assert len(runs) == 3
 
     run1_start_date, run1_deployments = runs[0]
     assert run1_start_date == datetime(2022, 6, 1, 0, 1)
@@ -148,6 +159,11 @@ def test_get_deployments_in_period(deployments: list[WorkflowRun]) -> None:
     assert run2_start_date == datetime(2022, 6, 8, 0, 1)
     assert len(run2_deployments) == 2
     assert run2_deployments[0].id == 777
+
+    run3_start_date, run3_deployments = runs[2]
+    assert run3_start_date == datetime(2022, 6, 15, 0, 1)
+    assert len(run3_deployments) == 1
+    assert run3_deployments[0].id == 999
 
 
 def test_deployment_frequency_metric(

@@ -53,7 +53,7 @@ class Metric:
         end_period = end_period or datetime.now()
         end_date = start_date + timedelta(days=days_slice)
 
-        while end_date <= end_period:
+        while start_date <= end_period:
             yield (
                 start_date,
                 [
