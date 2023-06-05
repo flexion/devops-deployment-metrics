@@ -4,6 +4,7 @@ from datetime import datetime
 from datetime import timedelta
 from typing import Any
 from typing import Iterable
+from typing import Optional
 
 import pandas as pd
 from devops_deployment_metrics.config import Config
@@ -43,13 +44,16 @@ class Metric:
 
     @staticmethod
     def get_deployments_in_period(
-        deployments: list[WorkflowRun], start_date: datetime, days_slice: int
+        deployments: list[WorkflowRun],
+        days_slice: int,
+        start_date: datetime,
+        end_period: Optional[datetime] = None,
     ) -> Iterable[tuple[datetime, list[WorkflowRun]]]:
         """Get the deployments for each period."""
+        end_period = end_period or datetime.now()
         end_date = start_date + timedelta(days=days_slice)
-        today = datetime.now()
 
-        while end_date <= today:
+        while end_date <= end_period:
             yield (
                 start_date,
                 [
@@ -74,7 +78,7 @@ class DeploymentFrequencyMetric(Metric):
     def calculate(self, deployments: list[WorkflowRun]) -> list[dict[str, Any]]:
         """Calculate the deployment frequency metric."""
         deployments_in_period = self.get_deployments_in_period(
-            deployments, self.start_date, self.days_slice
+            deployments, self.days_slice, self.start_date
         )
         results = []
         for start_date, deployments in deployments_in_period:
@@ -99,7 +103,7 @@ class DeploymentChangeFailRateMetric(Metric):
     def calculate(self, deployments: list[WorkflowRun]) -> list[dict[str, Any]]:
         """Calculate the change fail rate metric."""
         deployments_in_period = self.get_deployments_in_period(
-            deployments, self.start_date, self.days_slice
+            deployments, self.days_slice, self.start_date
         )
         results = []
         for start_date, deployments in deployments_in_period:
@@ -126,7 +130,7 @@ class DeploymentMeanTimeToRecoverMetric(Metric):
     def calculate(self, deployments: list[WorkflowRun]) -> list[dict[str, Any]]:
         """Calculate the mean time to recover metric."""
         deployments_in_period = self.get_deployments_in_period(
-            deployments, self.start_date, self.days_slice
+            deployments, self.days_slice, self.start_date
         )
         results = []
         for start_date, deployments in deployments_in_period:
