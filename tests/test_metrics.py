@@ -127,7 +127,7 @@ def deployments() -> list[WorkflowRun]:
         WorkflowRun(
             id=10,
             status="completed",
-            conclusion="success",
+            conclusion="failure",
             run_started=datetime(2022, 6, 14, 0, 1),
             run_attempt=1,
             created_at=datetime(2022, 6, 14, 0, 1),
@@ -205,6 +205,10 @@ def test_deployment_frequency_metric(
     assert round(results[1]["frequency"], 2) == 0.57
     assert results[1]["count"] == 4
 
+    assert results[2]["date"] == datetime(2022, 6, 15, 0, 1)
+    assert round(results[2]["frequency"], 2) == 0.14
+    assert results[2]["count"] == 1
+
 
 def test_change_fail_rate_metric(
     config: Config, deployments: list[WorkflowRun]
@@ -219,7 +223,10 @@ def test_change_fail_rate_metric(
     assert round(results[0]["percent"], 2) == 33.33
 
     assert results[1]["date"] == datetime(2022, 6, 8, 0, 1)
-    assert round(results[1]["percent"], 2) == 50.0
+    assert round(results[1]["percent"], 2) == 75.0
+
+    assert results[2]["date"] == datetime(2022, 6, 15, 0, 1)
+    assert round(results[2]["percent"], 2) == 0.0
 
 
 def test_mean_time_to_recovery_metric(
@@ -235,7 +242,10 @@ def test_mean_time_to_recovery_metric(
     assert round(results[0]["mttr"], 2) == 36.0
 
     assert results[1]["date"] == datetime(2022, 6, 8, 0, 1)
-    assert round(results[1]["mttr"], 2) == 120.0
+    assert round(results[1]["mttr"], 2) == 0.0
+
+    assert results[2]["date"] == datetime(2022, 6, 15, 0, 1)
+    assert round(results[2]["mttr"], 2) == 168.0
 
 
 def test_deployment_log(config: Config, deployments: list[WorkflowRun]) -> None:
