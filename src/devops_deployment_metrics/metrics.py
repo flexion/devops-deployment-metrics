@@ -138,7 +138,7 @@ class DeploymentMeanTimeToRecoverMetric(Metric):
             recovery_times = []
             start_recovery = None
             for deployment in deployments:
-                if deployment.conclusion == "failure":
+                if deployment.conclusion == "failure" and not start_recovery:
                     start_recovery = deployment.run_started
                 elif start_recovery and deployment.conclusion == "success":
                     recovery_time = (
