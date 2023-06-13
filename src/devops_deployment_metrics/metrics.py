@@ -129,22 +129,23 @@ class DeploymentMeanTimeToRecoverMetric(Metric):
 
     def calculate(self, deployments: list[WorkflowRun]) -> list[dict[str, Any]]:
         """Calculate the mean time to recover metric."""
+        results = []
         deployments_in_period = self.get_deployments_in_period(
             deployments, self.days_slice, self.start_date
         )
-        results = []
         for start_date, deployments in deployments_in_period:
             deployments.sort(key=lambda x: x.run_started)
             recovery_times = []
-            for i in range(len(deployments) - 1):
-                if (
-                    deployments[i].conclusion == "failure"
-                    and deployments[i + 1].conclusion == "success"
-                ):
+            start_recovery = None
+            for deployment in deployments:
+                if deployment.conclusion == "failure":
+                    start_recovery = deployment.run_started
+                elif start_recovery and deployment.conclusion == "success":
                     recovery_time = (
-                        deployments[i + 1].run_started - deployments[i].run_started
+                        deployment.run_started - start_recovery
                     ).total_seconds() / 3600
                     recovery_times.append(recovery_time)
+                    start_recovery = None
             if recovery_times:
                 mean_time_to_recover = sum(recovery_times) / len(recovery_times)
             else:
