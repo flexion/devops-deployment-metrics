@@ -1,4 +1,4 @@
-# Title: Using TOML for Configuring Python Applications
+# 11. Using TOML for Configuring Python Applications
 
 Date: 2023-06-14
 
