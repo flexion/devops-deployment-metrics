@@ -1,4 +1,16 @@
-# Keys
+"""Pytest configuration file."""
+import os
+import tempfile
+from pathlib import Path
+from typing import Any
+
+import pytest
+
+
+@pytest.fixture
+def config_data() -> str:
+    """Return a sample configuration file."""
+    return """
 title = "Sample devops-deployment-metrics configuration"
 
 [general]
@@ -23,3 +35,14 @@ title = "Sample devops-deployment-metrics configuration"
     change-fail-rate = "cf"
     mean-time-to-recover = "mttrs"
     deployment-log = "deployments"
+    """
+
+
+@pytest.fixture
+def config_path(config_data: str) -> Any:
+    """Create a temporary config file."""
+    with tempfile.NamedTemporaryFile(mode="w", delete=False) as f:
+        f.write(config_data)
+        file_path = f.name
+    yield Path(file_path)
+    os.remove(file_path)

@@ -38,7 +38,7 @@ repos:
       - id: reorder-python-imports
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.4.0
+    rev: v3.6.0
     hooks:
       - id: pyupgrade
         description: Automatically upgrade syntax for newer versions.
@@ -68,7 +68,7 @@ repos:
 
   # Scan for secrets
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.16.3
+    rev: v8.16.4
     hooks:
       - id: gitleaks-docker
 

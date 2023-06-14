@@ -1,18 +1,12 @@
 """Command-line interface."""
-import logging
-import sys
-import traceback
-from datetime import datetime
+from pathlib import Path
 
 import click
-import toml
-from devops_deployment_metrics.deployments import all_get_mttrs
-from devops_deployment_metrics.deployments import collate_mttrs
-from devops_deployment_metrics.deployments import (
-    get_deployment_frequencies_and_change_failures,
-)
-from devops_deployment_metrics.deployments import get_deployments
-from devops_deployment_metrics.writer import write_csv
+from devops_deployment_metrics.config import get_config
+from devops_deployment_metrics.log import get_logger
+from devops_deployment_metrics.log import setup_logging
+from devops_deployment_metrics.metrics import get_metrics
+from devops_deployment_metrics.utils import connect_to_github
 from dotenv import load_dotenv
 
 
@@ -41,68 +35,33 @@ load_dotenv()
     "-p",
     prompt="GitHub token",
     hide_input=True,
-    envvar="GITHUB_PASSWORD",
-    help="GitHub password",
+    envvar="GITHUB_TOKEN",
+    help="GitHub token",
 )
-def main(config: str, verbose, debug, username: str, password: str) -> None:
-    """DevOps Deployments Metrics."""
+def main(config: str, verbose: bool, debug: bool, username: str, password: str) -> None:
+    """Devops deployments metrics."""
+    setup_logging(verbose, debug)
+    logger = get_logger("main")
 
-    config = toml.load(config)
-    start_of_time = config["general"]["start-date"]
-    time_slice = config["general"]["time-slice-days"]
-    date_format = config["general"]["date-format"]
-    # Set up logger
-    if debug:
-        loglevel = logging.DEBUG
-    elif verbose:
-        loglevel = logging.INFO
-    else:
-        loglevel = logging.WARNING
-    logging.basicConfig(
-        level=loglevel, filename="gh-deployments.log"
-    )  # todo config log filename
-    logging.info(f"Starting at {datetime.now()}")
-    logging.info(f"GitHub user {username}")
+    logger.info("Reading configuration file")
+    config_path = Path(config)
+    cfg = get_config(config_path)
 
-    try:
-        all_deployments = []
-        for repository in config["repositories"]:
-            repo = repository["repo"]
-            owner = repository["owner"]
-            id = repository["id"]
-            deployments = get_deployments(owner, repo, id, username, password)
-            all_deployments.extend(deployments)
-        (
-            deployment_frequencies,
-            change_failures,
-        ) = get_deployment_frequencies_and_change_failures(
-            all_deployments, start_of_time, time_slice
-        )
-        all_mttrs = all_get_mttrs(all_deployments)
-        mttrs = collate_mttrs(all_mttrs, start_of_time, time_slice)
-        write_csv(
-            deployment_frequencies, "df.csv", date_format
-        )  # todo config output filename
-        write_csv(change_failures, "cf.csv", date_format)  # todo config filename
-        write_csv(mttrs, "mttrs.csv", date_format)  # todo config filename
-        write_csv(
-            all_deployments, "deployments.csv", date_format
-        )  # todo config filename
-        result = 1
-        if result > 0:
-            sys.exit(0)
-        else:
-            exit(-1)
-    except AttributeError as err:
-        logging.warning(f"AttributeError: {format(err.message)}")
-        # parser.print_help()
-    except SystemExit:
-        logging.warning("SystemExit")
-        raise
-    except:  # noqa: E722
-        traceback.print_exc()
-        logging.warning(f"Exception: {traceback.print_exc()}")
-        exit(1)
+    logger.info("Connecting to github")
+    gh = connect_to_github(username, password)
+
+    logger.info("Getting workflows")
+    workflows = cfg.workflows
+    metrics = get_metrics(cfg)
+    for wf in workflows:
+        logger.info(f"Getting deployments for workflow id {wf.id}")
+        wf.load(gh)
+        for m in metrics:
+            m.set_output(wf.output[m.name], wf.runs)
+
+    logger.info("Calculating and saving metrics")
+    for m in metrics:
+        m.save()
 
 
 if __name__ == "__main__":
