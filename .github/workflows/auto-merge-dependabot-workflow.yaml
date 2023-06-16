@@ -31,6 +31,7 @@ jobs:
           # Create a personal access token and store it under the Secrets section of the particular repository
           # with the key "GITHUB_ACTIONS_TOKEN"
           github-token: ${{ secrets.DEPENDABOT_ACTIONS_SECRET }}
+        continue-on-error: true
       - name: Auto merge
         uses: pascalgn/automerge-action@22948e0bc22f0aa673800da838595a3e7347e584 # v0.15.6
         # Perform the auto merge action only when the PR is raised by dependabot for patch or minor
@@ -44,3 +45,4 @@ jobs:
           # Merges those PRs labelled "dependencies" only
           MERGE_LABELS: dependencies
           MERGE_METHOD: rebase
+        continue-on-error: true
