@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   auto-approve:
-    name: Auto Approve a PR by dependabot
+    name: Automatically approve dependabot PRs
     runs-on: ubuntu-latest
     steps:
       - name: Dependabot metadata
@@ -17,7 +17,7 @@ jobs:
         uses: dependabot/fetch-metadata@cd6e996708b8cfe0b639401134a3b9a3177be7b2 # v1.5.1
         with:
           skip-verification: true
-        if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }} 
+        if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
         continue-on-error: true
       - name: Auto approve patch and minor
         if: |
@@ -25,16 +25,15 @@ jobs:
           steps.metadata.outputs.update-type == 'version-update:semver-minor') &&
           (github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]')}}
         uses: hmarr/auto-approve-action@44888193675f29a83e04faf4002fa8c0b537b1e4 # v3.2.1
-        # Perform the auto-approve action only when the PR is raised by dependabot
-        # and is a minor or patch
+        # Perform the auto-approve action only when the PR is raised by dependabot and is a minor or patch
         with:
           # Create a personal access token and store it under the Secrets section of the particular repository
-          # with the key "GITHUB_ACTIONS_TOKEN"
+          # with the key "DEPENDABOT_ACTIONS_TOKEN"
           github-token: ${{ secrets.DEPENDABOT_ACTIONS_SECRET }}
         continue-on-error: true
       - name: Auto merge
         uses: pascalgn/automerge-action@22948e0bc22f0aa673800da838595a3e7347e584 # v0.15.6
-        # Perform the auto merge action only when the PR is raised by dependabot for patch or minor
+        # Perform the auto-merge action only when the PR is raised by dependabot for patch or minor
         if: |
           ${{(steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.update-type == 'version-update:semver-minor') &&
