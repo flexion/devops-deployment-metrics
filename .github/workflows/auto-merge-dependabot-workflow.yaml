@@ -17,6 +17,8 @@ jobs:
         uses: dependabot/fetch-metadata@cd6e996708b8cfe0b639401134a3b9a3177be7b2 # v1.5.1
         with:
           skip-verification: true
+        if: |
+          ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }} 
       - name: Auto approve patch and minor
         if: |
           ${{(steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
