@@ -33,12 +33,12 @@ repos:
         require_serial: true
 
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: v3.9.0
+    rev: v3.10.0
     hooks:
       - id: reorder-python-imports
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.6.0
+    rev: v3.7.0
     hooks:
       - id: pyupgrade
         description: Automatically upgrade syntax for newer versions.
@@ -60,7 +60,7 @@ repos:
   # Linter for markdown files
   # This hook uses DavidAnson Node.js markdownlint in a Docker to minimize dev environment at the cost of speed
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.34.0
+    rev: v0.35.0
     hooks:
       - id: markdownlint
         language: docker_image
