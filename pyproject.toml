@@ -64,11 +64,11 @@ tests = ["tests", "*/tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["devops_deployment_metrics", "tests"]
+source = ["devops_deployment_metrics"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 25
+fail_under = 75
 
 [tool.isort]
 profile = "black"
