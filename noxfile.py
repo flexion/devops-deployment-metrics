@@ -162,7 +162,15 @@ def tests(session: Session) -> None:
     session.install(".")
     session.install("coverage[toml]", "pytest", "pygments", "pytest-mock")
     try:
-        session.run("coverage", "run", "--parallel", "-m", "pytest", *session.posargs)
+        session.run(
+            "coverage",
+            "run",
+            "--parallel",
+            "-m",
+            "pytest",
+            "--no-nox",
+            *session.posargs,
+        )
     finally:
         if session.interactive:
             session.notify("coverage", posargs=[])

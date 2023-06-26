@@ -2,6 +2,7 @@
 from pathlib import Path
 from typing import Any
 
+import pytest
 from devops_deployment_metrics.utils import connect_to_github
 from devops_deployment_metrics.utils import get_project_root
 
@@ -35,3 +36,15 @@ def test_get_project_root():
     # Comment out for now
     # expected_root = Path(__file__).parent.parent  # relative to this test file
     # assert project_root == expected_root
+
+
+@pytest.mark.nonox(reason="fails under nox")
+def test_get_project_root_expected():
+    # Get the project root using the function
+    project_root = get_project_root()
+
+    # Assert that the returned path is the expected project root
+    # This is not working from nox tests, but it does if you use
+    # `poetry run pytest`
+    expected_root = Path(__file__).parent.parent  # relative to this test file
+    assert project_root == expected_root
