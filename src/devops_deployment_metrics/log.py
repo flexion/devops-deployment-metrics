@@ -1,17 +1,15 @@
 """Logging configuration and utilities."""
 import logging.config
 import os
-from pathlib import PosixPath
 
 import yaml
+from devops_deployment_metrics.definitions import ROOT_PATH
 
-from .definitions import ROOT_PATH
 
-
-def setup_logging(verbose: bool, debug: bool, root_path: PosixPath = ROOT_PATH) -> None:
+def setup_logging(verbose: bool, debug: bool) -> None:
     """Setup logging configuration."""
-    os.makedirs(f"{root_path}/logs", exist_ok=True)
-    with open(f"{root_path}/logging.yaml") as f:
+    os.makedirs(f"{ROOT_PATH}/logs", exist_ok=True)
+    with open(f"{ROOT_PATH}/logging.yaml") as f:
         config = yaml.safe_load(f.read())
         logging.config.dictConfig(config)
     set_console_level(verbose, debug)
