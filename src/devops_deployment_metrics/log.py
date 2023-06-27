@@ -3,13 +3,14 @@ import logging.config
 import os
 
 import yaml
-from devops_deployment_metrics.definitions import ROOT_PATH
+from devops_deployment_metrics.definitions import get_project_root
 
 
 def setup_logging(verbose: bool, debug: bool) -> None:
     """Setup logging configuration."""
-    os.makedirs(f"{ROOT_PATH}/logs", exist_ok=True)
-    with open(f"{ROOT_PATH}/logging.yaml") as f:
+    root_path = get_project_root()
+    os.makedirs(f"{root_path}/logs", exist_ok=True)
+    with open(f"{root_path}/logging.yaml") as f:
         config = yaml.safe_load(f.read())
         logging.config.dictConfig(config)
     set_console_level(verbose, debug)

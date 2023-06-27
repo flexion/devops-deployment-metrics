@@ -5,7 +5,7 @@ from unittest.mock import Mock
 
 import pytest
 from devops_deployment_metrics.log import get_logger
-from devops_deployment_metrics.log import ROOT_PATH
+from devops_deployment_metrics.log import get_project_root
 from devops_deployment_metrics.log import set_console_level
 from devops_deployment_metrics.log import setup_logging
 
@@ -14,9 +14,10 @@ from devops_deployment_metrics.log import setup_logging
 def test_setup_logging_repro_yaml():
     """Test logging setup with test config from repro."""
     setup_logging(verbose=False, debug=False)
+    root_path = get_project_root()
 
-    assert os.path.exists(ROOT_PATH / "logs")
-    assert os.path.exists(ROOT_PATH / "logging.yaml")
+    assert os.path.exists(root_path / "logs")
+    assert os.path.exists(root_path / "logging.yaml")
     assert len(logging.getLogger().handlers) == 2
 
     console_handler = logging.getLogger().handlers[1]
