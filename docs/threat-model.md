@@ -13,6 +13,8 @@ Unauthorized users gaining access to the CLI application or sensitive informatio
 Implement strong authentication and access controls to ensure only authorized users can execute the CLI application and
 access sensitive data. Consider utilizing secure token-based authentication or API keys.
 
+The application utilizes secure communication with GitHub over TLS.
+
 ## Command Injection
 
 ### Threat
@@ -24,16 +26,11 @@ Attackers injecting malicious commands through user input, leading to unintended
 Apply proper input validation and sanitization techniques to prevent command injection attacks. Use parameterized queries
 or prepared statements when executing commands or interacting with external systems.
 
+CodeQL does provide some static code analysis of code in this project.
+
+To do: review inputs for injection risk and mitigate findings.
+
 ## Insecure Credential Handling
-
-### Threat
-
-Improper handling of user credentials, such as GitHub username and password, leading to potential exposure or compromise.
-
-### Mitigation
-
-Implement secure credential management practices, such as securely storing credentials, avoiding hard-coding them within
-the source code, and utilizing secure credential storage mechanisms like environment variables or secret management solutions.
 
 ### Threat
 
@@ -44,6 +41,11 @@ Improper handling of user credentials, such as GitHub username and password, lea
 Implement secure credential management practices, such as securely storing credentials, avoiding hard-coding them within
 the source code, and utilizing secure credential storage mechanisms like environment variables or secret management
 solutions. Ensure that sensitive credentials, such as the GitHub username and password, are properly protected and encrypted.
+
+We are running [gitleaks](https://github.com/flexion/devops-deployment-metrics/blob/main/docs/architectural_decision_records/005-secrets-detection.md)
+in `pre-commit` hooks and in the CI/CD workflow to reduce the risk of storing credentials in the repository.
+
+Contributors to the project and users of this library should follow secure coding best practices and use a secure password manager.
 
 ## Logging of Sensitive Information
 
@@ -57,6 +59,8 @@ unauthorized access.
 Ensure that sensitive information is not logged or masked in log outputs. Implement proper log filtering and review
 logging configurations to avoid exposing sensitive data.
 
+Contributors to the project and users of this library should follow secure coding best practices for logging.
+
 ## Lack of Input Validation for Configuration
 
 ### Threat
@@ -68,15 +72,19 @@ Improper or malicious configuration files leading to unexpected behavior or secu
 Implement robust input validation and strict parsing of the configuration file to prevent arbitrary code execution or
 unintended behavior. Validate and sanitize user-provided configuration inputs to mitigate potential security risks.
 
-### Threat
+CodeQL does provide some static code analysis of code in this project.
 
-Insufficient input validation for the `connect_to_github` function, allowing for potentially malicious inputs.
+To do: review configuration inputs for injection risk and mitigate findings.
+
+## Insufficient input validation for the `connect_to_github` function
 
 ### Mitigation
 
 Implement robust input validation and strict parsing of inputs for the `connect_to_github` function. Validate and sanitize
 user-provided inputs to mitigate potential security risks, such as ensuring the `username` and `password` inputs adhere
-to the expected format and length.
+to the expected format and length to avoid potentially malicious inputs.
+
+To do: review `connect_to_github` inputs for injection risk and mitigate findings.
 
 ## Insecure Communication
 
@@ -88,6 +96,8 @@ Insecure transmission of sensitive data, such as GitHub credentials, over the ne
 
 Use secure communication protocols, such as HTTPS, when communicating with external services or APIs. Encrypt sensitive
 data during transmission to prevent eavesdropping or interception.
+
+The application utilizes secure communication with GitHub over TLS.
 
 ## Lack of Error Handling
 
@@ -100,15 +110,7 @@ Insufficient error handling and reporting, leading to potential information disc
 Implement comprehensive error handling mechanisms to catch and handle exceptions properly. Avoid displaying detailed
 error messages to end users, as they may reveal sensitive information.
 
-### Threat
-
-Insufficient error handling and reporting within the utility functions, leading to potential information disclosure or
-denial of service.
-
-### Mitigation
-
-Implement comprehensive error handling mechanisms within the utility functions to catch and handle exceptions properly.
-Avoid displaying detailed error messages to end users, as they may reveal sensitive information.
+To do: extend error handling as new axes of change emerge.
 
 ## Inadequate Testing Coverage
 
@@ -121,6 +123,14 @@ Insufficient testing coverage may lead to undetected vulnerabilities or unreliab
 Implement a robust testing strategy that includes unit tests, integration tests, and security testing. Perform comprehensive
 testing to identify and fix bugs, vulnerabilities, and potential issues.
 
+To do: add integration tests
+
+Contributor are expected to improve the code as they contribute, adding tests for all changed code, as well
+as following secure coding practices.
+
+The `Nox` build process includes some [security scanning with `Safety`](https://github.com/flexion/devops-deployment-metrics/blob/main/docs/architectural_decision_records/009-dependency-scanning.md).
+The definition of done for user stories includes security assessment and a code coverage standard.
+
 ## Insider Threats
 
 ### Threat
@@ -132,17 +142,11 @@ Authorized users with malicious intent exploiting their privileges to misuse or 
 Implement proper access controls, least-privilege principles, and regular auditing to detect and prevent insider threats.
 Regularly review and monitor user activities and permissions to identify any suspicious behavior.
 
+The contributions to the project are monitored by the repository owner.
+
+Users of the library are responsible within their own sphere of influence.
+
 ## Lack of Input Validation for Connect to GitHub Function
-
-### Threat
-
-Insufficient input validation for the `connect_to_github` function, allowing for potentially malicious inputs.
-
-### Mitigation
-
-Implement robust input validation and strict parsing of inputs for the `connect_to_github` function. Validate and sanitize
-user-provided inputs to mitigate potential security risks, such as ensuring the username and password inputs adhere to
-the expected format and length.
 
 ## Insecure Communication
 
@@ -155,29 +159,7 @@ Insecure transmission of sensitive data, such as GitHub credentials, over the ne
 Use secure communication protocols, such as HTTPS, when communicating with external services or APIs. Encrypt sensitive
 data during transmission to prevent eavesdropping or interception.
 
-## Lack of Error Handling
-
-### Threat
-
-Insufficient error handling and reporting within the utility functions, leading to potential information disclosure or
-denial of service.
-
-### Mitigation
-
-Implement comprehensive error handling mechanisms within the utility functions to catch and handle exceptions properly.
-Avoid displaying detailed error messages to end users, as they may reveal sensitive information.
-
-## Insider Threats
-
-### Threat
-
-Authorized users with malicious intent exploiting their privileges to misuse or compromise the utility functions or
-sensitive data.
-
-### Mitigation
-
-Implement proper access controls, least-privilege principles, and regular auditing to detect and prevent insider threats.
-Regularly review and monitor user activities and permissions to identify any suspicious behavior.
+The application utilizes secure communication with GitHub over TLS.
 
 ## Insecure Data Storage (Metric Output Files)
 
@@ -189,6 +171,8 @@ Insecure storage of metric output files, potentially exposing sensitive informat
 
 Ensure that the metric output files are securely stored, utilizing appropriate file permissions and encryption. Implement
 access controls and authentication mechanisms to restrict access to the metric output files to authorized users or processes.
+
+Users of the library should follow best practices for securing the metric output files.
 
 ## Insecure Logging Configuration
 
@@ -203,6 +187,9 @@ Implement secure logging practices, such as carefully configuring log levels and
 Ensure that logging output is properly protected and inaccessible to unauthorized users. Regularly review and monitor log
 files to detect any suspicious activities or signs of unauthorized access.
 
+Contributors to the project and users of this library should follow secure coding best practices for logging.
+Users of the library should use safe configuration files.
+
 ## Insecure Log Storage
 
 ### Threat
@@ -214,6 +201,8 @@ Insecure storage of log files, potentially exposing sensitive information or all
 Ensure that log files are securely stored, utilizing appropriate file permissions and encryption. Implement access controls
 and authentication mechanisms to restrict access to log files to authorized users or processes. Regularly monitor and
 rotate log files to prevent them from becoming a target for attackers or consuming excessive storage space.
+
+Users of the library should use secure storage for log files.
 
 ## Lack of Input Validation for Logging Configuration
 
@@ -228,6 +217,8 @@ Implement robust input validation and strict parsing of the logging configuratio
 inputs to mitigate potential security risks, such as ensuring that the logging configuration file is properly formatted
 and contains only trusted configuration settings.
 
+To do: review input validation for the logging configuration inputs for injection risk and mitigate findings.
+
 ## Insecure Access to Log Files
 
 ### Threat
@@ -241,6 +232,8 @@ Implement strong access controls for log files, including file permissions and p
 log files are only accessible to authorized users or processes and are protected from unauthorized reading, modification,
 or deletion. Regularly monitor and review access logs for log file access patterns to detect any suspicious activities.
 
+Users of the library should follow best practices for securing the logging files.
+
 ## Unauthorized Access to GitHub Workflows
 
 ### Threat
@@ -251,8 +244,10 @@ gain insights into the application's deployment metrics.
 ### Mitigation
 
 Implement proper access controls and authentication mechanisms for GitHub workflows. Ensure that only authorized individuals
-or systems have the necessary permissions to view, modify, or execute workflows. Regularly review and monitor access logs
+or systems have the necessary permissions to modify or execute workflows. Regularly review and monitor access logs
 for any unauthorized access attempts or suspicious activities related to the workflows.
+
+To do: assess workflow access risk from non-authorized users and mitigate.
 
 ## Manipulation of Workflow Data
 
@@ -266,6 +261,8 @@ deployment process.
 Implement data integrity checks and validation mechanisms for workflow data. Use secure channels and encryption to protect
 the communication between the application and GitHub workflows. Implement proper authentication and authorization checks
 to ensure that the workflow data is not modified or tampered with by unauthorized entities.
+
+The application utilizes secure communication with GitHub over TLS.
 
 ## Insecure Storage of Workflow Credentials
 
@@ -281,6 +278,10 @@ systems. Avoid hard-coding sensitive information directly in the workflows and u
 secret management solutions. Regularly review and audit the usage of credentials to ensure their proper protection and
 minimize the risk of exposure.
 
+Workflow files are linted by [actionlint](https://github.com/flexion/devops-deployment-metrics/blob/main/docs/architectural_decision_records/006-ci-linting.md).
+
+To do: assess workflow access risk workflows and mitigate.
+
 ## Lack of Input Validation for Workflow Parameters
 
 ### Threat
@@ -293,5 +294,9 @@ behavior of workflows or introduce security vulnerabilities.
 Implement strict input validation and sanitization for workflow parameters. Validate and sanitize user-provided inputs
 to mitigate potential security risks, such as ensuring that branch names, URLs, or other input values are properly
 formatted and do not contain malicious payloads or characters that could lead to command injection or other attacks.
+
+Workflow files are linted by [actionlint](https://github.com/flexion/devops-deployment-metrics/blob/main/docs/architectural_decision_records/006-ci-linting.md).
+
+To do: assess workflow access risk workflows and mitigate.
 
 <!-- markdownlint-configure-file { "MD024": false } -->
