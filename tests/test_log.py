@@ -19,9 +19,9 @@ def test_setup_logging_repro_yaml():
     assert os.path.exists(root_path / "logging.yaml")
     assert len(logging.getLogger().handlers) == 2
 
-    console_handler = logging.getLogger().handlers[1]
-    assert isinstance(console_handler, logging.FileHandler)
-    assert console_handler.level == logging.DEBUG
+    file_handler = logging.getLogger().handlers[1]
+    assert isinstance(file_handler, logging.FileHandler)
+    assert file_handler.level == logging.DEBUG
 
 
 def test_set_console_level(mocker):
