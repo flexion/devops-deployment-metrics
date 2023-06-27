@@ -5,10 +5,17 @@ from devops_deployment_metrics.utils import connect_to_github
 
 
 def test_connect_to_github(mocker: Any) -> None:
-    """Test the connect_to_github function."""
-    github_mock = mocker.patch("devops_deployment_metrics.utils.Github")
-    gh = connect_to_github("username", "token")
-    github_mock.assert_called_once_with(
-        login_or_token="username", password="token", verify=True
-    )
-    assert gh == github_mock.return_value
+    # Mock the objects in connect_to_github
+    mock_auth_login = mocker.patch("devops_deployment_metrics.utils.Auth.Login")
+    mock_github = mocker.patch("devops_deployment_metrics.utils.Github")
+
+    username = "test_username"
+    password = "test_password"
+
+    # Invoke the function
+    gh = connect_to_github(username, password)
+
+    # Assert the expected behavior
+    assert gh == mock_github.return_value
+    mock_auth_login.assert_called_once_with(username, password)
+    mock_github.assert_called_once_with(auth=mock_auth_login.return_value, verify=True)
