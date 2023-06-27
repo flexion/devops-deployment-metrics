@@ -1,7 +1,6 @@
 """Test cases for the __main__ module."""
 import logging
 import os
-from unittest.mock import Mock
 
 import pytest
 from devops_deployment_metrics.log import get_logger
@@ -25,9 +24,9 @@ def test_setup_logging_repro_yaml():
     assert console_handler.level == logging.DEBUG
 
 
-def test_set_console_level():
-    mock_console_handler = Mock(spec=logging.StreamHandler)
-    mock_console_handler.setLevel = Mock()
+def test_set_console_level(mocker):
+    mock_console_handler = mocker.Mock(spec=logging.StreamHandler)
+    mock_console_handler.setLevel = mocker.Mock()
 
     logger = logging.getLogger()
     logger.handlers = [mock_console_handler]
@@ -36,9 +35,9 @@ def test_set_console_level():
     mock_console_handler.setLevel.assert_called_once_with(logging.INFO)
 
 
-def test_set_console_level_debug():
-    mock_console_handler = Mock(spec=logging.StreamHandler)
-    mock_console_handler.setLevel = Mock()
+def test_set_console_level_debug(mocker):
+    mock_console_handler = mocker.Mock(spec=logging.StreamHandler)
+    mock_console_handler.setLevel = mocker.Mock()
 
     logger = logging.getLogger()
     logger.handlers = [mock_console_handler]
@@ -47,9 +46,9 @@ def test_set_console_level_debug():
     mock_console_handler.setLevel.assert_called_once_with(logging.DEBUG)
 
 
-def test_set_console_level_default():
-    mock_console_handler = Mock(spec=logging.StreamHandler)
-    mock_console_handler.setLevel = Mock()
+def test_set_console_level_default(mocker):
+    mock_console_handler = mocker.Mock(spec=logging.StreamHandler)
+    mock_console_handler.setLevel = mocker.Mock()
 
     logger = logging.getLogger()
     logger.handlers = [mock_console_handler]
