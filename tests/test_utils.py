@@ -1,27 +1,19 @@
 """Test the utils module."""
-from unittest.mock import MagicMock
-from unittest.mock import patch
-
 from devops_deployment_metrics.utils import connect_to_github
 
 
-def test_connect_to_github() -> None:
-    # Mock the necessary objects
-    mock_auth = MagicMock()
-    mock_github = MagicMock()
+def test_connect_to_github(mocker) -> None:
+    # Mock the objects in connect_to_github
+    mock_auth_login = mocker.patch("devops_deployment_metrics.utils.Auth.Login")
+    mock_github = mocker.patch("devops_deployment_metrics.utils.Github")
 
-    # Patch the required classes and methods
-    with patch(
-        "devops_deployment_metrics.utils.Auth.Login", return_value=mock_auth
-    ) as mock_login, patch(
-        "devops_deployment_metrics.utils.Github", return_value=mock_github
-    ) as mock_github_class:
-        username = "test_username"
-        password = "test_password"
-        # Invoke the function
-        gh = connect_to_github(username, password)
+    username = "test_username"
+    password = "test_password"
 
-        # Assert the expected behavior
-        assert gh == mock_github
-        mock_login.assert_called_once_with(username, password)
-        mock_github_class.assert_called_once_with(auth=mock_auth, verify=True)
+    # Invoke the function
+    gh = connect_to_github(username, password)
+
+    # Assert the expected behavior
+    assert gh == mock_github.return_value
+    mock_auth_login.assert_called_once_with(username, password)
+    mock_github.assert_called_once_with(auth=mock_auth_login.return_value, verify=True)
