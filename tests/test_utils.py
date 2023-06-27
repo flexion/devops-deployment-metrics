@@ -1,8 +1,10 @@
 """Test the utils module."""
+from typing import Any
+
 from devops_deployment_metrics.utils import connect_to_github
 
 
-def test_connect_to_github(mocker) -> None:
+def test_connect_to_github(mocker: Any) -> None:
     # Mock the objects in connect_to_github
     mock_auth_login = mocker.patch("devops_deployment_metrics.utils.Auth.Login")
     mock_github = mocker.patch("devops_deployment_metrics.utils.Github")
