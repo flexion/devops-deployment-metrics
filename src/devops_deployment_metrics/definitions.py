@@ -1,8 +1,9 @@
 """Definitions for the DevOps Deployment Metrics package."""
 from enum import Enum
-from pathlib import Path
 
-ROOT_PATH = Path(__file__).parent.parent.parent
+from devops_deployment_metrics.utils import get_project_root
+
+ROOT_PATH = get_project_root()
 
 OUTPUT_PATH = ROOT_PATH / "data"
 OUTPUT_PATH.mkdir(exist_ok=True)

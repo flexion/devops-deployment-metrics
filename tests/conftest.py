@@ -46,3 +46,34 @@ def config_path(config_data: str) -> Any:
         file_path = f.name
     yield Path(file_path)
     os.remove(file_path)
+
+
+# Implement command line skipping of tests when running nox.
+# Tests that work when run from the project root will not behave when run
+# in a nox session, which is running from some other directory down
+# the nox path.
+# Hack - configure nox to call pytests with the --no-nox argument
+# then implement the following to skip tests marked `no-nox`.
+#
+# See https://docs.pytest.org/en/latest/example/simple.html#control-skipping-of-tests-according-to-command-line-option
+
+
+def pytest_addoption(parser):
+    parser.addoption(
+        "--no-nox",
+        action="store_true",
+        default=False,
+        help="Skip tests nox can run correctly.",
+    )
+
+
+def pytest_configure(config):
+    config.addinivalue_line("markers", "nonox: mark test as won't run under nox")
+
+
+def pytest_collection_modifyitems(config, items):
+    if config.getoption("--no-nox"):
+        skip_no_nox = pytest.mark.skip(reason="need no --no-nox option to run")
+        for item in items:
+            if "nonox" in item.keywords:
+                item.add_marker(skip_no_nox)
