@@ -146,8 +146,6 @@ The contributions to the project are monitored by the repository owner.
 
 Users of the library are responsible within their own sphere of influence.
 
-## Lack of Input Validation for Connect to GitHub Function
-
 ## Insecure Communication
 
 ### Threat
