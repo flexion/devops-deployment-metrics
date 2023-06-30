@@ -82,7 +82,10 @@ class DeploymentFrequencyMetric(Metric):
         )
         results = []
         for start_date, deployments in deployments_in_period:
-            count = len(deployments)
+            successful_deployments = [
+                d for d in deployments if d.conclusion == "success"
+            ]
+            count = len(successful_deployments)
             results.append(
                 {
                     "date": start_date,

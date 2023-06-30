@@ -33,8 +33,8 @@ The reporting period width is configurable from 1 day on up.
 
 ### Deployment Frequency
 
-Deployment Frequency is a simple calculation of the number of deployments per day in the reporting period. For example,
-if there is a 14-day reporting period, and there are 28 deployments by the workflow during that period, the deployment
+Deployment Frequency is a simple calculation of the number of successful deployments per day in the reporting period. For example,
+if there is a 14-day reporting period, and there are 28 successful deployments by the workflow during that period, the deployment
 frequency would be 2.0.
 
 ### Change Fail Rate
