@@ -4,6 +4,7 @@ from datetime import datetime
 
 from devops_deployment_metrics.definitions import MetricName
 from github import Github
+from tqdm import tqdm
 
 
 @dataclass
@@ -57,6 +58,7 @@ class Workflow:
         """Loads the workflow runs from GitHub."""
         repo = gh.get_repo(self.repo_name)
         workflow = repo.get_workflow(self.id)
+        workflow_runs = workflow.get_runs()
         self.name = workflow.name
         self.runs = [
             WorkflowRun(
@@ -64,11 +66,11 @@ class Workflow:
                 run.status,
                 run.conclusion,
                 run.run_started_at,  # type: ignore
-                run.run_attempt,  # type: ignore
+                run.run_attempt,
                 run.created_at,
                 run.updated_at,
                 run.head_branch,
                 run.url,
             )
-            for run in workflow.get_runs()
+            for run in tqdm(workflow_runs)
         ]
