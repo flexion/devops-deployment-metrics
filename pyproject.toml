@@ -54,6 +54,7 @@ myst-parser = {version = ">=0.16.1"}
 types-toml = "^0.10.8.6"
 types-pyyaml = "^6.0.12.10"
 pandas-stubs = "^2.0.1.230501"
+types-tqdm = "^4.65.0.1"
 
 [tool.poetry.scripts]
 devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
