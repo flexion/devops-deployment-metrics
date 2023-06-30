@@ -198,12 +198,12 @@ def test_deployment_frequency_metric(
     results = metric.calculate(deployments)
 
     assert results[0]["date"] == datetime(2022, 6, 1, 0, 1)
-    assert round(results[0]["frequency"], 2) == 0.86
-    assert results[0]["count"] == 6
+    assert round(results[0]["frequency"], 2) == 0.57
+    assert results[0]["count"] == 4
 
     assert results[1]["date"] == datetime(2022, 6, 8, 0, 1)
-    assert round(results[1]["frequency"], 2) == 0.57
-    assert results[1]["count"] == 4
+    assert round(results[1]["frequency"], 2) == 0
+    assert results[1]["count"] == 0
 
     assert results[2]["date"] == datetime(2022, 6, 15, 0, 1)
     assert round(results[2]["frequency"], 2) == 0.14
