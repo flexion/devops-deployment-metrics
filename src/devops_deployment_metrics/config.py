@@ -2,6 +2,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import toml
 from devops_deployment_metrics.workflow import Workflow
@@ -32,8 +33,14 @@ def get_config(config_path: Path) -> Config:
         )
         for wf in cfg["repositories"]
     ]
+    timezone = (
+        ZoneInfo(cfg["general"]["timezone"])
+        if "timezone" in cfg["general"]
+        else ZoneInfo("UTC")
+    )
+    start_date = cfg["general"]["start-date"].replace(tzinfo=timezone)
     return Config(
-        cfg["general"]["start-date"],
+        start_date,
         cfg["general"]["time-slice-days"],
         cfg["general"]["date-format"],
         wdefs,
