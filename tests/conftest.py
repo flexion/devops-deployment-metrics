@@ -17,6 +17,7 @@ title = "Sample devops-deployment-metrics configuration"
     time-slice-days = 7
     start-date = 2022-06-01T00:01:00
     date-format = "%Y-%m-%d"
+    timezone = "UTC"
 
 [[repositories]]
     owner = "my_github_owner"
