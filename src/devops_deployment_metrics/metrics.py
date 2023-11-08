@@ -2,6 +2,7 @@
 from dataclasses import asdict
 from datetime import datetime
 from datetime import timedelta
+from datetime import timezone
 from typing import Any
 from typing import Iterable
 from typing import Optional
@@ -50,7 +51,9 @@ class Metric:
         end_period: Optional[datetime] = None,
     ) -> Iterable[tuple[datetime, list[WorkflowRun]]]:
         """Get the deployments for each period."""
-        end_period = end_period or datetime.now()
+        # Using this workaround to get the current datetime with the local timezone
+        now = datetime.now(timezone.utc).astimezone()
+        end_period = end_period or now
         end_date = start_date + timedelta(days=days_slice)
 
         while start_date <= end_period:
