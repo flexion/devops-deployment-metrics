@@ -12,7 +12,9 @@ def test_config(config_path: Path) -> None:
     config = get_config(config_path)
 
     assert isinstance(config, Config)
-    assert config.start_date == datetime.datetime(2022, 6, 1, 0, 1)
+    assert config.start_date == datetime.datetime(
+        2022, 6, 1, 0, 1, tzinfo=datetime.timezone.utc
+    )
     assert config.days_slice == 7
     assert config.date_format == "%Y-%m-%d"
     assert len(config.workflows) == 2
