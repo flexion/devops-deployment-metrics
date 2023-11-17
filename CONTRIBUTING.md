@@ -46,7 +46,7 @@ Indicate you are working on a task by adding your GitHub @name after the task in
 Definition of Done items are often a great starting point for contributing in a meaningful way while getting integrated into team practices.
 Using SSH keys to check out the repository is ideal, as we require contributors to sign their commits.
 
-You need Python 3.7+ and the following tools:
+You need Python 3.9+ and the following tools:
 
 - [Poetry]
 - [Nox]
