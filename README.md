@@ -57,7 +57,8 @@ metric is reported in hours.
 ## Requirements
 
 - Python 3.9+
-- Poetry (installation instructions provided [here](http://https://python-poetry.org/docs/#installing-with-the-official-installer "here"))
+- Poetry (installation instructions provided [here](https://python-poetry.org/docs/#installing-with-the-official-installer))
+- Supported OS: Windows 10, Windows 11, Linux, MacOS
 
 ## Installation
 
