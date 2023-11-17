@@ -56,7 +56,8 @@ metric is reported in hours.
 
 ## Requirements
 
-- TODO
+- Python 3.9+
+- Poetry (installation instructions provided [here](http://https://python-poetry.org/docs/#installing-with-the-official-installer "here"))
 
 ## Installation
 
@@ -66,40 +67,68 @@ poetry install
 
 ## Usage
 
+### Create a configuration file
+
+A configuration file must be created and passed to the application at run time.
+
+#### Sample file: my-config.toml
+
+```text
+
+    # Keys
+    title = "Sample devops-deployment-metrics configuration"
+
+    [general]
+        time-slice-days = 7
+        start-date = 2023-09-01T00:00:01
+        date-format = "%Y-%m-%d"
+        timezone = "UTC"
+
+    [[repositories]]
+        owner = "ccsq-isfcs"
+        repo = "security-findings-lambda"
+        id = "31952979"
+        deployment-frequency = "df"
+        change-fail-rate = "cfr"
+        mean-time-to-recover = "mttr"
+        deployment-log = "deployments"
+
+```
+
+#### Field Description
+
+**time-slice-days:** duration used to group metric data
+**start-date:** the start date of metric collection (end date is automatically assumed to be current day)
+**owner:** Github organization name
+**repo:** repository name
+**id:**GitHub workflow ID corresponding to the GitHub action that represents CI/CD
+
+#### Identifying workflow ID
+
+1. Generate a GitHub Personal Access token with rights to read all repositories and workflows in the organization. Instructions are provided [here](http://https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens "here")
+2. Make a call to the GitHub REST services to list the workflows available in a target repository.
+
+Format:
+
+```bash
+curl --location 'https://api.github.com/repos/<GITHUB ORGANIZATION NAME>/<REPOSITORY NAME>/actions/workflows' \
+--header 'Authorization: Bearer <YOUR PERSONAL ACCESS TOKEN>'
+```
+
+Sample:
+
+```bash
+curl --location 'https://api.github.com/repos/ccsq-isfcs/security-findings-lambda/actions/workflows' \
+--header 'Authorization: Bearer <YOUR PERSONAL ACCESS TOKEN>'
+```
+
+### Launching the application
+
 ```shell
 poetry run devops-deployment-metrics -v -c my-config.toml
 ```
 
 Please see the [Command-line Reference] for more details.
-
-### How to find the workflow id
-
-To find the workflow id value for the configuration file, you can add the correct value for owner and repo and any string
-for the id
-
-```toml
-[[repositories]]
-    owner = "my-owner"
-    repo = "my-repo"
-    id = "dog-cow"
-```
-
-Then run in debug mode:
-
-```shell
- poetry run devops-deployment-metrics -d -c my-config.toml
-```
-
-It will fail with an error.
-Now you can search the log for the value of the `id` you will need. Search the log for the JSON object for your production
-deployment workflow. Within that object find the value for `workflow_id` and add that to your configuration file.
-
-```toml
-[[repositories]]
-    owner = "my-owner"
-    repo = "my-repo"
-    id = "12345678"
-```
 
 ## Contributing
 
@@ -121,10 +150,8 @@ please [file an issue] along with a detailed description.
 This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter] template.
 
 [@cjolowicz]: https://github.com/cjolowicz
-[pypi]: https://pypi.org/
 [hypermodern python cookiecutter]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
 [file an issue]: https://github.com/flexion/devops-deployment-metrics/issues
-[pip]: https://pip.pypa.io/
 
 <!-- github-only -->
 
