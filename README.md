@@ -56,7 +56,9 @@ metric is reported in hours.
 
 ## Requirements
 
-- TODO
+- Python 3.9+
+- Poetry (installation instructions provided [here](http://https://python-poetry.org/docs/#installing-with-the-official-installer "here"))
+
 
 ## Installation
 
@@ -82,7 +84,7 @@ A configuration file must be created and passed to the application at run time.
     [[repositories]]
         owner = "ccsq-isfcs"
         repo = "security-findings-lambda"
-        id = 31952979"
+        id = "31952979"
         deployment-frequency = "df"
         change-fail-rate = "cfr"
         mean-time-to-recover = "mttr"
@@ -91,7 +93,7 @@ A configuration file must be created and passed to the application at run time.
 
 #### Field Description
 **time-slice-days:** duration used to group metric data
-**start-date:** the start date of metric collection
+**start-date:** the start date of metric collection (end date is automatically assumed to be current day)
 **owner:** Github organization name
 **repo:** repository name
 **id: **GitHub workflow ID corresponding to the GitHub action that represents CI/CD
@@ -102,7 +104,7 @@ A configuration file must be created and passed to the application at run time.
 
 Format:
 ```bash
-curl --location 'https://api.github.com/repos/<GITHUB ORGANIZATION NAME/<REPOSITORY NAME>/actions/workflows' \
+curl --location 'https://api.github.com/repos/<GITHUB ORGANIZATION NAME>/<REPOSITORY NAME>/actions/workflows' \
 --header 'Authorization: Bearer <YOUR PERSONAL ACCESS TOKEN>'
 ```
 
