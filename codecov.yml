@@ -1,4 +1,6 @@
-comment: false
+comment:
+  layout: "condensed_header, condensed_files, condensed_footer"
+  hide_project_coverage: TRUE # set to true
 coverage:
   status:
     project:
