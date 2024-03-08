@@ -1,14 +1,14 @@
 """Command-line interface."""
+
 from pathlib import Path
 
 import click
-from devops_deployment_metrics.config import get_config
-from devops_deployment_metrics.log import get_logger
-from devops_deployment_metrics.log import setup_logging
-from devops_deployment_metrics.metrics import get_metrics
-from devops_deployment_metrics.utils import connect_to_github
 from dotenv import load_dotenv
 
+from devops_deployment_metrics.config import get_config
+from devops_deployment_metrics.log import get_logger, setup_logging
+from devops_deployment_metrics.metrics import get_metrics
+from devops_deployment_metrics.utils import connect_to_github
 
 load_dotenv()
 

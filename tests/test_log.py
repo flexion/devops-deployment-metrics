@@ -1,12 +1,15 @@
 """Test cases for the __main__ module."""
+
 import logging
 import os
 
 import pytest
-from devops_deployment_metrics.log import get_logger
-from devops_deployment_metrics.log import get_project_root
-from devops_deployment_metrics.log import set_console_level
-from devops_deployment_metrics.log import setup_logging
+from devops_deployment_metrics.log import (
+    get_logger,
+    get_project_root,
+    set_console_level,
+    setup_logging,
+)
 
 
 @pytest.mark.nonox(reason="fails under nox")

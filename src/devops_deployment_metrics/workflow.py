@@ -1,10 +1,12 @@
 """This module contains classes for working with GitHub Actions workflows."""
+
 from dataclasses import dataclass
 from datetime import datetime
 
-from devops_deployment_metrics.definitions import MetricName
 from github import Github
 from tqdm import tqdm
+
+from devops_deployment_metrics.definitions import MetricName
 
 
 @dataclass

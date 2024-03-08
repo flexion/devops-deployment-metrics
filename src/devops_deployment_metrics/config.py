@@ -1,10 +1,12 @@
 """This module contains classes and functions for working with configuration files."""
+
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import toml
+from zoneinfo import ZoneInfo
+
 from devops_deployment_metrics.workflow import Workflow
 
 

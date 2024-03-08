@@ -1,18 +1,19 @@
 """Test the metrics module."""
+
 from dataclasses import asdict
-from datetime import datetime
-from datetime import timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
-from devops_deployment_metrics.config import Config
-from devops_deployment_metrics.config import get_config
+from devops_deployment_metrics.config import Config, get_config
 from devops_deployment_metrics.definitions import MetricName
-from devops_deployment_metrics.metrics import DeploymentChangeFailRateMetric
-from devops_deployment_metrics.metrics import DeploymentFrequencyMetric
-from devops_deployment_metrics.metrics import DeploymentLogMetric
-from devops_deployment_metrics.metrics import DeploymentMeanTimeToRecoverMetric
-from devops_deployment_metrics.metrics import Metric
+from devops_deployment_metrics.metrics import (
+    DeploymentChangeFailRateMetric,
+    DeploymentFrequencyMetric,
+    DeploymentLogMetric,
+    DeploymentMeanTimeToRecoverMetric,
+    Metric,
+)
 from devops_deployment_metrics.workflow import WorkflowRun
 
 

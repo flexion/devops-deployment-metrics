@@ -1,10 +1,10 @@
 """Test the utils module."""
+
 from pathlib import Path
 from typing import Any
 
 import pytest
-from devops_deployment_metrics.utils import connect_to_github
-from devops_deployment_metrics.utils import get_project_root
+from devops_deployment_metrics.utils import connect_to_github, get_project_root
 
 
 def test_get_project_root():
