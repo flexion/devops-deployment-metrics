@@ -1,4 +1,5 @@
 """Test the Workflow class."""
+
 from datetime import datetime
 from unittest.mock import Mock
 

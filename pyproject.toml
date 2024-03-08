@@ -126,12 +126,14 @@ indent-width = 4
 target-version = "py38"
 
 [tool.ruff.lint]
-# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
-# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
-# McCabe complexity (`C901`) by default.
-#select = ["E4", "E7", "E9", "F"]
-select = ["I"]
-ignore = []
+# Enable Pyflakes (`F`)
+# pycodestyle (`E`)
+# pycodestyle warnings (`W`)
+# McCabe complexity (`C901`)
+# pep8 naming ("N")
+# isort ("I")
+select = ["F","B","E","I","W","S","C901"]
+ignore = ["E203","E501"]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
@@ -139,6 +141,11 @@ unfixable = []
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Ignore `S101` (assert) in all test subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*" = ["S101","D103"]
+"tests/test_utils.py" = ["S105"]
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.

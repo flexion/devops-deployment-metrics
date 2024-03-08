@@ -1,4 +1,5 @@
 """Definitions for the DevOps Deployment Metrics package."""
+
 from enum import Enum
 
 from devops_deployment_metrics.utils import get_project_root
