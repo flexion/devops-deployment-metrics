@@ -16,3 +16,4 @@ __pycache__/
 data/
 /htmlcov/
 config.toml
+/node_modules/
