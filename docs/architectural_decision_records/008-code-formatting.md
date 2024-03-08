@@ -1,6 +1,6 @@
 # 8. Code Formatting
 
-Date: 2019-07-07
+Date: 2024-03-07
 
 ## Status
 
@@ -17,15 +17,13 @@ A codebase with consistent formatting reduces cognative burden on developers bec
 
 ## Decision
 
-- We use [Black](https://github.com/python/black) as code formatter for Python.
-- We use Black's default options.
+- We use [ruff](https://docs.astral.sh/ruff/formatter/) as code formatter for Python.
+- We use `ruff` provides `black`-compatible default options.
 - We CI to ensure PRs are appropriately formatted before being accepted.
-- We require and document the setup of `Black`, `prettier`, `flake8`, and `reorder-python-imports` in the development
+- We require and document the setup of `ruff` and `prettier` in development.
+- `ruff` provides faster `flake8` and `isort` functionality in the development
   environment through pre-commit hooks.
 
 ## Consequences
 
 These decisions are supported by our use of the [Hypermodern Python cookiecutter](https://github.com/cjolowicz/cookiecutter-hypermodern-python).
-
-In a minor change from the Hypermodern Python cookiecutter, the import order is handled by `reorder-python-imports` rather
-than `isort`.
