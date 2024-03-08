@@ -122,13 +122,7 @@ def precommit(session: Session) -> None:
     ]
     session.install(
         "black",
-        "flake8",
-        "flake8-bandit",
-        "flake8-bugbear",
-        "flake8-docstrings",
-        "flake8-rst-docstrings",
-        "reorder-python-imports",
-        "pep8-naming",
+        "ruff",
         "pre-commit",
         "pre-commit-hooks",
         "pyupgrade",
