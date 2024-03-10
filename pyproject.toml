@@ -28,17 +28,9 @@ pyyaml = "^6.0"
 
 [tool.poetry.dev-dependencies]
 Pygments = ">=2.10.0"
-black = ">=21.10b0"
 coverage = {extras = ["toml"], version = ">=6.2"}
-flake8 = ">=4.0.1"
-flake8-bandit = ">=2.1.2"
-flake8-bugbear = ">=21.9.2"
-flake8-docstrings = ">=1.6.0"
-flake8-rst-docstrings = ">=0.2.5"
 furo = ">=2021.11.12"
-isort = ">=5.10.1"
 mypy = ">=0.930"
-pep8-naming = ">=0.12.1"
 pre-commit = ">=2.16.0"
 pre-commit-hooks = ">=4.1.0"
 pytest = ">=6.2.5"
@@ -59,6 +51,9 @@ types-tqdm = "^4.65.0.1"
 [tool.poetry.scripts]
 devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.1"
+
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 tests = ["tests", "*/tests"]
@@ -71,11 +66,6 @@ source = ["devops_deployment_metrics", "tests"]
 show_missing = true
 fail_under = 25
 
-[tool.isort]
-profile = "black"
-force_single_line = true
-lines_after_imports = 2
-
 [tool.mypy]
 strict = true
 warn_unreachable = true
@@ -83,6 +73,94 @@ pretty = true
 show_column_numbers = true
 show_error_codes = true
 show_error_context = true
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.8
+target-version = "py38"
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`)
+# pycodestyle (`E`)
+# pycodestyle warnings (`W`)
+# McCabe complexity (`C901`)
+# pep8 naming ("N")
+# isort ("I")
+select = ["F","B","E","I","W","S","C901"]
+ignore = ["E203","E501"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Ignore `S101` (assert) in all test subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*" = ["S101","D103"]
+"tests/test_utils.py" = ["S105"]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+# This is currently disabled by default, but it is planned for this
+# to be opt-out in the future.
+docstring-code-format = false
+
+# Set the line length limit used when formatting code snippets in
+# docstrings.
+#
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

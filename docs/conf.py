@@ -1,7 +1,8 @@
 """Sphinx configuration."""
+
 project = "DevOps Deployment Metrics"
 author = "Flexion, Inc."
-copyright = "2023, Flexion, Inc."
+copyright = "2024, Flexion, Inc."
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",

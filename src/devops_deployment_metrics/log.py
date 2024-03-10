@@ -1,8 +1,10 @@
 """Logging configuration and utilities."""
+
 import logging.config
 import os
 
 import yaml
+
 from devops_deployment_metrics.definitions import get_project_root
 
 

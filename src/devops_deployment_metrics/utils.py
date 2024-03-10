@@ -1,9 +1,9 @@
 """Utility functions for the devops_deployment_metrics package."""
+
 from pathlib import Path
 from typing import Any
 
-from github import Auth
-from github import Github
+from github import Auth, Github
 
 
 def get_project_root() -> Path:

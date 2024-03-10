@@ -1,9 +1,9 @@
 """Test the Config class."""
+
 import datetime
 from pathlib import Path
 
-from devops_deployment_metrics.config import Config
-from devops_deployment_metrics.config import get_config
+from devops_deployment_metrics.config import Config, get_config
 from devops_deployment_metrics.workflow import Workflow
 
 

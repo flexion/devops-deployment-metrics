@@ -1,16 +1,13 @@
 """This module contains classes for calculating deployment metrics."""
+
 from dataclasses import asdict
-from datetime import datetime
-from datetime import timedelta
-from datetime import timezone
-from typing import Any
-from typing import Iterable
-from typing import Optional
+from datetime import datetime, timedelta, timezone
+from typing import Any, Iterable, Optional
 
 import pandas as pd
+
 from devops_deployment_metrics.config import Config
-from devops_deployment_metrics.definitions import MetricName
-from devops_deployment_metrics.definitions import OUTPUT_PATH
+from devops_deployment_metrics.definitions import OUTPUT_PATH, MetricName
 from devops_deployment_metrics.workflow import WorkflowRun
 
 
