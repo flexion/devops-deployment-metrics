@@ -1841,13 +1841,13 @@ telegram = ["requests"]
 
 [[package]]
 name = "typeguard"
-version = "4.1.5"
+version = "4.2.0"
 description = "Run-time type checker for Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "typeguard-4.1.5-py3-none-any.whl", hash = "sha256:8923e55f8873caec136c892c3bed1f676eae7be57cdb94819281b3d3bc9c0953"},
-    {file = "typeguard-4.1.5.tar.gz", hash = "sha256:ea0a113bbc111bcffc90789ebb215625c963411f7096a7e9062d4e4630c155fd"},
+    {file = "typeguard-4.2.0-py3-none-any.whl", hash = "sha256:24bb8f05ccaee423309daf980ba19e978b18766334ee01994503b853fc44efde"},
+    {file = "typeguard-4.2.0.tar.gz", hash = "sha256:2aeae510750fca88d0a2ceca3e86de7f71aa43b6c3e6c267737ce1f5effc4b34"},
 ]
 
 [package.dependencies]
