@@ -25,6 +25,7 @@ python-dotenv = "^1.0.0"
 PyGitHub = "^2.0.0"
 tqdm = "^4.65.0"
 pyyaml = "^6.0"
+idna = "^3.7"
 
 [tool.poetry.dev-dependencies]
 Pygments = ">=2.10.0"

@@ -38,13 +38,24 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
 
       - name: Set up Python ${{ matrix.python }}
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
         with:
           python-version: ${{ matrix.python }}
 
+      # This is a hack until pipx fixes the absolute path bug
+      # present in 1.5.0
+      # See also https://github.com/pypa/pipx/issues/1331
+      # Hopefully the next release in Sprint 2024 will resolve this and
+      # pipx will be able to find the constraints file again
+      - name: Upgrade pipx
+        run: |
+          pip install pipx==1.4.3
+          python -m pipx ensurepath
+          pipx --version
+      # End of pipx hack
       - name: Upgrade pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
@@ -127,12 +138,18 @@ jobs:
     needs: tests
     steps:
       - name: Check out the repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
 
       - name: Set up Python
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
         with:
           python-version: "3.10"
+
+      - name: Upgrade pipx
+        run: |
+          pip install pipx=1.4.3
+          python -m pipx ensurepath
+          pipx --version
 
       - name: Upgrade pip
         run: |
