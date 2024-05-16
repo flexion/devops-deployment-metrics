@@ -139,6 +139,12 @@ jobs:
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
 
+      - name: Upgrade pipx
+        run: |
+          pip install --constraint=.github/workflows/constraints.txt pipx
+          python -m pipx ensurepath
+          pipx --version
+
       - name: Install Poetry
         run: |
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt poetry
