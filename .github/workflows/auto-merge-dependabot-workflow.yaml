@@ -35,7 +35,7 @@ jobs:
           github-token: ${{ secrets.DEPENDABOT_ACTIONS_SECRET }}
         continue-on-error: true
       - name: Auto merge
-        uses: pascalgn/automerge-action@58724c982461efbb7865b3762d7bff0d4756f57a # v0.16.2
+        uses: pascalgn/automerge-action@d1203c0bf94a827b991e5de69d662e9163304fa0 # v0.16.3
         # Perform the auto-merge action only when the PR is raised by dependabot for patch or minor
         if: ${{ (env.is_patch || env.is_minor) && (env.is_bot1 || env.is_bot2) }}
         env:
