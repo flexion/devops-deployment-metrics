@@ -53,7 +53,7 @@ types-tqdm = "^4.65.0.1"
 devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.3.1"
+ruff = "^0.4.0"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
