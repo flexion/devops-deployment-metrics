@@ -25,6 +25,7 @@ python-dotenv = "^1.0.0"
 PyGitHub = "^2.0.0"
 tqdm = "^4.65.0"
 pyyaml = "^6.0"
+idna = "^3.7"
 
 [tool.poetry.dev-dependencies]
 Pygments = ">=2.10.0"
@@ -52,7 +53,7 @@ types-tqdm = "^4.65.0.1"
 devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.3.1"
+ruff = "^0.4.0"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
