@@ -45,12 +45,17 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
+      # This is a hack until pipx fixes the absolute path bug
+      # present in 1.5.0
+      # See also https://github.com/pypa/pipx/issues/1331
+      # Hopefully the next release in Sprint 2024 will resolve this and
+      # pipx will be able to find the constraints file again
       - name: Upgrade pipx
         run: |
           pip install pipx==1.4.3
           python -m pipx ensurepath
           pipx --version
-
+      # End of pipx hack
       - name: Upgrade pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
