@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@8348ea7f5d949b08c7f125a44b569c9626b05db3 # v1.7.0
+        uses: dependabot/fetch-metadata@0fb21704c18a42ce5aa8d720ea4b912f5e6babef # v2.0.0
         with:
           skip-verification: true
         if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
@@ -35,7 +35,7 @@ jobs:
           github-token: ${{ secrets.DEPENDABOT_ACTIONS_SECRET }}
         continue-on-error: true
       - name: Auto merge
-        uses: pascalgn/automerge-action@58724c982461efbb7865b3762d7bff0d4756f57a # v0.16.2
+        uses: pascalgn/automerge-action@d1203c0bf94a827b991e5de69d662e9163304fa0 # v0.16.3
         # Perform the auto-merge action only when the PR is raised by dependabot for patch or minor
         if: ${{ (env.is_patch || env.is_minor) && (env.is_bot1 || env.is_bot2) }}
         env:
