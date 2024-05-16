@@ -47,7 +47,7 @@ jobs:
 
       - name: Upgrade pipx
         run: |
-          pip install pipx=1.4.3
+          pip install pipx==1.4.3
           python -m pipx ensurepath
           pipx --version
 
