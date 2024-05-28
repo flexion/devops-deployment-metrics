@@ -6,11 +6,11 @@ Accepted
 
 ## Context
 
-Outdated dependencies are a source of risk to any software project.  Main risks include security vulnerabilities, outdated performance issues and the danger of bit rot as time goes by.
+Outdated dependencies are a source of risk to any software project. Main risks include security vulnerabilities, outdated performance issues and the danger of bit rot as time goes by.
 
 For a software project where development happens in bursts, it is even more important to keep the dependencies up to date during time periods where there are not human eyes on the project.
 
-In the absence of automation, the ongoing process of dependency upgrades introduce considerable toil for the development team.  Since dependency upgrades follow a fairly deterministic workflow, this is a prime candidate for automation. The good news is, there are several automation tools available.
+In the absence of automation, the ongoing process of dependency upgrades introduce considerable toil for the development team. Since dependency upgrades follow a fairly deterministic workflow, this is a prime candidate for automation. The good news is, there are several automation tools available.
 
 ## Decision
 
@@ -38,15 +38,15 @@ In order to keep the automated dependency PRs from overwhelming the humans, we a
 
 Renovatebot has been configured to be active during times outside the normal working time of the development team, so dependency management automation happens during night and weekends.
 
-All patch dependency upgrades are grouped together in one PR, while all minor dependency upgrades are grouped in another.  Major version upgrades each get their own PR, but these occur at a much lower frequency.
+All patch dependency upgrades are grouped together in one PR, while all minor dependency upgrades are grouped in another. Major version upgrades each get their own PR, but these occur at a much lower frequency.
 
 ### Pinning (deterministic builds)
 
-Using explicit versions of libraries and other dependencies (actions, Docker images, ...) makes your builds deterministic and adds certainty to your process and code.  Any point in time in your repository will yield reproducible build results when you pin your dependencies.  Renovate encourages this and automates the maintenance of dependency updates.
+Using explicit versions of libraries and other dependencies (actions, Docker images, ...) makes your builds deterministic and adds certainty to your process and code. Any point in time in your repository will yield reproducible build results when you pin your dependencies. Renovate encourages this and automates the maintenance of dependency updates.
 
 ### Pinning actions (security)
 
-Pinning versions using a full length commit SHA is important because you want to know that you are using a GitHub action that was created by a trusted source. This is a security concern beyond automation, but there is a strategy for supporting pinning to SHA hashes instead of only the semver for actions.  Renovatebot supports a special tag in a comment so SHA pinning can be used to guarantee the provenance of an action, while supporting major/minor/patch update rules, using the `# tag=<version>` comment in action workflow files.
+Pinning versions using a full length commit SHA is important because you want to know that you are using a GitHub action that was created by a trusted source. This is a security concern beyond automation, but there is a strategy for supporting pinning to SHA hashes instead of only the semver for actions. Renovatebot supports a special tag in a comment so SHA pinning can be used to guarantee the provenance of an action, while supporting major/minor/patch update rules, using the `# tag=<version>` comment in action workflow files.
 
 ```yaml
 uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
