@@ -2,14 +2,15 @@
 
 import datetime
 from pathlib import Path
+from typing import Any
 
 from devops_deployment_metrics.config import Config, get_config
 from devops_deployment_metrics.workflow import Workflow
 
 
-def test_config(config_path: Path) -> None:
+def test_config(benchmark: Any, config_path: Path) -> None:
     """Test the Config class."""
-    config = get_config(config_path)
+    config = benchmark(get_config, config_path)
 
     assert isinstance(config, Config)
     assert config.start_date == datetime.datetime(

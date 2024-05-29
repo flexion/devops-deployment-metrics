@@ -3,6 +3,7 @@
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 import pytest
 from devops_deployment_metrics.config import Config, get_config
@@ -191,13 +192,13 @@ def test_get_deployments_in_period(deployments: list[WorkflowRun]) -> None:
 
 
 def test_deployment_frequency_metric(
-    config: Config, deployments: list[WorkflowRun]
+    benchmark: Any, config: Config, deployments: list[WorkflowRun]
 ) -> None:
     """Test the DeploymentFrequencyMetric class."""
     metric = DeploymentFrequencyMetric(config)
     assert metric.name == MetricName.DEPLOYMENT_FREQUENCY
 
-    results = metric.calculate(deployments)
+    results = benchmark(metric.calculate, deployments)
 
     assert results[0]["date"] == datetime(2022, 6, 1, 0, 1, tzinfo=timezone.utc)
     assert round(results[0]["frequency"], 2) == 0.57
@@ -213,13 +214,13 @@ def test_deployment_frequency_metric(
 
 
 def test_change_fail_rate_metric(
-    config: Config, deployments: list[WorkflowRun]
+    benchmark: Any, config: Config, deployments: list[WorkflowRun]
 ) -> None:
     """Test the DeploymentChangeFailRateMetric class."""
     metric = DeploymentChangeFailRateMetric(config)
     assert metric.name == MetricName.CHANGE_FAIL_RATE
 
-    results = metric.calculate(deployments)
+    results = benchmark(metric.calculate, deployments)
 
     assert results[0]["date"] == datetime(2022, 6, 1, 0, 1, tzinfo=timezone.utc)
     assert round(results[0]["percent"], 2) == 33.33
@@ -232,13 +233,13 @@ def test_change_fail_rate_metric(
 
 
 def test_mean_time_to_recovery_metric(
-    config: Config, deployments: list[WorkflowRun]
+    benchmark: Any, config: Config, deployments: list[WorkflowRun]
 ) -> None:
     """Test the DeploymentMeanTimeToRecoverMetric class."""
     metric = DeploymentMeanTimeToRecoverMetric(config)
     assert metric.name == MetricName.MEAN_TIME_TO_RECOVER
 
-    results = metric.calculate(deployments)
+    results = benchmark(metric.calculate, deployments)
 
     assert results[0]["date"] == datetime(2022, 6, 1, 0, 1, tzinfo=timezone.utc)
     assert round(results[0]["mttr"], 2) == 36.0
