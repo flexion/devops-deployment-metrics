@@ -22,8 +22,8 @@ except ImportError:
 
 
 package = "devops_deployment_metrics"
-python_versions = ["3.10", "3.9", "3.11"]
-nox.needs_version = ">= 2021.6.6"
+python_versions = ["3.11", "3.9", "3.10"]
+nox.needs_version = ">= 2024.4.15"
 nox.options.sessions = (
     "pre-commit",
     "safety",
@@ -154,7 +154,9 @@ def mypy(session: Session) -> None:
 def tests(session: Session) -> None:
     """Run the test suite."""
     session.install(".")
-    session.install("coverage[toml]", "pytest", "pygments", "pytest-mock")
+    session.install(
+        "coverage[toml]", "pytest", "pygments", "pytest-mock", "pytest-benchmark"
+    )
     try:
         session.run(
             "coverage",
@@ -235,3 +237,18 @@ def docs(session: Session) -> None:
         shutil.rmtree(build_dir)
 
     session.run("sphinx-autobuild", *args)
+
+
+@session(python=python_versions[0])
+def benchmark(session: Session) -> None:
+    """Perfomance benchmark testing with pytest-benchmark."""
+    session.install(".")
+    session.install("pytest", "typeguard", "pygments", "pytest-benchmark")
+    session.run(
+        "pytest",
+        "--benchmark-json",
+        "benchmark-output.json",
+        "tests/test_metrics.py",
+        "tests/test_config.py",
+        *session.posargs,
+    )
