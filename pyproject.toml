@@ -27,7 +27,12 @@ tqdm = "^4.65.0"
 pyyaml = "^6.0"
 idna = "^3.7"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.scripts]
+devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.4.0"
+pytest-benchmark = "^4.0.0"
 Pygments = ">=2.10.0"
 coverage = {extras = ["toml"], version = ">=6.2"}
 furo = ">=2021.11.12"
@@ -48,12 +53,6 @@ types-toml = "^0.10.8.6"
 types-pyyaml = "^6.0.12.10"
 pandas-stubs = "^2.0.1.230501"
 types-tqdm = "^4.65.0.1"
-
-[tool.poetry.scripts]
-devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
-
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.4.0"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]

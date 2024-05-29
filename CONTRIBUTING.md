@@ -136,7 +136,30 @@ nox --session=pre-commit -- install
 It is recommended to open an issue before starting work on anything.
 This will allow a chance to talk it over with the owners and validate your approach.
 
+You can run `pre-commit` with this command:
+
+```console
+nox -s pre-commit
+```
+
 [pull request]: https://github.com/flexion/devops-deployment-metrics/pulls
+
+## Benchmarking
+
+We have implemented simple benchmarking with `pytest-benchmark`. If you add tests and want to make sure your methods
+are not suffering performance degradations when they change, please add benchmarking.
+
+```python
+def test_my_function(benchmark: Any):
+    result = benchmark(my_function, *args)
+    assert result == expected_result
+```
+
+Run the benchmark:
+
+```bash
+nox -s benchmark
+```
 
 ## Contributors are required to sign commits
 
