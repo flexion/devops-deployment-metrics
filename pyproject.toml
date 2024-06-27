@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "devops-deployment-metrics"
-version = "0.0.0"
+version = "0.0.1"
 description = "DevOps Deployment Metrics"
 authors = ["Flexion, Inc. <noreply@flexion.us>"]
 license = "MIT"
