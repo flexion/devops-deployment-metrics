@@ -31,7 +31,7 @@ class Workflow:
         self,
         owner: str,
         repo: str,
-        id: str,
+        workflow_filename: str,
         deployment_frequency: str,
         change_fail_rate: str,
         mean_time_to_recover: str,
@@ -40,7 +40,7 @@ class Workflow:
         """Initializes a Workflow object."""
         self.owner = owner
         self.repo = repo
-        self.id = id
+        self.workflow_filename = workflow_filename
         self.output = {
             MetricName.DEPLOYMENT_FREQUENCY: deployment_frequency,
             MetricName.CHANGE_FAIL_RATE: change_fail_rate,
@@ -59,7 +59,7 @@ class Workflow:
     def load(self, gh: Github) -> None:
         """Loads the workflow runs from GitHub."""
         repo = gh.get_repo(self.repo_name)
-        workflow = repo.get_workflow(self.id)
+        workflow = repo.get_workflow(self.workflow_filename)
         workflow_runs = workflow.get_runs()
         self.name = workflow.name
         self.runs = [

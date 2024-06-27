@@ -54,7 +54,7 @@ def main(config: str, verbose: bool, debug: bool, username: str, password: str) 
     workflows = cfg.workflows
     metrics = get_metrics(cfg)
     for wf in workflows:
-        logger.info(f"Getting deployments for workflow id {wf.id}")
+        logger.info(f"Getting deployments for workflow file {wf.workflow_filename}")
         wf.load(gh)
         for m in metrics:
             m.set_output(wf.output[m.name], wf.runs)
