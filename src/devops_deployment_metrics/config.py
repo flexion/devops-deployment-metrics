@@ -27,7 +27,7 @@ def get_config(config_path: Path) -> Config:
         Workflow(
             wf["owner"],
             wf["repo"],
-            wf["id"],
+            wf["workflow_filename"],
             wf["deployment-frequency"],
             wf["change-fail-rate"],
             wf["mean-time-to-recover"],

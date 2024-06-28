@@ -28,15 +28,16 @@ title = "Sample devops-deployment-metrics configuration"
     change-fail-rate = "cf"
     mean-time-to-recover = "mttrs"
     deployment-log = "deployments"
+    workflow_filename = "cicd.yaml"
 
 [[repositories]]
     owner = "my_github_owner"
     repo = "my_other_github_repository"
-    id = "23456789"
     deployment-frequency = "df"
     change-fail-rate = "cf"
     mean-time-to-recover = "mttrs"
     deployment-log = "deployments"
+    workflow_filename = "cd.yaml"
     """
 
 

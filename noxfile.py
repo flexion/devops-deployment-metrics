@@ -252,3 +252,30 @@ def benchmark(session: Session) -> None:
         "tests/test_config.py",
         *session.posargs,
     )
+
+
+@session(python=python_versions[0])
+def tests_tdd(session: Session) -> None:
+    """Run the test suite."""
+    session.install(".")
+    session.install(
+        "coverage[toml]",
+        "pytest",
+        "pygments",
+        "pytest-mock",
+        "pytest-benchmark",
+        "pytest-incremental",
+    )
+    try:
+        session.run(
+            "coverage",
+            "run",
+            "--parallel",
+            "-m",
+            "pytest",
+            "--no-nox",
+            *session.posargs,
+        )
+    finally:
+        if session.interactive:
+            session.notify("coverage", posargs=[])

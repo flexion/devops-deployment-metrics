@@ -18,7 +18,7 @@ def test_workflow() -> None:
     """Test the Workflow class."""
     owner = "test-owner"
     repo = "test-repo"
-    id = "test-id"
+    workflow_filename = "test-filename"
     deployment_frequency = "df"
     change_fail_rate = "cf"
     mean_time_to_recover = "mttrs"
@@ -27,7 +27,7 @@ def test_workflow() -> None:
     workflow = Workflow(
         owner,
         repo,
-        id,
+        workflow_filename,
         deployment_frequency,
         change_fail_rate,
         mean_time_to_recover,
@@ -36,7 +36,7 @@ def test_workflow() -> None:
 
     assert workflow.owner == owner
     assert workflow.repo == repo
-    assert workflow.id == id
+    assert workflow.workflow_filename == workflow_filename
     assert workflow.repo_name == f"{owner}/{repo}"
 
     assert isinstance(workflow.output, dict)
@@ -82,7 +82,7 @@ def test_workflow_load(mock_gh):
     workflow = Workflow(
         owner="test_owner",
         repo="test_repo",
-        id="test_workflow_id",
+        workflow_filename="test_workflow_file.yaml",
         deployment_frequency="df",
         change_fail_rate="cfr",
         mean_time_to_recover="mttr",
