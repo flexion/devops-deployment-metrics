@@ -15,6 +15,14 @@ jobs:
       is_bot1: ${{ github.actor == 'dependabot[bot]' }}
       is_bot2: ${{ github.actor == 'dependabot-preview[bot]' }}
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
+        with:
+          disable-sudo: true
+          egress-policy: audit
+          disable-telemetry: false
+          allowed-endpoints: >
+            api.github.com:443
       - name: Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@5e5f99653a5b510e8555840e80cbf1514ad4af38 # v2.1.0
