@@ -4,9 +4,10 @@ from datetime import datetime
 from unittest.mock import Mock
 
 import pytest
+from github import Github
+
 from devops_deployment_metrics.definitions import MetricName
 from devops_deployment_metrics.workflow import Workflow
-from github import Github
 
 
 @pytest.fixture
