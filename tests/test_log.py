@@ -4,6 +4,7 @@ import logging
 import os
 
 import pytest
+
 from devops_deployment_metrics.log import (
     get_logger,
     get_project_root,

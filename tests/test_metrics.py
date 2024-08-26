@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+
 from devops_deployment_metrics.config import Config, get_config
 from devops_deployment_metrics.definitions import MetricName
 from devops_deployment_metrics.metrics import (
