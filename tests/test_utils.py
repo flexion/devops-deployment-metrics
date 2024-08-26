@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+
 from devops_deployment_metrics.utils import connect_to_github, get_project_root
 
 
