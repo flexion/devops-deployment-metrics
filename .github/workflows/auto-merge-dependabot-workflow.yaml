@@ -16,7 +16,7 @@ jobs:
       is_bot2: ${{ github.actor == 'dependabot-preview[bot]' }}
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@5c7944e73c4c2a096b17a9cb74d65b6c2bbafbde # v2.9.1
+        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
         with:
           disable-sudo: true
           egress-policy: audit
@@ -43,7 +43,7 @@ jobs:
           github-token: ${{ secrets.DEPENDABOT_ACTIONS_SECRET }}
         continue-on-error: true
       - name: Auto merge
-        uses: pascalgn/automerge-action@d1203c0bf94a827b991e5de69d662e9163304fa0 # v0.16.3
+        uses: pascalgn/automerge-action@7961b8b5eec56cc088c140b56d864285eabd3f67 # v0.16.4
         # Perform the auto-merge action only when the PR is raised by dependabot for patch or minor
         if: ${{ (env.is_patch || env.is_minor) && (env.is_bot1 || env.is_bot2) }}
         env:
