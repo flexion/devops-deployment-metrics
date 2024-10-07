@@ -185,7 +185,7 @@ jobs:
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
           name: coverage-data
-          path: .coverage*
+          path: ".coverage*"
 
       - name: Combine coverage data and display human readable report
         run: |
