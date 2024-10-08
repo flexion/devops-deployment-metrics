@@ -132,7 +132,7 @@ jobs:
       - name: Run Nox
         run: |
           nox --python=${{ matrix.python }}
-  
+
       - name: Upload coverage data
         if: always() && matrix.session == 'tests' && matrix.python == '3.11'
         uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
@@ -140,7 +140,7 @@ jobs:
           # Hack for v4.4 hidden file change
           name: coverage-data
           path: ".coverage*"
-          include-hidden-files: true 
+          include-hidden-files: true
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
