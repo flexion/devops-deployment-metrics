@@ -132,8 +132,6 @@ jobs:
       - name: Run Nox
         run: |
           nox --python=${{ matrix.python }}
-      - name: ls
-        run: ls -ltra
   
       - name: Upload coverage data
         if: always() && matrix.session == 'tests' && matrix.python == '3.11'
