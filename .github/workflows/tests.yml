@@ -112,10 +112,6 @@ jobs:
           with open(env_file, "a") as my_file:
             my_file.write(f"PC_CACHE_KEY={cache_key}")
 
-      #          print(f"result={$cache_key}") >> "$GITHUB_OUTPUT"
-
-      #                print("::set-output name=result::{}".format(result))
-
       - name: Restore pre-commit cache
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         if: matrix.session == 'pre-commit'
@@ -124,10 +120,6 @@ jobs:
           key: ${{ env.PC_CACHE_KEY }}-${{ hashFiles('.pre-commit-config.yaml') }}
           restore-keys: |
             ${{ env.PC_CACHE_KEY }}-
-
-      #          key: ${{ steps.pre-commit-cache.outputs.result }}-${{ hashFiles('.pre-commit-config.yaml') }}
-      #          restore-keys: |
-      #            ${{ steps.pre-commit-cache.outputs.result }}-
 
       - name: Run Nox
         run: |
@@ -187,7 +179,6 @@ jobs:
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
           name: coverage-data
-          # path: ".coverage"
 
       - name: Combine coverage data and display human readable report
         run: |
