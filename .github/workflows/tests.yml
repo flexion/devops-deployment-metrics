@@ -112,10 +112,6 @@ jobs:
           with open(env_file, "a") as my_file:
             my_file.write(f"PC_CACHE_KEY={cache_key}")
 
-      #          print(f"result={$cache_key}") >> "$GITHUB_OUTPUT"
-
-      #                print("::set-output name=result::{}".format(result))
-
       - name: Restore pre-commit cache
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         if: matrix.session == 'pre-commit'
@@ -125,20 +121,18 @@ jobs:
           restore-keys: |
             ${{ env.PC_CACHE_KEY }}-
 
-      #          key: ${{ steps.pre-commit-cache.outputs.result }}-${{ hashFiles('.pre-commit-config.yaml') }}
-      #          restore-keys: |
-      #            ${{ steps.pre-commit-cache.outputs.result }}-
-
       - name: Run Nox
         run: |
           nox --python=${{ matrix.python }}
 
       - name: Upload coverage data
-        if: always() && matrix.session == 'tests' && matrix.python == '3.10'
+        if: always() && matrix.session == 'tests' && matrix.python == '3.11' && matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
         with:
+          # Hack for v4.4 hidden file change
           name: coverage-data
-          path: ".coverage.*"
+          path: ".coverage*"
+          include-hidden-files: true
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
