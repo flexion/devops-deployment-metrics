@@ -24,7 +24,6 @@ jobs:
           - { python: "3.9", os: "ubuntu-latest", session: "tests" }
           - { python: "3.10", os: "ubuntu-latest", session: "tests" }
           - { python: "3.11", os: "ubuntu-latest", session: "pre-commit" }
-          - { python: "3.11", os: "ubuntu-latest", session: "safety" }
           - { python: "3.11", os: "ubuntu-latest", session: "xdoctest" }
           - { python: "3.11", os: "ubuntu-latest", session: "docs-build" }
           - { python: "3.11", os: "ubuntu-latest", session: "tests" }
@@ -33,6 +32,7 @@ jobs:
     #          - { python: "3.10", os: "ubuntu-latest", session: "mypy" }
     #          - { python: "3.9", os: "ubuntu-latest", session: "mypy" }
     #          - { python: "3.10", os: "ubuntu-latest", session: "typeguard" }
+    #          - { python: "3.11", os: "ubuntu-latest", session: "safety" }
 
     env:
       NOXSESSION: ${{ matrix.session }}
@@ -59,40 +59,19 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      # This is a hack until pipx fixes the absolute path bug
-      # present in 1.5.0
-      # See also https://github.com/pypa/pipx/issues/1331
-      # Hopefully the next release in Sprint 2024 will resolve this and
-      # pipx will be able to find the constraints file again
-      - name: Upgrade pipx
-        run: |
-          pip install pipx==1.4.3
-          python -m pipx ensurepath
-          pipx --version
-      # End of pipx hack
       - name: Upgrade pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
 
-      - name: Upgrade pip in virtual environments
-        shell: python
+      - name: Install UV
         run: |
-          import os
-          import pip
-
-          with open(os.environ["GITHUB_ENV"], mode="a") as io:
-              print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
-
-      - name: Install Poetry
-        run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt poetry
-          poetry --version
+          pipx install --pip-args=--constraint=.github/workflows/constraints.txt uv
+          uv --version
 
       - name: Install Nox
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
-          pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
+          uvx pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
           nox --version
 
       - name: Compute pre-commit cache key
@@ -122,6 +101,8 @@ jobs:
             ${{ env.PC_CACHE_KEY }}-
 
       - name: Run Nox
+        env:
+          UV_PREVIEW: 1
         run: |
           nox --python=${{ matrix.python }}
 
@@ -153,26 +134,19 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Upgrade pipx
-        run: |
-          pip install pipx==1.4.3
-          python -m pipx ensurepath
-          pipx --version
-
       - name: Upgrade pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
 
-      - name: Install Poetry
+      - name: Install UV
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt poetry
-          poetry --version
+          pipx install --pip-args=--constraint=.github/workflows/constraints.txt uv
+          uv --version
 
       - name: Install Nox
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
-          pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
+          uvx pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
           nox --version
 
       - name: Download coverage data
@@ -181,10 +155,14 @@ jobs:
           name: coverage-data
 
       - name: Combine coverage data and display human readable report
+        env:
+          UV_PREVIEW: 1
         run: |
           nox --session=coverage
 
       - name: Create coverage report
+        env:
+          UV_PREVIEW: 1
         run: |
           nox --session=coverage -- xml
 
