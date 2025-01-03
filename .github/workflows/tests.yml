@@ -91,7 +91,7 @@ jobs:
 
       - name: Install Nox
         run: |
-          uv pip install --pip-args=--constraint=.github/workflows/constraints.txt nox
+          uv pip install -- --pip-args=--constraint=.github/workflows/constraints.txt nox
           nox --version
 
       - name: Compute pre-commit cache key
@@ -170,7 +170,7 @@ jobs:
 
       - name: Install Nox
         run: |
-          uv pip install --pip-args=--constraint=.github/workflows/constraints.txt nox
+          uv pip install -- --pip-args=--constraint=.github/workflows/constraints.txt nox
           nox --version
 
       - name: Download coverage data
