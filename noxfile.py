@@ -10,13 +10,9 @@ from textwrap import dedent
 import nox
 
 # Global variables
-DEV_REQUIREMENTS = "requirements-dev.txt"
-
-nox.needs_version = ">=2024.4.15"
 nox.options.default_venv_backend = "uv|virtualenv"
 
 PYPROJECT = nox.project.load_toml("pyproject.toml")
-
 
 package = "devops_deployment_metrics"
 python_versions = ["3.11", "3.9", "3.10"]
