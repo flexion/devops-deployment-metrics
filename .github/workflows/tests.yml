@@ -121,8 +121,10 @@ jobs:
             ${{ env.PC_CACHE_KEY }}-
 
       - name: Run Nox
+        env:
+          UV_PREVIEW: 1
         run: |
-          UV_PREVIEW=1 nox --python=${{ matrix.python }}
+          nox --python=${{ matrix.python }}
 
       - name: Upload coverage data
         if: always() && matrix.session == 'tests' && matrix.python == '3.11' && matrix.os == 'ubuntu-latest'
@@ -179,12 +181,16 @@ jobs:
           name: coverage-data
 
       - name: Combine coverage data and display human readable report
+        env:
+          UV_PREVIEW: 1
         run: |
-          UV_PREVIEW=1 nox --session=coverage
+          nox --session=coverage
 
       - name: Create coverage report
+        env:
+          UV_PREVIEW: 1
         run: |
-          UV_PREVIEW=1 nox --session=coverage -- xml
+          nox --session=coverage -- xml
 
       - name: Upload coverage report
         uses: codecov/codecov-action@1e68e06f1dbfde0e4cefc87efeba9e4643565303 # v5.1.2
