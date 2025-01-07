@@ -1,58 +1,59 @@
-[tool.poetry]
+[project]
 name = "devops-deployment-metrics"
 version = "0.0.1"
 description = "DevOps Deployment Metrics"
-authors = ["Flexion, Inc. <noreply@flexion.us>"]
-license = "MIT"
+authors = [{ name = "Flexion, Inc.", email = "noreply@flexion.us" }]
+requires-python = "~=3.9"
 readme = "README.md"
-homepage = "https://github.com/flexion/devops-deployment-metrics"
-repository = "https://github.com/flexion/devops-deployment-metrics"
-documentation = "https://devops-deployment-metrics.readthedocs.io"
-classifiers = [
-    "Development Status :: 1 - Planning",
+license = "MIT"
+classifiers = ["Development Status :: 1 - Planning"]
+dependencies = [
+    "click>=8.0.1",
+    "pandas>=2.0.0,<3",
+    "argparse>=1.4.0,<2",
+    "toml>=0.10.2,<0.11",
+    "python-dotenv>=1.0.0,<2",
+    "PyGitHub>=2.0.0,<3",
+    "tqdm>=4.65.0,<5",
+    "pyyaml~=6.0",
+    "idna~=3.7",
 ]
 
-[tool.poetry.urls]
+[project.urls]
+Homepage = "https://github.com/flexion/devops-deployment-metrics"
+Repository = "https://github.com/flexion/devops-deployment-metrics"
+Documentation = "https://devops-deployment-metrics.readthedocs.io"
 Changelog = "https://github.com/flexion/devops-deployment-metrics/releases"
 
-[tool.poetry.dependencies]
-python = "^3.9"
-click = ">=8.0.1"
-pandas = "^2.0.0"
-argparse = "^1.4.0"
-toml = "^0.10.2"
-python-dotenv = "^1.0.0"
-PyGitHub = "^2.0.0"
-tqdm = "^4.65.0"
-pyyaml = "^6.0"
-idna = "^3.7"
-
-[tool.poetry.scripts]
+[project.scripts]
 devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.8.0"
-pytest-benchmark = "^5.0.0"
-Pygments = ">=2.10.0"
-coverage = {extras = ["toml"], version = ">=6.2"}
-furo = ">=2021.11.12"
-mypy = ">=0.930"
-pre-commit = ">=2.16.0"
-pre-commit-hooks = ">=4.1.0"
-pytest = ">=6.2.5"
-pytest-mock = "^3.10.0"
-pyupgrade = ">=2.29.1"
-safety = ">=2.3.5"
-sphinx = ">=4.3.2"
-sphinx-autobuild = ">=2021.3.14"
-sphinx-click = ">=3.0.2"
-typeguard = ">=2.13.3"
-xdoctest = {extras = ["colors"], version = ">=0.15.10"}
-myst-parser = {version = ">=0.16.1"}
-types-toml = "^0.10.8.6"
-types-pyyaml = "^6.0.12.10"
-pandas-stubs = "^2.0.1.230501"
-types-tqdm = "^4.65.0.1"
+[dependency-groups]
+dev = [
+    "nox>=2024.10.9",
+    "ruff>=0.8.0,<0.9",
+    "pytest-benchmark>=5.0.0,<6",
+    "Pygments>=2.10.0",
+    "coverage[toml]>=6.2",
+    "furo>=2021.11.12",
+    "mypy>=0.930",
+    "pre-commit>=2.16.0",
+    "pre-commit-hooks>=4.1.0",
+    "pytest>=6.2.5",
+    "pytest-mock>=3.10.0,<4",
+    "pyupgrade>=2.29.1",
+    "safety>=2.3.5",
+    "sphinx>=4.3.2",
+    "sphinx-autobuild>=2021.3.14",
+    "sphinx-click>=3.0.2",
+    "typeguard>=2.13.3",
+    "xdoctest[colors]>=0.15.10",
+    "myst-parser>=0.16.1",
+    "types-toml>=0.10.8.6,<0.11",
+    "types-pyyaml>=6.0.12.10,<7",
+    "pandas-stubs>=2.0.1.230501,<3",
+    "types-tqdm>=4.65.0.1,<5",
+]
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -129,7 +130,6 @@ unfixable = []
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
-# Ignore `S101` (assert) in all test subdirectories.
 [tool.ruff.lint.per-file-ignores]
 "**/tests/*" = ["S101","D103"]
 "tests/test_utils.py" = ["S105"]
@@ -161,11 +161,10 @@ docstring-code-format = false
 # enabled.
 docstring-code-line-length = "dynamic"
 
-# pyproject.toml
 [tool.pytest.ini_options]
 #python_files = "test*.py"  # to discover testA.py and testB.py
 pythonpath = "src"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv>=0.5,<0.6"]
+build-backend = "uv"
