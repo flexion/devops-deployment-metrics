@@ -1,10 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":dependencyDashboard",
-    ":rebaseStalePrs"
-  ],
+  "extends": ["config:recommended", ":dependencyDashboard", ":rebaseStalePrs"],
   "pre-commit": {
     "enabled": true
   },
@@ -34,15 +30,10 @@
     "groupSlug": "all-patch",
     "minimumReleaseAge": null
   },
-  "labels": [
-    "renovate",
-    "dependencies"
-  ],
+  "labels": ["renovate", "dependencies"],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "amazoncorretto"
-      ],
+      "matchPackageNames": ["amazoncorretto"],
       "enabled": false
     }
   ]

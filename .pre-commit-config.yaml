@@ -9,10 +9,10 @@ repos:
     hooks:
       - id: trailing-whitespace
         types: [text]
-        stages: [commit, push, manual]
+        stages: [pre-commit, pre-push, manual]
       - id: end-of-file-fixer
         types: [text]
-        stages: [commit, push, manual]
+        stages: [pre-commit, pre-push, manual]
       - id: check-ast
       - id: check-yaml
       - id: check-json
