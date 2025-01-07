@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":dependencyDashboard", ":rebaseStalePrs"],
+  "extends": ["config:recommended", ":dependencyDashboard", ":rebaseStalePrs"],
   "pre-commit": {
     "enabled": true
   },
@@ -9,7 +9,6 @@
   "automergeStrategy": "squash",
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": true,
-  "transitiveRemediation": true,
   "schedule": [
     "after 5pm every weekday",
     "before 8am every weekday",
@@ -23,13 +22,13 @@
     "automerge": true,
     "groupName": "minor dependencies",
     "groupSlug": "all-minor",
-    "stabilityDays": 0
+    "minimumReleaseAge": null
   },
   "patch": {
     "automerge": true,
     "groupName": "patch dependencies",
     "groupSlug": "all-patch",
-    "stabilityDays": 0
+    "minimumReleaseAge": null
   },
   "labels": ["renovate", "dependencies"],
   "packageRules": [
