@@ -129,13 +129,13 @@ def precommit(session) -> None:
 @nox.session(name="pip-audit", python=python_versions[0])
 def pip_audit(session) -> None:
     """Scan dependencies for insecure packages."""
-    # session.install(".")
+    # Scan production dependencies
     session.install("uv", "pip-audit")
     session.run(
         "uv", "pip", "compile", "pyproject.toml", "--output-file", "requirements.txt"
     )
-    session.run("pip-audit", "-r", "requirements.txt", "--verbose")
-    session.run("rm", "requirements.txt")
+    session.run("pip-audit", "-r", "requirements.txt")
+    session.run("rm", "requirements.txt", external=True)
 
 
 @nox.session(python=python_versions)
