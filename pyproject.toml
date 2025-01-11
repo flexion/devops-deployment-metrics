@@ -31,7 +31,7 @@ devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 [dependency-groups]
 dev = [
     "nox>=2024.10.9",
-    "ruff>=0.8.0,<0.9",
+    "ruff>=0.9.1,<0.10",
     "pytest-benchmark>=5.0.0,<6",
     "Pygments>=2.10.0",
     "coverage[toml]>=6.2",
