@@ -59,9 +59,13 @@ repos:
 
   # Scan for secrets
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.21.2
+    rev: v8.22.1
     hooks:
       - id: gitleaks-docker
+        name: Detect hardcoded secrets
+        description: Detect hardcoded secrets using Gitleaks
+        entry: zricethezav/gitleaks git --pre-commit --redact --staged --verbose
+        language: docker_image
 
   # Lint GitHub Actions
   - repo: https://github.com/rhysd/actionlint
