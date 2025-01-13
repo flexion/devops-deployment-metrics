@@ -67,7 +67,7 @@ jobs:
           name: Pytest-Benchmark Benchmark
           tool: "pytest"
           output-file-path: benchmark-output.json
-          github-token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
           alert-threshold: "130%"
           comment-on-alert: true
