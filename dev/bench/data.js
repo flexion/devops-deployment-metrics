@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1736804642178,
+  "lastUpdate": 1736955156035,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -102,6 +102,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000014758885409692436",
             "extra": "mean: 282.2317704345136 usec\nrounds: 2875"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "16edbab5371a2420b6813b8d97e1ccceddc469fe",
+          "message": "Merge pull request #707 from flexion/chore/502/block-runners-with-step-security\n\nApply StepSecurity recommendations to block egress",
+          "timestamp": "2025-01-15T09:31:58-06:00",
+          "tree_id": "df6cef33b7d5e3846051566abfaa96ff374a74ef",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/16edbab5371a2420b6813b8d97e1ccceddc469fe"
+        },
+        "date": 1736955155091,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1344.5517451317394,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000063756313112411",
+            "extra": "mean: 743.7422945012949 usec\nrounds: 1073"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1371.4542354794564,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001142008305728316",
+            "extra": "mean: 729.1530217560653 usec\nrounds: 1287"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1382.2357222713572,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010705245110869518",
+            "extra": "mean: 723.4656027821009 usec\nrounds: 1294"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3616.30060253087,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000011581935196249207",
+            "extra": "mean: 276.5256846458365 usec\nrounds: 2781"
           }
         ]
       }
