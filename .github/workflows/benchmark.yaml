@@ -23,7 +23,7 @@ jobs:
         uses: step-security/harden-runner@c95a14d0e5bab51a9f56296a4eb0e416910cd350 # v2.10.3
         with:
           disable-sudo: true
-          egress-policy: audit
+          egress-policy: block
           disable-telemetry: false
           allowed-endpoints: >
             files.pythonhosted.org:443
