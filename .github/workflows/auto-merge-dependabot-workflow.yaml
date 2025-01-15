@@ -3,9 +3,9 @@ name: Auto approve and merge PRs by dependabot
 # Trigger the workflow on pull request
 on: pull_request
 
-permissions:
-  pull-requests: write
-  contents: write
+#permissions:
+#  pull-requests: write
+#  contents: write
 
 jobs:
   auto-approve:
@@ -14,12 +14,14 @@ jobs:
     env:
       is_bot1: ${{ github.actor == 'dependabot[bot]' }}
       is_bot2: ${{ github.actor == 'dependabot-preview[bot]' }}
+    permissions:
+      pull-requests: write
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@c95a14d0e5bab51a9f56296a4eb0e416910cd350 # v2.10.3
         with:
           disable-sudo: true
-          egress-policy: audit
+          egress-policy: block
           disable-telemetry: false
           allowed-endpoints: >
             api.github.com:443
