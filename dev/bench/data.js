@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1737089895983,
+  "lastUpdate": 1737308759107,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -206,6 +206,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000012148871409481653",
             "extra": "mean: 283.12541586929626 usec\nrounds: 2823"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "ab0948d6032950fc8e8553b7a394cc0be5cfba97",
+          "message": "Update pre-commit hook rhysd/actionlint to v1.7.7 (#713)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2025-01-19T17:45:14Z",
+          "tree_id": "4bcbd88015168d335ffa1b489f1a8646b22efa71",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/ab0948d6032950fc8e8553b7a394cc0be5cfba97"
+        },
+        "date": 1737308757770,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1373.4200872080658,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000028067617478252077",
+            "extra": "mean: 728.1093449221595 usec\nrounds: 1093"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1412.7117538218436,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000009507624953994873",
+            "extra": "mean: 707.8584837244227 usec\nrounds: 1321"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1372.4645504597147,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000026678000552199946",
+            "extra": "mean: 728.6162689339003 usec\nrounds: 1294"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3575.9726501465952,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001530026565430981",
+            "extra": "mean: 279.6441969317091 usec\nrounds: 2803"
           }
         ]
       }
