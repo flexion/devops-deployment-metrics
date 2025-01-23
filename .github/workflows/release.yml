@@ -38,10 +38,14 @@ jobs:
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
 
-      - name: Install Poetry
+      - name: Install UV
         run: |
-          pip install --constraint=.github/workflows/constraints.txt poetry
-          poetry --version
+          pipx install --pip-args=--constraint=.github/workflows/constraints.txt uv
+          uv --version
+
+      - name: Install tomlq
+        run: |
+          uv pip install tomlq
 
       - name: Check if there is a parent commit
         id: check-parent-commit
@@ -56,18 +60,19 @@ jobs:
         uses: salsify/action-detect-and-tag-new-version@b1778166f13188a9d478e2d1198f993011ba9864 # v2.0.3
         with:
           version-command: |
-            bash -o pipefail -c "poetry version | awk '{ print \$2 }'"
+            bash -o pipefail -c "tomlq -r '.project.version' pyproject.toml
 
       - name: Bump version for developmental release
         if: "! steps.check-version.outputs.tag"
         run: |
-          poetry version patch &&
-          version=$(poetry version | awk '{ print "$2" }') &&
-          poetry version "$version".dev."$(date +%s)"
+          version=$(tomlq -r '.project.version' pyproject.toml) &&
+          base_version="${version///\.dev.*//}" &&
+          new_version="${base_version}.dev.$(date +%s)" &&
+          tomlq -i ".project.version = ${new_version}" pyproject.toml
 
       - name: Build package
         run: |
-          poetry build --ansi
+          uv build
 
 #      - name: Publish package on PyPI
 #        if: steps.check-version.outputs.tag

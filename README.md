@@ -1,25 +1,15 @@
 # DevOps Deployments Metrics
 
-[![PyPI](https://img.shields.io/pypi/v/devops-deployment-metrics.svg)][pypi_]
-[![Status](https://img.shields.io/pypi/status/devops-deployment-metrics.svg)][status]
-[![Python Version](https://img.shields.io/pypi/pyversions/devops-deployment-metrics)][python version]
-[![License](https://img.shields.io/pypi/l/devops-deployment-metrics)][license]
-
-[![Read the documentation at https://devops-deployment-metrics.readthedocs.io/](https://img.shields.io/readthedocs/devops-deployment-metrics/latest.svg?label=Read%20the%20Docs)][read the docs]
 [![Tests](https://github.com/flexion/devops-deployment-metrics/workflows/Tests/badge.svg)][tests]
 [![Codecov](https://codecov.io/gh/flexion/devops-deployment-metrics/branch/main/graph/badge.svg)][codecov]
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
-[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
+[![ruff](https://img.shields.io/badge/ruff-enabled-brightgreen?logo=astral&logoColor=white)][ruff]
 
-[pypi_]: https://pypi.org/project/devops-deployment-metrics/
-[status]: https://pypi.org/project/devops-deployment-metrics/
-[python version]: https://pypi.org/project/devops-deployment-metrics
-[read the docs]: https://devops-deployment-metrics.readthedocs.io/
 [tests]: https://github.com/flexion/devops-deployment-metrics/actions?workflow=Tests
 [codecov]: https://app.codecov.io/gh/flexion/devops-deployment-metrics
 [pre-commit]: https://github.com/pre-commit/pre-commit
-[black]: https://github.com/psf/black
+[ruff]: https://astral.sh/ruff
 
 An application that generates DevOps deployment metrics from GitHub repositories using a GitHub Action workflow to deploy a product.
 
@@ -57,13 +47,13 @@ metric is reported in hours.
 ## Requirements
 
 - Python 3.9+
-- Poetry (installation instructions provided [here](https://python-poetry.org/docs/#installing-with-the-official-installer))
+- uv (installation instructions provided [here](https://github.com/astral-sh/uv?tab=readme-ov-file#installation))
 - Supported OS: Windows 10, Windows 11, Linux, MacOS
 
 ## Installation
 
 ```shell
-poetry install
+uv sync
 ```
 
 ## Usage
@@ -108,7 +98,7 @@ Just the filename, not the path.
 ### Launching the application
 
 ```shell
-poetry run devops-deployment-metrics -v -c my-config.toml
+devops-deployment-metrics -v -c my-config.toml
 ```
 
 Please see the [Command-line Reference] for more details.
@@ -130,7 +120,7 @@ please [file an issue] along with a detailed description.
 
 ## Credits
 
-This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter] template.
+This project was initially generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter] template.
 
 [@cjolowicz]: https://github.com/cjolowicz
 [hypermodern python cookiecutter]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
@@ -140,4 +130,3 @@ This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter]
 
 [license]: https://github.com/flexion/devops-deployment-metrics/blob/main/LICENSE
 [contributor guide]: https://github.com/flexion/devops-deployment-metrics/blob/main/CONTRIBUTING.md
-[command-line reference]: https://devops-deployment-metrics.readthedocs.io/en/latest/usage.html

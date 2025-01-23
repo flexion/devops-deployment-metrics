@@ -48,27 +48,24 @@ Using SSH keys to check out the repository is ideal, as we require contributors 
 
 You need Python 3.9+ and the following tools:
 
-- [Poetry]
+- [uv]
 - [Nox]
-- [nox-poetry]
 
 Install the package with development requirements:
 
 ```console
-poetry install
+UV_PREVIEW=1 uv sync
 ```
 
 You can now run an interactive Python session,
 or the command-line interface:
 
 ```console
-poetry run python
-poetry run devops-deployment-metrics
+devops-deployment-metrics
 ```
 
-[poetry]: https://python-poetry.org/
+[uv]: https://github.com/astral-sh/uv
 [nox]: https://nox.thea.codes/
-[nox-poetry]: https://nox-poetry.readthedocs.io/
 
 ### Git pre-commit hooks
 
