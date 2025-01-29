@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1738168455091,
+  "lastUpdate": 1738179993115,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -674,6 +674,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000011384590107001443",
             "extra": "mean: 282.8146543552565 usec\nrounds: 2870"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4f6807024911fecba843bb24f725da3a7cb7759c",
+          "message": "Merge pull request #706 from flexion/chore/695/fix-sca-workflow\n\nRestore SCA dependency scanning",
+          "timestamp": "2025-01-29T13:45:43-06:00",
+          "tree_id": "6f36489293fa12b8fe717a18eacdd58950dfcdbc",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/4f6807024911fecba843bb24f725da3a7cb7759c"
+        },
+        "date": 1738179992218,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1302.5507910180177,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000009932333841813745",
+            "extra": "mean: 767.72438118781 usec\nrounds: 1010"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1268.5788921082724,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00017313531559484612",
+            "extra": "mean: 788.2836504855313 usec\nrounds: 1236"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1325.3900008743155,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004755557480997062",
+            "extra": "mean: 754.4949028892125 usec\nrounds: 1246"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3519.521509855603,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000272125924914726",
+            "extra": "mean: 284.12953215365553 usec\nrounds: 2939"
           }
         ]
       }
