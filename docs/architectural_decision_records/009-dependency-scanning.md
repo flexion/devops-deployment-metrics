@@ -4,7 +4,7 @@ Date: 2023-04-07
 
 ## Status
 
-Accepted
+Deprecated by [ADR 017](https://github.com/flexion/devops-deployment-metrics/blob/main/docs/architectural_decision_records/017-pip-replaces-safety.md)
 
 ## Context
 
