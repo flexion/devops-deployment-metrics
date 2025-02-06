@@ -19,7 +19,7 @@ python_versions = ["3.11", "3.9", "3.10"]
 nox.needs_version = ">= 2024.4.15"
 nox.options.sessions = (
     "pre-commit",
-    # "safety",
+    "pip-audit"
     # "mypy",
     "tests",
     # "typeguard",
@@ -126,12 +126,16 @@ def precommit(session) -> None:
 
 
 # Safety is broken. See issue# 695
-# @nox.session(python=python_versions[0])
-# def safety(session) -> None:
-#     """Scan dependencies for insecure packages."""
-#     requirements = session.uv.export_requirements()
-#     session.install("safety")
-#     session.run("safety", "check", "--full-report", f"--file={requirements}")
+@nox.session(name="pip-audit", python=python_versions[0])
+def pip_audit(session) -> None:
+    """Scan dependencies for insecure packages."""
+    # Scan production dependencies
+    session.install("uv", "pip-audit")
+    session.run(
+        "uv", "pip", "compile", "pyproject.toml", "--output-file", "requirements.txt"
+    )
+    session.run("pip-audit", "-r", "requirements.txt")
+    session.run("rm", "requirements.txt", external=True)
 
 
 @nox.session(python=python_versions)
