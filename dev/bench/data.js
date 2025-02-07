@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1738903255583,
+  "lastUpdate": 1738952108063,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -986,6 +986,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000014373596295115039",
             "extra": "mean: 281.5684975950263 usec\nrounds: 2703"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9649018025200bb7256a1820c432239a676cc2fb",
+          "message": "Update github/codeql-action action to v3.28.9 (#728)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2025-02-07T18:14:27Z",
+          "tree_id": "0668f8fca49080b5e649694dd2ef3ce7916cf6f7",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/9649018025200bb7256a1820c432239a676cc2fb"
+        },
+        "date": 1738952107369,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1302.9249272098111,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000012986281202724567",
+            "extra": "mean: 767.5039283663725 usec\nrounds: 1047"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1307.4940551777217,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000011567922684635218",
+            "extra": "mean: 764.8218330629998 usec\nrounds: 1234"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1305.7327028134728,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000015335332707237125",
+            "extra": "mean: 765.8535302403716 usec\nrounds: 1207"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3543.5826382840933,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000264035520660333",
+            "extra": "mean: 282.20027640846257 usec\nrounds: 2840"
           }
         ]
       }
