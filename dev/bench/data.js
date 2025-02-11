@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1739142572590,
+  "lastUpdate": 1739242543083,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -1090,6 +1090,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000016252495883629535",
             "extra": "mean: 283.1615796458861 usec\nrounds: 2938"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "82216747b5992d4b71e461bad0686c8855f8e050",
+          "message": "Merge pull request #730 from flexion/bug/729/zricethezavgitleaks-at-v8212\n\nConfigure renovate not to update zricethezav/gitleaks for now",
+          "timestamp": "2025-02-10T20:55:09-06:00",
+          "tree_id": "d99479f0e0ce017ab5ee0ab9fe34115fed15f3c0",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/82216747b5992d4b71e461bad0686c8855f8e050"
+        },
+        "date": 1739242542306,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1370.9322643209987,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004872169813461446",
+            "extra": "mean: 729.430640758378 usec\nrounds: 1055"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1360.2125017187627,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005179540386391407",
+            "extra": "mean: 735.179244960917 usec\nrounds: 1290"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1371.0306252094035,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000014432720205979608",
+            "extra": "mean: 729.3783097275931 usec\nrounds: 1285"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3504.5567045760986,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000009329859294772847",
+            "extra": "mean: 285.3427934820524 usec\nrounds: 2915"
           }
         ]
       }
