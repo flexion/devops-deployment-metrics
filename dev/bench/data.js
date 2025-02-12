@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1739243173696,
+  "lastUpdate": 1739370186269,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -1246,6 +1246,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000009815707318198566",
             "extra": "mean: 276.8482850616457 usec\nrounds: 2845"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0ae570a2e0c4149aabf05964af9c53a5cc49b924",
+          "message": "Merge pull request #734 from flexion/renovate/all-patch\n\nUpdate dependency myst_parser to v4.0.1",
+          "timestamp": "2025-02-12T08:22:27-06:00",
+          "tree_id": "027d7e733529e61ba07a42b33a99a486221aaf95",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/0ae570a2e0c4149aabf05964af9c53a5cc49b924"
+        },
+        "date": 1739370185662,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1310.0941523194285,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002068900492510828",
+            "extra": "mean: 763.3039184470606 usec\nrounds: 1030"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1303.7016379926451,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010994341591283934",
+            "extra": "mean: 767.0466699265139 usec\nrounds: 1227"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1294.5682493672264,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002178319366140268",
+            "extra": "mean: 772.4583083887553 usec\nrounds: 1216"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3599.8848712225636,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001716976932933047",
+            "extra": "mean: 277.78666145520043 usec\nrounds: 1855"
           }
         ]
       }
