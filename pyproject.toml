@@ -166,5 +166,5 @@ docstring-code-line-length = "dynamic"
 pythonpath = "src"
 
 [build-system]
-requires = ["uv>=0.5,<0.6"]
+requires = ["uv>=0.6,<0.7"]
 build-backend = "uv"
