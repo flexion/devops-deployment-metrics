@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1739602548052,
+  "lastUpdate": 1739794926666,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -1350,6 +1350,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00001491535671129132",
             "extra": "mean: 286.9078736597426 usec\nrounds: 2984"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fde59fff29e4aa70ad18a710f336cf33c7d07f88",
+          "message": "Update step-security/harden-runner action to v2.11.0 (#736)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2025-02-17T12:21:32Z",
+          "tree_id": "49e37d9cb5f907e8b5c6a466a5197c63a352a5b9",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/fde59fff29e4aa70ad18a710f336cf33c7d07f88"
+        },
+        "date": 1739794925951,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1363.0590176342932,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000009764538835800437",
+            "extra": "mean: 733.6439486938625 usec\nrounds: 1072"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1368.1208094132858,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010280088253585615",
+            "extra": "mean: 730.9296029411662 usec\nrounds: 1292"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1353.0106378995379,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000026204726434797622",
+            "extra": "mean: 739.092488993609 usec\nrounds: 1272"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3561.3924761964417,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000105163896574836",
+            "extra": "mean: 280.78904717291863 usec\nrounds: 2989"
           }
         ]
       }
