@@ -100,7 +100,7 @@ jobs:
             my_file.write(f"PC_CACHE_KEY={cache_key}")
 
       - name: Restore pre-commit cache
-        uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4.2.2
         if: matrix.session == 'pre-commit'
         with:
           path: ~/.cache/pre-commit
@@ -116,7 +116,7 @@ jobs:
 
       - name: Upload coverage data
         if: always() && matrix.session == 'tests' && matrix.python == '3.11' && matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
         with:
           # Hack for v4.4 hidden file change
           name: coverage-data
@@ -125,7 +125,7 @@ jobs:
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
         with:
           name: docs
           path: docs/_build
@@ -158,7 +158,7 @@ jobs:
           nox --version
 
       - name: Download coverage data
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
         with:
           name: coverage-data
 
@@ -175,4 +175,4 @@ jobs:
           nox --session=coverage -- xml
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # v5.3.1
+        uses: codecov/codecov-action@0565863a31f2c772f9f0395002a31e3f06189574 # v5.4.0
