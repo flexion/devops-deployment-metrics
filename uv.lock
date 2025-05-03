@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.9, <4"
 resolution-markers = [
     "python_full_version == '3.10.*'",
@@ -75,6 +76,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/18/dd/e617cfc3f6210ae183374cd9f6a26b20514bbb5a792af97949c5aacddf0f/argparse-1.4.0.tar.gz", hash = "sha256:62b089a55be1d8949cd2bc7e0df0bddb9e028faefc8c32038cc84862aefdd6e4", size = 70508 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f2/94/3af39d34be01a24a6e65433d19e107099374224905f1e0cc6bbe1fd22a2f/argparse-1.4.0-py2.py3-none-any.whl", hash = "sha256:c31647edb69fd3d465a847ea3157d37bed1f95f19760b11a47aa91c04b666314", size = 23000 },
+]
+
+[[package]]
+name = "attrs"
+version = "25.3.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/5a/b0/1367933a8532ee6ff8d63537de4f1177af4bff9f3e829baf7331f595bb24/attrs-25.3.0.tar.gz", hash = "sha256:75d7cefc7fb576747b2c81b4442d4d4a1ce0900973527c011d1030fd3bf4af1b", size = 812032 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/77/06/bb80f5f86020c4551da315d78b3ab75e8228f89f0162f2c3a819e407941a/attrs-25.3.0-py3-none-any.whl", hash = "sha256:427318ce031701fea540783410126f03899a97ffc6f61596ad581ac2e40e3bc3", size = 63815 },
 ]
 
 [[package]]
@@ -416,6 +426,19 @@ wheels = [
 ]
 
 [[package]]
+name = "dependency-groups"
+version = "1.3.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+    { name = "tomli", marker = "python_full_version < '3.11'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/62/55/f054de99871e7beb81935dea8a10b90cd5ce42122b1c3081d5282fdb3621/dependency_groups-1.3.1.tar.gz", hash = "sha256:78078301090517fd938c19f64a53ce98c32834dfe0dee6b88004a569a6adfefd", size = 10093 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/99/c7/d1ec24fb280caa5a79b6b950db565dab30210a66259d17d5bb2b3a9f878d/dependency_groups-1.3.1-py3-none-any.whl", hash = "sha256:51aeaa0dfad72430fcfb7bcdbefbd75f3792e5919563077f30bc0d73f4493030", size = 8664 },
+]
+
+[[package]]
 name = "deprecated"
 version = "1.2.15"
 source = { registry = "https://pypi.org/simple" }
@@ -492,7 +515,7 @@ dev = [
     { name = "furo", specifier = ">=2021.11.12" },
     { name = "mypy", specifier = ">=0.930" },
     { name = "myst-parser", specifier = ">=0.16.1" },
-    { name = "nox", specifier = ">=2024.10.9" },
+    { name = "nox", specifier = ">=2025.5.1" },
     { name = "pandas-stubs", specifier = ">=2.0.1.230501,<3" },
     { name = "pre-commit", specifier = ">=2.16.0" },
     { name = "pre-commit-hooks", specifier = ">=4.1.0" },
@@ -867,18 +890,20 @@ wheels = [
 
 [[package]]
 name = "nox"
-version = "2024.10.9"
+version = "2025.5.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "argcomplete" },
+    { name = "attrs" },
     { name = "colorlog" },
+    { name = "dependency-groups" },
     { name = "packaging" },
     { name = "tomli", marker = "python_full_version < '3.11'" },
     { name = "virtualenv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/08/93/4df547afcd56e0b2bbaa99bc2637deb218a01802ed62d80f763189be802c/nox-2024.10.9.tar.gz", hash = "sha256:7aa9dc8d1c27e9f45ab046ffd1c3b2c4f7c91755304769df231308849ebded95", size = 4003197 }
+sdist = { url = "https://files.pythonhosted.org/packages/b4/80/47712208c410defec169992e57c179f0f4d92f5dd17ba8daca50a8077e23/nox-2025.5.1.tar.gz", hash = "sha256:2a571dfa7a58acc726521ac3cd8184455ebcdcbf26401c7b737b5bc6701427b2", size = 4023334 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/66/00/981f0dcaddf111b6caf6e03d7f7f01b07fd4af117316a7eb1c22039d9e37/nox-2024.10.9-py3-none-any.whl", hash = "sha256:1d36f309a0a2a853e9bccb76bbef6bb118ba92fa92674d15604ca99adeb29eab", size = 61210 },
+    { url = "https://files.pythonhosted.org/packages/a6/be/7b423b02b09eb856beffe76fe8c4121c99852db74dd12a422dcb72d1134e/nox-2025.5.1-py3-none-any.whl", hash = "sha256:56abd55cf37ff523c254fcec4d152ed51e5fe80e2ab8317221d8b828ac970a31", size = 71753 },
 ]
 
 [[package]]
