@@ -30,7 +30,7 @@ devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
 [dependency-groups]
 dev = [
-    "nox>=2024.10.9",
+    "nox>=2025.5.1",
     "ruff>=0.9.1,<0.10",
     "pytest-benchmark>=5.0.0,<6",
     "Pygments>=2.10.0",
@@ -165,6 +165,5 @@ docstring-code-line-length = "dynamic"
 #python_files = "test*.py"  # to discover testA.py and testB.py
 pythonpath = "src"
 
-[build-system]
-requires = ["uv>=0.6,<0.7"]
-build-backend = "uv"
+[tools.uv.build-backend]
+module-name = "devops-deployment-metrics"
