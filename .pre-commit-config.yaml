@@ -43,10 +43,11 @@ repos:
         types: [python]
         args: [--py37-plus]
 
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v4.0.0-alpha.8
-    hooks:
-      - id: prettier
+# Prettier is failing in CI for Markdown files, so we disable it for now. It does not do much for us anyway.
+#  - repo: https://github.com/pre-commit/mirrors-prettier
+#    rev: v4.0.0-alpha.8
+#    hooks:
+#      - id: prettier
 
   # Linter for markdown files
   # This hook uses DavidAnson Node.js markdownlint in a Docker to minimize dev environment at the cost of speed
