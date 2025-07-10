@@ -19,7 +19,7 @@ python_versions = ["3.11", "3.9", "3.10"]
 nox.needs_version = ">= 2024.4.15"
 nox.options.sessions = (
     "pre-commit",
-    "pip-audit"
+    "pip-audit",
     # "mypy",
     "tests",
     # "typeguard",

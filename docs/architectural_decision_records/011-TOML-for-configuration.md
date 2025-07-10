@@ -8,12 +8,14 @@ Accepted
 
 ## Decision
 
-We decided to use TOML (Tom's Obvious, Minimal Language) for configuring our Python applications. Here's why:
+We decided to use TOML (Tom's Obvious, Minimal Language)
+for configuring our Python applications. Here's why:
 
 1. Easy to understand:
 
    - TOML has a straightforward syntax that is easy to read and understand.
-   - It uses key-value pairs and hierarchies, making it intuitive for developers to define configuration settings.
+   - It uses key-value pairs and hierarchies, making it intuitive for developers
+   - to define configuration settings.
 
 2. Clear and concise:
 

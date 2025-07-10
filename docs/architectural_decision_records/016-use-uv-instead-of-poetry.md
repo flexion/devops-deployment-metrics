@@ -47,14 +47,14 @@ We will replace **Poetry** with **uv** for managing dependencies, creating lockf
 
 ### Positive Impacts
 
-- **Faster Builds**: uv provides faster dependency resolution and package builds.
+- **Faster Builds**: `uv` provides faster dependency resolution and package builds.
 - **Simplified Workflow**: The tool is more aligned with our goal of a lean, efficient build process.
 - **Reproducible Builds**: uv generates a `uv.lock` file to ensure consistent environments across installations.
 
 ### Negative Impacts
 
 - **Learning Curve**: Team members need to become familiar with uv’s CLI.
-- **Ecosystem**: uv is a newer tool, so it may have fewer third-party resources and integrations compared to Poetry.
+- **Ecosystem**: `uv` is a newer tool, so it may have fewer third-party resources and integrations compared to Poetry.
 
 ## Status
 
