@@ -16,6 +16,7 @@ repos:
       - id: check-ast
       - id: check-yaml
       - id: check-json
+        exclude: ^\.github/renovate\.json$
       - id: check-toml
       - id: check-added-large-files
         args: ["--maxkb=2200"]
