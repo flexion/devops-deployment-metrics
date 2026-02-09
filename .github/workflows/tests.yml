@@ -58,6 +58,7 @@ jobs:
             pypi.org:443
             registry-1.docker.io:443
             registry.npmjs.org:443
+            release-assets.githubusercontent.com:443
 
       - name: Check out the repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
