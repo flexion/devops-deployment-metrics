@@ -1,9 +1,9 @@
 """This module contains classes for calculating deployment metrics."""
 
+from collections.abc import Iterable
 from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
-from typing import Any, Optional
-from collections.abc import Iterable
+from typing import Any
 
 import pandas as pd
 
