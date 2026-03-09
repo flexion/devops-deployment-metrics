@@ -46,7 +46,7 @@ metric is reported in hours.
 
 ## Requirements
 
-- Python 3.9+
+- Python 3.10, 3.11, 3.12, or 3.13
 - uv (installation instructions provided [here](https://github.com/astral-sh/uv?tab=readme-ov-file#installation))
 - Supported OS: Windows 10, Windows 11, Linux, MacOS
 
