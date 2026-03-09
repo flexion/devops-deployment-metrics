@@ -2,7 +2,8 @@
 
 from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
-from typing import Any, Iterable, Optional
+from typing import Any, Optional
+from collections.abc import Iterable
 
 import pandas as pd
 
@@ -45,7 +46,7 @@ class Metric:
         deployments: list[WorkflowRun],
         days_slice: int,
         start_date: datetime,
-        end_period: Optional[datetime] = None,
+        end_period: datetime | None = None,
     ) -> Iterable[tuple[datetime, list[WorkflowRun]]]:
         """Get the deployments for each period."""
         # Using this workaround to get the current datetime with the local timezone
