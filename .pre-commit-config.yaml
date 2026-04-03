@@ -41,7 +41,7 @@ repos:
       - id: pyupgrade
         description: Automatically upgrade syntax for newer versions.
         types: [python]
-        args: [--py37-plus]
+        args: [--py310-plus]
 
 # Prettier is failing in CI for Markdown files, so we disable it for now. It does not do much for us anyway.
 #  - repo: https://github.com/pre-commit/mirrors-prettier
