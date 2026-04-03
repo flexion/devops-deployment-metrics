@@ -51,7 +51,7 @@ dev = [
     "myst-parser>=0.16.1",
     "types-toml>=0.10.8.6,<0.11",
     "types-pyyaml>=6.0.12.10,<7",
-    "pandas-stubs>=2.0.1.230501,<3",
+    "pandas-stubs>=3.0.0.260204,<4",
     "types-tqdm>=4.65.0.1,<5",
 ]
 
