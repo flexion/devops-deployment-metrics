@@ -15,7 +15,7 @@ nox.options.default_venv_backend = "uv|virtualenv"
 PYPROJECT = nox.project.load_toml("pyproject.toml")
 
 package = "devops_deployment_metrics"
-python_versions = ["3.11", "3.9", "3.10"]
+python_versions = ["3.12", "3.10", "3.11", "3.13"]
 nox.needs_version = ">= 2024.4.15"
 nox.options.sessions = (
     "pre-commit",

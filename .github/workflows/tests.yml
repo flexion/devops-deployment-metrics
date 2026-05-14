@@ -23,17 +23,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { python: "3.9", os: "ubuntu-latest", session: "tests" }
           - { python: "3.10", os: "ubuntu-latest", session: "tests" }
-          - { python: "3.11", os: "ubuntu-latest", session: "pre-commit" }
-          - { python: "3.11", os: "ubuntu-latest", session: "xdoctest" }
-          - { python: "3.11", os: "ubuntu-latest", session: "docs-build" }
           - { python: "3.11", os: "ubuntu-latest", session: "tests" }
-          - { python: "3.11", os: "windows-latest", session: "tests" }
-          - { python: "3.11", os: "ubuntu-latest", session: "pip-audit" }
+          - { python: "3.12", os: "ubuntu-latest", session: "pre-commit" }
+          - { python: "3.12", os: "ubuntu-latest", session: "xdoctest" }
+          - { python: "3.12", os: "ubuntu-latest", session: "docs-build" }
+          - { python: "3.12", os: "ubuntu-latest", session: "tests" }
+          - { python: "3.12", os: "windows-latest", session: "tests" }
+          - { python: "3.12", os: "ubuntu-latest", session: "pip-audit" }
+          - { python: "3.13", os: "ubuntu-latest", session: "tests" }
 
     #          - { python: "3.10", os: "ubuntu-latest", session: "mypy" }
-    #          - { python: "3.9", os: "ubuntu-latest", session: "mypy" }
+    #          - { python: "3.12", os: "ubuntu-latest", session: "mypy" }
     #          - { python: "3.10", os: "ubuntu-latest", session: "typeguard" }
 
     env:
@@ -141,7 +142,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          python-version: "3.14"
+          python-version: "3.12"
 
       - name: Upgrade pip
         run: |
