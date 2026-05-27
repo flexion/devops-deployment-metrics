@@ -27,7 +27,7 @@ repos:
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.15.7
+    rev: v0.15.12
     hooks:
       # Run the linter.
       - id: ruff
@@ -41,7 +41,7 @@ repos:
       - id: pyupgrade
         description: Automatically upgrade syntax for newer versions.
         types: [python]
-        args: [--py37-plus]
+        args: [--py310-plus]
 
 # Prettier is failing in CI for Markdown files, so we disable it for now. It does not do much for us anyway.
 #  - repo: https://github.com/pre-commit/mirrors-prettier
@@ -66,7 +66,7 @@ repos:
 
   # Lint GitHub Actions
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.11
+    rev: v1.7.12
     hooks:
       - id: actionlint-docker
 
