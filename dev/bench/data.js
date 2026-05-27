@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776343659456,
+  "lastUpdate": 1779852536456,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -2130,6 +2130,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000013750042583475077",
             "extra": "mean: 256.219979973829 usec\nrounds: 3046"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "56da6868d6215db4394c0a4fbdfaf9a62d2b8ad8",
+          "message": "Merge pull request #922 from flexion/copilot/update-python-versions\n\nUpdate supported Python versions to 3.10–3.13, set 3.12 as primary",
+          "timestamp": "2026-05-26T22:28:22-05:00",
+          "tree_id": "87de83ef6ff765c827a2fd5503e886f337add375",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/56da6868d6215db4394c0a4fbdfaf9a62d2b8ad8"
+        },
+        "date": 1779852535052,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1544.843121226012,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000009256061021626561",
+            "extra": "mean: 647.3149190750088 usec\nrounds: 1038"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1496.8548990431589,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001944910362499766",
+            "extra": "mean: 668.0674263345327 usec\nrounds: 1405"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1468.4009907752165,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016140114600755956",
+            "extra": "mean: 681.0128883610107 usec\nrounds: 1263"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 6599.93463513145,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000004470240078958787",
+            "extra": "mean: 151.51665210091636 usec\nrounds: 4165"
           }
         ]
       }
