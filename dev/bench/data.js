@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779853042700,
+  "lastUpdate": 1779853188784,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -2338,6 +2338,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00002233991272771501",
             "extra": "mean: 259.04741051543425 usec\nrounds: 2872"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8202124a513a963275788298ff58d70c223ee60d",
+          "message": "Merge pull request #890 from flexion/dependabot/pip/docs/myst-parser-5.0.0\n\nBump myst-parser from 4.0.1 to 5.0.0 in /docs",
+          "timestamp": "2026-05-26T22:39:19-05:00",
+          "tree_id": "ecd04ccdc5482e8fc3b507f26f4c1405633ff5e2",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/8202124a513a963275788298ff58d70c223ee60d"
+        },
+        "date": 1779853187821,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1035.6572501902892,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000040222894770212664",
+            "extra": "mean: 965.5704141657507 usec\nrounds: 833"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1034.9490186378127,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00008166706634889108",
+            "extra": "mean: 966.2311688707023 usec\nrounds: 983"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1014.3366297021767,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000018179080247816205",
+            "extra": "mean: 985.8660041623597 usec\nrounds: 961"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 4226.68604123056,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000023270861319957905",
+            "extra": "mean: 236.59197542594373 usec\nrounds: 3052"
           }
         ]
       }
