@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779852878929,
+  "lastUpdate": 1779853042700,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -2286,6 +2286,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000014559443754932215",
             "extra": "mean: 294.62089000343855 usec\nrounds: 2791"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4bae52f96774e0ad4750c160600881b1306e7580",
+          "message": "Merge pull request #933 from flexion/dependabot/pip/dot-github/workflows/pipx-1.10.1\n\nBump pipx from 1.8.0 to 1.10.1 in /.github/workflows",
+          "timestamp": "2026-05-26T22:36:53-05:00",
+          "tree_id": "ecd04ccdc5482e8fc3b507f26f4c1405633ff5e2",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/4bae52f96774e0ad4750c160600881b1306e7580"
+        },
+        "date": 1779853042019,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1028.2493176451824,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000039022927429000005",
+            "extra": "mean: 972.5267820163726 usec\nrounds: 734"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1095.8175172649464,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00008868769438240926",
+            "extra": "mean: 912.5606994273121 usec\nrounds: 1048"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1001.604267400865,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000013618569541408666",
+            "extra": "mean: 998.3983021507806 usec\nrounds: 930"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3860.2972251692095,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002233991272771501",
+            "extra": "mean: 259.04741051543425 usec\nrounds: 2872"
           }
         ]
       }
