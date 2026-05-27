@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779854091415,
+  "lastUpdate": 1779855463232,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -2494,6 +2494,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000016735614511064062",
             "extra": "mean: 299.12428108142876 usec\nrounds: 2590"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "31d1b55ac93e9660b05b939bdaf68dbe3c7f9769",
+          "message": "Merge pull request #977 from flexion/dependabot/uv/filelock-3.20.3\n\nBump filelock from 3.16.1 to 3.20.3",
+          "timestamp": "2026-05-26T23:17:11-05:00",
+          "tree_id": "47e7390a67b0cc299c05b24f2acf25f12a89469d",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/31d1b55ac93e9660b05b939bdaf68dbe3c7f9769"
+        },
+        "date": 1779855462303,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1074.6953945592054,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001462520366298604",
+            "extra": "mean: 930.4962178703275 usec\nrounds: 817"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1093.2501522303344,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016013959312803935",
+            "extra": "mean: 914.7037372552886 usec\nrounds: 1020"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1057.2617552755996,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000021112764841964255",
+            "extra": "mean: 945.8395662286365 usec\nrounds: 989"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3776.507602638833,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000011232974786450486",
+            "extra": "mean: 264.79491244801164 usec\nrounds: 2627"
           }
         ]
       }
