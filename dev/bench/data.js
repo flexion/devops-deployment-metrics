@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779853456923,
+  "lastUpdate": 1779854091415,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -2442,6 +2442,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000014142024878415792",
             "extra": "mean: 293.1780384201637 usec\nrounds: 2785"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0b06e85a21a8dc7fb8f11f696c1ec3aa7bba975f",
+          "message": "Merge pull request #976 from flexion/dependabot/uv/python-dotenv-1.2.2\n\nBump python-dotenv from 1.2.1 to 1.2.2",
+          "timestamp": "2026-05-26T22:54:18-05:00",
+          "tree_id": "98f57034b9a8335cdc5f04b820471b90944bf666",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/0b06e85a21a8dc7fb8f11f696c1ec3aa7bba975f"
+        },
+        "date": 1779854089599,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1059.443052291904,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001264867501366956",
+            "extra": "mean: 943.8921684716227 usec\nrounds: 831"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1063.1123756155341,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001360258708370532",
+            "extra": "mean: 940.6343326790899 usec\nrounds: 1019"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1033.4599173092338,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000043337525074429224",
+            "extra": "mean: 967.6234010155406 usec\nrounds: 985"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3343.0920297900398,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016735614511064062",
+            "extra": "mean: 299.12428108142876 usec\nrounds: 2590"
           }
         ]
       }
