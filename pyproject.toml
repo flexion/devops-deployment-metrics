@@ -17,7 +17,6 @@ classifiers = [
 dependencies = [
     "click>=8.0.1",
     "pandas>=2.0.0,<3",
-    "argparse>=1.4.0,<2",
     "toml>=0.10.2,<0.11",
     "python-dotenv>=1.2.2,<2",
     "PyGitHub>=2.0.0,<3",
@@ -37,7 +36,6 @@ devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
 [dependency-groups]
 dev = [
-    "nox>=2025.5.1",
     "ruff>=0.16,<0.17",
     "pytest-benchmark>=5.0.0,<6",
     "Pygments>=2.10.0",
@@ -93,7 +91,6 @@ exclude = [
     ".hg",
     ".ipynb_checkpoints",
     ".mypy_cache",
-    ".nox",
     ".pants.d",
     ".pyenv",
     ".pytest_cache",
@@ -172,5 +169,5 @@ docstring-code-line-length = "dynamic"
 #python_files = "test*.py"  # to discover testA.py and testB.py
 pythonpath = "src"
 
-[tools.uv.build-backend]
+[tool.uv.build-backend]
 module-name = "devops-deployment-metrics"
