@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779855463232,
+  "lastUpdate": 1789401803789,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -2546,6 +2546,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000011232974786450486",
             "extra": "mean: 264.79491244801164 usec\nrounds: 2627"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4764b53fb2fa31ae9cf7dd1697392e928e66764f",
+          "message": "Merge pull request #1000 from flexion/fix/harden-runner-cdn-allowlist-typo\n\nfix: correct harden-runner CDN domain typo in tests.yml",
+          "timestamp": "2026-09-14T11:02:52-05:00",
+          "tree_id": "d89ce512a71ca0dbc3172c773744e8c079354fa5",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/4764b53fb2fa31ae9cf7dd1697392e928e66764f"
+        },
+        "date": 1789401802384,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 903.4016352956361,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002954499211275348",
+            "extra": "mean: 1.106927374193597 msec\nrounds: 775"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 884.2852834609969,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0001730600234393356",
+            "extra": "mean: 1.1308567706635444 msec\nrounds: 859"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 892.5418657996871,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010837018187773104",
+            "extra": "mean: 1.120395623239515 msec\nrounds: 852"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3324.6576031293444,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000014146842752433233",
+            "extra": "mean: 300.7828532654752 usec\nrounds: 2358"
           }
         ]
       }
