@@ -12,8 +12,8 @@ jobs:
     name: Automatically approve dependabot PRs
     runs-on: ubuntu-latest
     env:
-      is_bot1: ${{ github.actor == 'dependabot[bot]' }}
-      is_bot2: ${{ github.actor == 'dependabot-preview[bot]' }}
+      is_bot1: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+      is_bot2: ${{ github.event.pull_request.user.login == 'dependabot-preview[bot]' }}
     permissions:
       pull-requests: write
     steps:
@@ -30,7 +30,7 @@ jobs:
         uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
         with:
           skip-verification: true
-        if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
+        if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.user.login == 'dependabot-preview[bot]' }}
         continue-on-error: true
       - name: Auto approve patch and minor
         env:

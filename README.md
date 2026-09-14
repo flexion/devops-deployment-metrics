@@ -47,7 +47,7 @@ metric is reported in hours.
 ## Requirements
 
 - Python 3.11, 3.12, 3.13, or 3.14
-- uv (installation instructions provided [here](https://github.com/astral-sh/uv?tab=readme-ov-file#installation))
+- uv ([installation instructions](https://github.com/astral-sh/uv?tab=readme-ov-file#installation))
 - Supported OS: Windows 10, Windows 11, Linux, MacOS
 
 ## Installation
@@ -128,5 +128,5 @@ This project was initially generated from [@cjolowicz]'s [Hypermodern Python Coo
 
 <!-- github-only -->
 
-[license]: https://github.com/flexion/devops-deployment-metrics/blob/main/LICENSE
+[mit license]: https://github.com/flexion/devops-deployment-metrics/blob/main/LICENSE
 [contributor guide]: https://github.com/flexion/devops-deployment-metrics/blob/main/CONTRIBUTING.md

@@ -1,0 +1,24 @@
+# rumdl configuration (migrated from .markdownlint.json / .markdownlintignore)
+# See https://github.com/rvben/rumdl for the full configuration reference.
+
+[global]
+# Equivalent to markdownlint's "line-length": false
+disable = ["MD013"]
+
+# Equivalent to markdownlint's .markdownlintignore
+exclude = [
+    "docs/contributing.md",
+    "docs/index.md",
+    "docs/codeofconduct.md",
+]
+
+# markdownlint's MD024 was configured with "siblings_only": true, which is
+# rumdl's default behavior already; kept explicit here for documentation.
+[MD024]
+siblings-only = true
+
+# These Sphinx doc pages use ```{eval-rst} code fences; the MyST flavor knows
+# `{name}` is a valid directive info string so MD040 doesn't false-positive.
+[per-file-flavor]
+"docs/usage.md" = "myst"
+"docs/reference.md" = "myst"
