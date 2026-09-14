@@ -51,15 +51,10 @@ jobs:
           pipx install --pip-args=--constraint=.github/workflows/constraints.txt uv
           uv --version
 
-      - name: Install Nox
-        run: |
-          uvx pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
-          nox --version
-
-      - name: Run benchmark with nox
+      - name: Run benchmark
         env:
           UV_PREVIEW: 1
-        run: nox -s benchmark
+        run: uv run pytest --benchmark-json=benchmark-output.json tests/test_metrics.py tests/test_config.py
 
       - name: Store benchmark result in github.io
         uses: benchmark-action/github-action-benchmark@52576c92bccf6ac60c8223ec7eb2565637cae9ba # v1.22.1
