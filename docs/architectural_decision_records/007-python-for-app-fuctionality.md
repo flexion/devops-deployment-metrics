@@ -15,7 +15,7 @@ Our project includes data analysis.
 ## Decision
 
 We will use Python for the main application functionality, Python for tests, and Poetry for build and dependency automation.
-We are supporting Python 3.9 and 3.10 in order to use modern type hinting.
+We are supporting Python 3.10, 3.11, 3.12, and 3.13 in order to use modern type hinting.
 
 ## Rationale
 
