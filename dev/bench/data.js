@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789419060566,
+  "lastUpdate": 1789419159726,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -3378,6 +3378,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000009515452570219142",
             "extra": "mean: 269.72453190678414 usec\nrounds: 2523"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "542282a99f21a2d0ee3b3a2d5d19a91f1b0537bb",
+          "message": "Merge pull request #998 from flexion/dependabot/uv/cryptography-50.0.0\n\nBump cryptography from 46.0.7 to 50.0.0",
+          "timestamp": "2026-09-14T15:52:08-05:00",
+          "tree_id": "1dd7cc2a9df7aacfc6b98c15b69132af6bac7d5e",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/542282a99f21a2d0ee3b3a2d5d19a91f1b0537bb"
+        },
+        "date": 1789419157919,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 936.140387571125,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000038168069371710346",
+            "extra": "mean: 1.0682158501830723 msec\nrounds: 821"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 953.4507131599639,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016582579087624815",
+            "extra": "mean: 1.048821912027063 msec\nrounds: 898"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 937.2830495804379,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001464030803503649",
+            "extra": "mean: 1.0669135651686399 msec\nrounds: 890"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 4351.797785257119,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000884675042533994",
+            "extra": "mean: 229.7900889117063 usec\nrounds: 2913"
           }
         ]
       }
