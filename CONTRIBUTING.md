@@ -46,10 +46,9 @@ Indicate you are working on a task by adding your GitHub @name after the task in
 Definition of Done items are often a great starting point for contributing in a meaningful way while getting integrated into team practices.
 Using SSH keys to check out the repository is ideal, as we require contributors to sign their commits.
 
-You need Python 3.10, 3.11, 3.12, or 3.13 and the following tools:
+You need Python 3.10, 3.11, 3.12, or 3.13 and the following tool:
 
 - [uv]
-- [Nox]
 
 Install the package with development requirements:
 
@@ -65,7 +64,6 @@ devops-deployment-metrics
 ```
 
 [uv]: https://github.com/astral-sh/uv
-[nox]: https://nox.thea.codes/
 
 ### Git pre-commit hooks
 
@@ -91,20 +89,14 @@ The pre-commit hooks will then run as a part of git commits, but you can also op
 Run the full test suite:
 
 ```console
-nox
+make test
 ```
 
-List the available Nox sessions:
+You can also run other make targets for specific checks.
+For example, to run linting checks:
 
 ```console
-nox --list-sessions
-```
-
-You can also run a specific Nox session.
-For example, invoke the unit test suite like this:
-
-```console
-nox --session=tests
+make lint
 ```
 
 Unit tests are located in the _tests_ directory,
@@ -118,7 +110,7 @@ Open a [pull request] to submit changes to this project.
 
 Your pull request needs to meet the following guidelines for acceptance:
 
-- The Nox test suite must pass without errors and warnings.
+- The test suite must pass without errors and warnings.
 - Include unit tests. This project maintains 100% code coverage.
 - If your changes add functionality, update the documentation accordingly.
 
@@ -127,16 +119,16 @@ Feel free to submit early, though—we can always iterate on this.
 To run linting and code formatting checks before committing your change, you can install pre-commit as a Git hook by running the following command:
 
 ```console
-nox --session=pre-commit -- install
+pre-commit install
 ```
 
 It is recommended to open an issue before starting work on anything.
 This will allow a chance to talk it over with the owners and validate your approach.
 
-You can run `pre-commit` with this command:
+You can run linting and code formatting checks with this command:
 
 ```console
-nox -s pre-commit
+make lint
 ```
 
 [pull request]: https://github.com/flexion/devops-deployment-metrics/pulls
@@ -155,7 +147,7 @@ def test_my_function(benchmark: Any):
 Run the benchmark:
 
 ```bash
-nox -s benchmark
+make benchmark
 ```
 
 ## Contributors are required to sign commits

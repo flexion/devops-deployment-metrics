@@ -128,7 +128,7 @@ To do: add integration tests
 Contributor are expected to improve the code as they contribute, adding tests for all changed code, as well
 as following secure coding practices.
 
-The `Nox` build process includes some [security scanning with `Safety`](https://github.com/flexion/devops-deployment-metrics/blob/main/docs/architectural_decision_records/009-dependency-scanning.md).
+The build process includes security scanning with pip-audit (see [ADR 0017](https://github.com/flexion/devops-deployment-metrics/blob/main/docs/architectural_decision_records/0017-pip-audit-replaces-safety.md)).
 The definition of done for user stories includes security assessment and a code coverage standard.
 
 ## Insider Threats
