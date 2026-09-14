@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789426980023,
+  "lastUpdate": 1789429275098,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -3950,6 +3950,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000009371817505486004",
             "extra": "mean: 189.57943915328815 usec\nrounds: 3780"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "434197d4d6dbcdaea36c9e6b2e90943e48f4b71b",
+          "message": "Merge pull request #1013 from flexion/feat/zizmor-security-scanning\n\nfeat: zizmor security scanning + rumdl markdown linting",
+          "timestamp": "2026-09-14T18:40:33-05:00",
+          "tree_id": "2b42a4072181b2662cc1eed71a635608e8505465",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/434197d4d6dbcdaea36c9e6b2e90943e48f4b71b"
+        },
+        "date": 1789429273416,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 831.7970995074353,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000038808440246119174",
+            "extra": "mean: 1.2022162623459127 msec\nrounds: 648"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 839.6549002972882,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002674869125147437",
+            "extra": "mean: 1.1909654783720551 msec\nrounds: 786"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 790.8737349031462,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00001424264925441631",
+            "extra": "mean: 1.2644243396481796 msec\nrounds: 739"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3780.1181279110424,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000011690068901362451",
+            "extra": "mean: 264.54199740911724 usec\nrounds: 2702"
           }
         ]
       }
