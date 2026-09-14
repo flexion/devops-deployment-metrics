@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789421340006,
+  "lastUpdate": 1789425494097,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -3690,6 +3690,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00001582839251369718",
             "extra": "mean: 300.1419295346512 usec\nrounds: 2597"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d28fdddb006f8739690a1569eadef30bb7c912cb",
+          "message": "Merge pull request #1007 from flexion/chore/nox-to-makefile-migration\n\nMigrate task runner from nox to Makefile + uv",
+          "timestamp": "2026-09-14T17:32:02-05:00",
+          "tree_id": "865bbe82738bd536f2de7ea7f970aadf1aba2e44",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/d28fdddb006f8739690a1569eadef30bb7c912cb"
+        },
+        "date": 1789425492424,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1071.5820149024191,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000028196639102519298",
+            "extra": "mean: 933.1996861584715 usec\nrounds: 838"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1075.7573729039095,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000025771767885471064",
+            "extra": "mean: 929.5776400775119 usec\nrounds: 1028"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1054.0441801104153,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000014619464932003294",
+            "extra": "mean: 948.7268359996506 usec\nrounds: 1000"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 5286.253431345234,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000018907637559846734",
+            "extra": "mean: 189.16989376075415 usec\nrounds: 3558"
           }
         ]
       }
