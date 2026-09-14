@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789419663235,
+  "lastUpdate": 1789420039023,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -3534,6 +3534,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000009299902706365533",
             "extra": "mean: 275.22100616620367 usec\nrounds: 2757"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7a7b93998d6aea327be23b3af66244ff68283cc8",
+          "message": "Merge pull request #1002 from flexion/fix/remove-safety-nltk-security-alerts\n\nfix: remove superseded 'safety' dependency, resolving 3 critical nltk CVEs",
+          "timestamp": "2026-09-14T16:06:50-05:00",
+          "tree_id": "ffbe57cad3ff05e4d38313cd13be134f75186262",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/7a7b93998d6aea327be23b3af66244ff68283cc8"
+        },
+        "date": 1789420038181,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1267.8258467845887,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000022981690761469324",
+            "extra": "mean: 788.7518640956578 usec\nrounds: 1089"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1316.8117368383514,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002159603385508826",
+            "extra": "mean: 759.4099991855993 usec\nrounds: 1228"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1248.577610932908,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000015576072564075084",
+            "extra": "mean: 800.9113660566309 usec\nrounds: 1202"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 4729.595902833651,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000008935832577916906",
+            "extra": "mean: 211.43455393321622 usec\nrounds: 3356"
           }
         ]
       }
