@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "devops_deployment_metrics",
+  "project_id": "fffd275d-27f7-4a8a-ba21-38ab1538f119"
+}
