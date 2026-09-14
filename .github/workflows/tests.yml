@@ -129,8 +129,7 @@ jobs:
               uv run sphinx-build docs docs/_build
               ;;
             pip-audit)
-              uv export --no-hashes -o requirements.txt
-              uv run pip-audit -r requirements.txt; status=$?; rm -f requirements.txt; exit $status
+              uv run pip-audit
               ;;
             *)
               echo "Unknown session: ${{ matrix.session }}" >&2
