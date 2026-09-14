@@ -100,7 +100,7 @@ pytest --benchmark-only
 or
 
 ```bash
-nox -s benchmark
+make benchmark
 ```
 
 Analyze Results: Review the generated benchmark reports to make informed decisions about performance optimizations.
