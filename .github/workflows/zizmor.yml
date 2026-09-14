@@ -31,16 +31,17 @@ jobs:
             files.pythonhosted.org:443
             github.com:443
             pypi.org:443
+            raw.githubusercontent.com:443
             release-assets.githubusercontent.com:443
 
       - name: Check out the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # Pinned to match the uv version range this repo's other CI jobs install
-      # (.github/workflows/constraints.txt: uv>=0.11.32,<0.12). Without an
-      # explicit version, setup-uv falls back to resolving "latest", which
-      # fetches a manifest from raw.githubusercontent.com -- an endpoint not
-      # in this job's harden-runner allowlist -- and fails closed.
+      # (.github/workflows/constraints.txt: uv>=0.11.32,<0.12). setup-uv still
+      # fetches its version manifest from raw.githubusercontent.com even with
+      # an explicit version pinned here, so that endpoint stays allowlisted
+      # above regardless.
       - name: Install uv
         uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with:
