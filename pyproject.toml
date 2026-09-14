@@ -3,16 +3,16 @@ name = "devops-deployment-metrics"
 version = "0.0.1"
 description = "DevOps Deployment Metrics"
 authors = [{ name = "Flexion, Inc.", email = "noreply@flexion.us" }]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 readme = "README.md"
 license = "MIT"
 classifiers = [
     "Development Status :: 1 - Planning",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
     "click>=8.0.1",
