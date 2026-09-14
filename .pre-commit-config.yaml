@@ -50,13 +50,12 @@ repos:
 #      - id: prettier
 
   # Linter for markdown files
-  # This hook uses DavidAnson Node.js markdownlint in a Docker to minimize dev environment at the cost of speed
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.49.1
+  # rumdl is a native (Rust) reimplementation of markdownlint with drop-in rule
+  # compatibility, so no Docker container is needed for this hook.
+  - repo: https://github.com/rvben/rumdl-pre-commit
+    rev: v0.2.73
     hooks:
-      - id: markdownlint
-        language: docker_image
-        entry: ghcr.io/igorshubovych/markdownlint-cli:v0.31.1
+      - id: rumdl
 
   # Scan for secrets
   - repo: https://github.com/zricethezav/gitleaks

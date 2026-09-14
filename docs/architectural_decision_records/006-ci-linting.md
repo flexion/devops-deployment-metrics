@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-Consistently and well-formatted code is [easier to read, diff and maintain](docs/architectural_decision_records/008-code-formatting.md).
+Consistently and well-formatted code is [easier to read, diff and maintain](008-code-formatting.md).
 Running linting in the continuous integration (CI) process makes sure developers are following the rules.
 
 ## Decision

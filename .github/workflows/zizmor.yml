@@ -1,0 +1,54 @@
+name: Zizmor # Static security analysis of GitHub Actions workflows
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  zizmor:
+    name: Scan workflows for security anti-patterns
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          disable-sudo: true
+          egress-policy: block
+          disable-telemetry: false
+          allowed-endpoints: >
+            api.github.com:443
+            files.pythonhosted.org:443
+            github.com:443
+            pypi.org:443
+            raw.githubusercontent.com:443
+            release-assets.githubusercontent.com:443
+
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Pinned to match the uv version range this repo's other CI jobs install
+      # (.github/workflows/constraints.txt: uv>=0.11.32,<0.12). setup-uv still
+      # fetches its version manifest from raw.githubusercontent.com even with
+      # an explicit version pinned here, so that endpoint stays allowlisted
+      # above regardless.
+      - name: Install uv
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.11.32"
+
+      # zizmor recognizes both .yml and .yaml workflow files when given the
+      # directory directly, which is what this repo needs since it mixes
+      # both extensions under .github/workflows.
+      - name: Run zizmor
+        run: uvx zizmor==1.30.1 --min-severity high .github/workflows
