@@ -437,9 +437,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "coverage", extra = ["toml"] },
-    { name = "furo" },
     { name = "mypy" },
-    { name = "myst-parser" },
     { name = "pandas-stubs" },
     { name = "pip-audit" },
     { name = "pre-commit" },
@@ -450,14 +448,18 @@ dev = [
     { name = "pytest-mock" },
     { name = "pyupgrade" },
     { name = "ruff" },
-    { name = "sphinx" },
-    { name = "sphinx-autobuild" },
-    { name = "sphinx-click" },
     { name = "typeguard" },
     { name = "types-pyyaml" },
     { name = "types-toml" },
     { name = "types-tqdm" },
     { name = "xdoctest", extra = ["colors"] },
+]
+docs = [
+    { name = "furo" },
+    { name = "myst-parser" },
+    { name = "sphinx" },
+    { name = "sphinx-autobuild" },
+    { name = "sphinx-click" },
 ]
 
 [package.metadata]
@@ -475,9 +477,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "coverage", extras = ["toml"], specifier = ">=6.2" },
-    { name = "furo", specifier = ">=2021.11.12" },
     { name = "mypy", specifier = ">=0.930" },
-    { name = "myst-parser", specifier = ">=0.16.1" },
     { name = "pandas-stubs", specifier = ">=2.0.1.230501,<3" },
     { name = "pip-audit", specifier = ">=2.7.3" },
     { name = "pre-commit", specifier = ">=2.16.0" },
@@ -488,14 +488,18 @@ dev = [
     { name = "pytest-mock", specifier = ">=3.10.0,<4" },
     { name = "pyupgrade", specifier = ">=2.29.1" },
     { name = "ruff", specifier = ">=0.16,<0.17" },
-    { name = "sphinx", specifier = ">=4.3.2" },
-    { name = "sphinx-autobuild", specifier = ">=2021.3.14" },
-    { name = "sphinx-click", specifier = ">=3.0.2" },
     { name = "typeguard", specifier = ">=2.13.3" },
     { name = "types-pyyaml", specifier = ">=6.0.12.10,<7" },
     { name = "types-toml", specifier = ">=0.10.8.6,<0.11" },
     { name = "types-tqdm", specifier = ">=4.65.0.1,<5" },
     { name = "xdoctest", extras = ["colors"], specifier = ">=0.15.10" },
+]
+docs = [
+    { name = "furo", specifier = ">=2021.11.12" },
+    { name = "myst-parser", specifier = ">=0.16.1" },
+    { name = "sphinx", specifier = ">=4.3.2" },
+    { name = "sphinx-autobuild", specifier = ">=2021.3.14" },
+    { name = "sphinx-click", specifier = ">=3.0.2" },
 ]
 
 [[package]]

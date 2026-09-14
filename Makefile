@@ -29,11 +29,11 @@ xdoctest:  ## Run doctest examples
 
 docs:  ## Build documentation
 	@rm -rf docs/_build
-	uv run sphinx-build docs docs/_build
+	uv run --group docs sphinx-build docs docs/_build
 
 docs-serve:  ## Build and serve documentation with live reloading
 	@rm -rf docs/_build
-	uv run sphinx-autobuild --open-browser docs docs/_build
+	uv run --group docs sphinx-autobuild --open-browser docs docs/_build
 
 benchmark:  ## Run performance benchmarks
 	uv run pytest --benchmark-json=benchmark-output.json tests/test_metrics.py tests/test_config.py

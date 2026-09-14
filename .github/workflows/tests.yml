@@ -126,7 +126,7 @@ jobs:
               ;;
             docs-build)
               rm -rf docs/_build
-              uv run sphinx-build docs docs/_build
+              uv run --group docs sphinx-build docs docs/_build
               ;;
             pip-audit)
               uv run pip-audit
