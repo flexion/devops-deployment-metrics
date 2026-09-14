@@ -50,7 +50,7 @@ Issues in Beads are:
 🚀 **Developer Focused**
 
 - Issues live in your repo, right next to your code
-- Works offline, syncs when you push
+- Works offline, syncs via `bd dolt push` / `bd dolt pull`
 - Fast, lightweight, and stays out of your way
 
 🔧 **Git Integration**
@@ -64,8 +64,11 @@ Issues in Beads are:
 Try Beads in your own projects:
 
 ```bash
-# Install Beads
-curl -sSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/install.sh | bash
+# Install Beads — pin to a tagged release and inspect before running,
+# rather than piping the mutable main branch straight into bash
+curl -sSL -o install.sh https://raw.githubusercontent.com/steveyegge/beads/v1.2.2/scripts/install.sh
+less install.sh   # review it
+bash install.sh
 
 # Initialize in your repo
 bd init
