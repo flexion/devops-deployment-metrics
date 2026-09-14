@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789408707258,
+  "lastUpdate": 1789410904809,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -3014,6 +3014,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000010160520121673308",
             "extra": "mean: 208.3894261463303 usec\nrounds: 3358"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c3ee0acbc09ddc3e06e9f669b5b1d32dd1cb1b71",
+          "message": "Merge pull request #988 from flexion/dependabot/uv/starlette-1.3.1\n\nBump starlette from 0.45.2 to 1.3.1",
+          "timestamp": "2026-09-14T13:34:32-05:00",
+          "tree_id": "a2ae8feb2afc5bdc8e7f80c254b4a041f295775a",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/c3ee0acbc09ddc3e06e9f669b5b1d32dd1cb1b71"
+        },
+        "date": 1789410903942,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 891.0191765015521,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004158699790341129",
+            "extra": "mean: 1.1223103008022164 msec\nrounds: 748"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 897.7875076706727,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004055143985590779",
+            "extra": "mean: 1.1138493145159925 msec\nrounds: 868"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 864.4578342454432,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010366203830876817",
+            "extra": "mean: 1.1567944211794519 msec\nrounds: 831"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3356.7085047736514,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000014965621961656885",
+            "extra": "mean: 297.9108845995645 usec\nrounds: 2435"
           }
         ]
       }
