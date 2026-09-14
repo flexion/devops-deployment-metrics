@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789426735414,
+  "lastUpdate": 1789426980023,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -3898,6 +3898,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000013394906088976538",
             "extra": "mean: 323.3813088962401 usec\nrounds: 2428"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5899e90f6aa87502d3c856e9cc19f5a805a7109b",
+          "message": "Merge pull request #1009 from flexion/renovate/pandas-stubs-3.x\n\nchore(deps): update dependency pandas-stubs to v3",
+          "timestamp": "2026-09-14T18:01:58-05:00",
+          "tree_id": "b910cc15a078837c8e5759ab034d4767e8f58910",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/5899e90f6aa87502d3c856e9cc19f5a805a7109b"
+        },
+        "date": 1789426978820,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 1054.145929903715,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004333764307303905",
+            "extra": "mean: 948.6352616201245 usec\nrounds: 753"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 1060.2651627791051,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00003585389797125429",
+            "extra": "mean: 943.1602915056253 usec\nrounds: 1036"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 1033.1105502643843,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000017322099584059994",
+            "extra": "mean: 967.9506222679548 usec\nrounds: 961"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 5274.833623658052,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000009371817505486004",
+            "extra": "mean: 189.57943915328815 usec\nrounds: 3780"
           }
         ]
       }
