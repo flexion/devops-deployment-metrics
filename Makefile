@@ -23,8 +23,7 @@ lint:  ## Lint code using pre-commit
 
 audit:  ## Audit dependencies for vulnerabilities
 	uv export --no-hashes -o requirements.txt
-	uv run pip-audit -r requirements.txt
-	rm requirements.txt
+	uv run pip-audit -r requirements.txt; status=$$?; rm -f requirements.txt; exit $$status
 
 xdoctest:  ## Run doctest examples
 	uv run python -m xdoctest --modname=devops_deployment_metrics --command=all

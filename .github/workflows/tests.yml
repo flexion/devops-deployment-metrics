@@ -130,8 +130,7 @@ jobs:
               ;;
             audit)
               uv export --no-hashes -o requirements.txt
-              uv run pip-audit -r requirements.txt
-              rm requirements.txt
+              uv run pip-audit -r requirements.txt; status=$?; rm -f requirements.txt; exit $status
               ;;
             *)
               echo "Unknown session: ${{ matrix.session }}" >&2

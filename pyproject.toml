@@ -42,12 +42,12 @@ dev = [
     "coverage[toml]>=6.2",
     "furo>=2021.11.12",
     "mypy>=0.930",
+    "pip-audit>=2.7.3",
     "pre-commit>=2.16.0",
     "pre-commit-hooks>=4.1.0",
     "pytest>=6.2.5",
     "pytest-mock>=3.10.0,<4",
     "pyupgrade>=2.29.1",
-    "safety>=2.3.5",
     "sphinx>=4.3.2",
     "sphinx-autobuild>=2021.3.14",
     "sphinx-click>=3.0.2",
@@ -169,5 +169,6 @@ docstring-code-line-length = "dynamic"
 #python_files = "test*.py"  # to discover testA.py and testB.py
 pythonpath = "src"
 
-[tool.uv.build-backend]
-module-name = "devops-deployment-metrics"
+[build-system]
+requires = ["uv_build>=0.11,<0.12"]
+build-backend = "uv_build"
