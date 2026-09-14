@@ -436,7 +436,7 @@ requires-dist = [
 dev = [
     { name = "coverage", extras = ["toml"], specifier = ">=6.2" },
     { name = "mypy", specifier = ">=0.930" },
-    { name = "pandas-stubs", specifier = ">=2.0.1.230501,<3" },
+    { name = "pandas-stubs", specifier = ">=3.0.5.260914,<4" },
     { name = "pip-audit", specifier = ">=2.7.3" },
     { name = "pre-commit", specifier = ">=2.16.0" },
     { name = "pre-commit-hooks", specifier = ">=4.1.0" },
@@ -1036,16 +1036,15 @@ wheels = [
 
 [[package]]
 name = "pandas-stubs"
-version = "2.2.3.241126"
+version = "3.0.5.260914"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
-    { name = "types-pytz" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/90/86/93c545d149c3e1fe1c4c55478cc3a69859d0ea3467e1d9892e9eb28cb1e7/pandas_stubs-2.2.3.241126.tar.gz", hash = "sha256:cf819383c6d9ae7d4dabf34cd47e1e45525bb2f312e6ad2939c2c204cb708acd", size = 104204, upload-time = "2024-11-26T15:06:00.807Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c1/93/8948ae6c1e1e3d6833596fd266f7be2d27c1451b8be094975ad42c5e842e/pandas_stubs-3.0.5.260914.tar.gz", hash = "sha256:3f6fc1f147f68fd89c007105e7c94a948acb4ecd7eb20dc1c02e153c4ed5c250", size = 117622, upload-time = "2026-09-14T16:42:35.065Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6f/ab/ed42acf15bab2e86e5c49fad4aa038315233c4c2d22f41b49faa4d837516/pandas_stubs-2.2.3.241126-py3-none-any.whl", hash = "sha256:74aa79c167af374fe97068acc90776c0ebec5266a6e5c69fe11e9c2cf51f2267", size = 158280, upload-time = "2024-11-26T15:05:59.428Z" },
+    { url = "https://files.pythonhosted.org/packages/9a/cb/5ad79e02a556cc23fed5816de0109fa8af660c66cfa5f4af74c3e8d4cd26/pandas_stubs-3.0.5.260914-py3-none-any.whl", hash = "sha256:39a1300c5c5c55fdf609e3476805decce5d5015539a4dcb683449f8feaeee2fb", size = 177344, upload-time = "2026-09-14T16:42:33.771Z" },
 ]
 
 [[package]]
@@ -1763,15 +1762,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/62/c3/400917dd37d7b8c07e9723f3046818530423e1e759a56a22133362adab00/typeguard-4.4.1.tar.gz", hash = "sha256:0d22a89d00b453b47c49875f42b6601b961757541a2e1e0ef517b6e24213c21b", size = 74959, upload-time = "2024-11-03T12:15:01.913Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f2/53/9465dedf2d69fe26008e7732cf6e0a385e387c240869e7d54eed49782a3c/typeguard-4.4.1-py3-none-any.whl", hash = "sha256:9324ec07a27ec67fc54a9c063020ca4c0ae6abad5e9f0f9804ca59aee68c6e21", size = 35635, upload-time = "2024-11-03T12:15:00.391Z" },
-]
-
-[[package]]
-name = "types-pytz"
-version = "2024.2.0.20241221"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/54/26/516311b02b5a215e721155fb65db8a965d061372e388d6125ebce8d674b0/types_pytz-2024.2.0.20241221.tar.gz", hash = "sha256:06d7cde9613e9f7504766a0554a270c369434b50e00975b3a4a0f6eed0f2c1a9", size = 10213, upload-time = "2024-12-21T02:40:48.654Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/74/db/c92ca6920cccd9c2998b013601542e2ac5e59bc805bcff94c94ad254b7df/types_pytz-2024.2.0.20241221-py3-none-any.whl", hash = "sha256:8fc03195329c43637ed4f593663df721fef919b60a969066e22606edf0b53ad5", size = 10008, upload-time = "2024-12-21T02:40:47.047Z" },
 ]
 
 [[package]]
