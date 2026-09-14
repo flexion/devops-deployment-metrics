@@ -23,15 +23,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { python: "3.10", os: "ubuntu-latest", session: "test" }
-          - { python: "3.11", os: "ubuntu-latest", session: "test" }
-          - { python: "3.12", os: "ubuntu-latest", session: "lint" }
+          - { python: "3.10", os: "ubuntu-latest", session: "tests" }
+          - { python: "3.11", os: "ubuntu-latest", session: "tests" }
+          - { python: "3.12", os: "ubuntu-latest", session: "pre-commit" }
           - { python: "3.12", os: "ubuntu-latest", session: "xdoctest" }
-          - { python: "3.12", os: "ubuntu-latest", session: "docs" }
-          - { python: "3.12", os: "ubuntu-latest", session: "test" }
-          - { python: "3.12", os: "windows-latest", session: "test" }
-          - { python: "3.12", os: "ubuntu-latest", session: "audit" }
-          - { python: "3.13", os: "ubuntu-latest", session: "test" }
+          - { python: "3.12", os: "ubuntu-latest", session: "docs-build" }
+          - { python: "3.12", os: "ubuntu-latest", session: "tests" }
+          - { python: "3.12", os: "windows-latest", session: "tests" }
+          - { python: "3.12", os: "ubuntu-latest", session: "pip-audit" }
+          - { python: "3.13", os: "ubuntu-latest", session: "tests" }
 
     #          - { python: "3.10", os: "ubuntu-latest", session: "mypy" }
     #          - { python: "3.12", os: "ubuntu-latest", session: "mypy" }
@@ -79,7 +79,7 @@ jobs:
           uv --version
 
       - name: Compute pre-commit cache key
-        if: matrix.session == 'lint'
+        if: matrix.session == 'pre-commit'
         id: pre-commit-cache
         shell: python
         run: |
@@ -97,7 +97,7 @@ jobs:
 
       - name: Restore pre-commit cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        if: matrix.session == 'lint'
+        if: matrix.session == 'pre-commit'
         with:
           path: ~/.cache/pre-commit
           key: ${{ env.PC_CACHE_KEY }}-${{ hashFiles('.pre-commit-config.yaml') }}
@@ -115,20 +115,20 @@ jobs:
           UV_PREVIEW: 1
         run: |
           case "${{ matrix.session }}" in
-            test)
+            tests)
               uv run coverage run --parallel -m pytest --no-nox
               ;;
-            lint)
+            pre-commit)
               uv run pre-commit run --all-files --hook-stage=manual --show-diff-on-failure
               ;;
             xdoctest)
               uv run python -m xdoctest --modname=devops_deployment_metrics --command=all
               ;;
-            docs)
+            docs-build)
               rm -rf docs/_build
               uv run sphinx-build docs docs/_build
               ;;
-            audit)
+            pip-audit)
               uv export --no-hashes -o requirements.txt
               uv run pip-audit -r requirements.txt; status=$?; rm -f requirements.txt; exit $status
               ;;
@@ -139,7 +139,7 @@ jobs:
           esac
 
       - name: Upload coverage data
-        if: always() && matrix.session == 'test' && matrix.python == '3.11' && matrix.os == 'ubuntu-latest'
+        if: always() && matrix.session == 'tests' && matrix.python == '3.11' && matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           # Hack for v4.4 hidden file change
@@ -148,7 +148,7 @@ jobs:
           include-hidden-files: true
 
       - name: Upload documentation
-        if: matrix.session == 'docs'
+        if: matrix.session == 'docs-build'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: docs
