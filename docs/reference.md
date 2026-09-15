@@ -2,7 +2,7 @@
 
 ## devops_deployment_metrics
 
-```{eval-rst}
+```text {eval-rst}
 .. automodule:: devops_deployment_metrics
    :members:
 ```
