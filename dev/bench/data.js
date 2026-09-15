@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789429479019,
+  "lastUpdate": 1789431117244,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -4054,6 +4054,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000014335311509868023",
             "extra": "mean: 324.0523339566762 usec\nrounds: 2674"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "twillis@flexion.us",
+            "name": "Tom Willis",
+            "username": "tomwillis608"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0b72ec7f167f4686bf0ff5216f42e1eac55b3096",
+          "message": "Merge pull request #1012 from flexion/docs/dod\n\nAdd definition of done documentation",
+          "timestamp": "2026-09-14T19:11:16-05:00",
+          "tree_id": "def9beb0bca2975885a77a7b60c1be3d8fc2cca1",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/0b72ec7f167f4686bf0ff5216f42e1eac55b3096"
+        },
+        "date": 1789431115706,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 737.8205687808563,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000021914695060170563",
+            "extra": "mean: 1.3553430770469816 msec\nrounds: 623"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 740.8298242626838,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002567479268401049",
+            "extra": "mean: 1.3498376648041366 msec\nrounds: 716"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 722.2995019631755,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00010542867257365155",
+            "extra": "mean: 1.3844672428570806 msec\nrounds: 700"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3114.4689342185466,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000015164994117888641",
+            "extra": "mean: 321.082027504927 usec\nrounds: 2545"
           }
         ]
       }
