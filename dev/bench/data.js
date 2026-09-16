@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789480327957,
+  "lastUpdate": 1789525377901,
   "repoUrl": "https://github.com/flexion/devops-deployment-metrics",
   "entries": {
     "Pytest-Benchmark Benchmark": [
@@ -4314,6 +4314,58 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00003549275915242117",
             "extra": "mean: 264.9514820254422 usec\nrounds: 2587"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "29139614+renovate[bot]@users.noreply.github.com",
+            "name": "renovate[bot]",
+            "username": "renovate[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b395a4bfa59f852fe5d7a21e2111f614b22382cc",
+          "message": "chore(deps): update dependency astral-sh/uv to v0.12.15 (#1018)\n\nCo-authored-by: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>",
+          "timestamp": "2026-09-16T02:22:15Z",
+          "tree_id": "f16472e68750d57a4bad9304eef77a5925426d98",
+          "url": "https://github.com/flexion/devops-deployment-metrics/commit/b395a4bfa59f852fe5d7a21e2111f614b22382cc"
+        },
+        "date": 1789525375794,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_metrics.py::test_deployment_frequency_metric",
+            "value": 833.2886380921042,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00009173619417734527",
+            "extra": "mean: 1.2000643645995197 msec\nrounds: 661"
+          },
+          {
+            "name": "tests/test_metrics.py::test_change_fail_rate_metric",
+            "value": 838.9131326224264,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000031848451339735514",
+            "extra": "mean: 1.1920185310176503 msec\nrounds: 806"
+          },
+          {
+            "name": "tests/test_metrics.py::test_mean_time_to_recovery_metric",
+            "value": 803.0552710477237,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016282190707003352",
+            "extra": "mean: 1.2452443014231485 msec\nrounds: 773"
+          },
+          {
+            "name": "tests/test_config.py::test_config",
+            "value": 3754.9068654089792,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000010832824871316048",
+            "extra": "mean: 266.31818999619355 usec\nrounds: 2579"
           }
         ]
       }
