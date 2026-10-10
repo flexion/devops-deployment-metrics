@@ -36,7 +36,7 @@ devops-deployment-metrics = "devops_deployment_metrics.__main__:main"
 
 [dependency-groups]
 dev = [
-    "ruff>=0.16,<0.17",
+    "ruff>=0.17,<0.18",
     "pytest-benchmark>=5.0.0,<6",
     "Pygments>=2.10.0",
     "coverage[toml]>=6.2",
@@ -179,5 +179,5 @@ pythonpath = "src"
 default-groups = ["dev"]
 
 [build-system]
-requires = ["uv_build>=0.12,<0.13"]
+requires = ["uv_build>=0.13,<0.14"]
 build-backend = "uv_build"
